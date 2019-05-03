@@ -4,10 +4,15 @@ const bcrypt = require('bcryptjs');
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
-    fname: {type: String, required: true},
-    lname: {type: String, required: true},
     email: {type: String, required: true},
     password: {type: String, required: true},
+    fname: {type: String, required: true},
+    lname: {type: String, required: true},
+    title: {type: String, required: true},
+    street: {type: String, required: true},
+    postcode: {type: String, required: true},
+    city: {type: String, required: true},
+    birthday: {type: Date, required: true},
 });
 
 schema.methods.validPassword = function (password, callback) {
