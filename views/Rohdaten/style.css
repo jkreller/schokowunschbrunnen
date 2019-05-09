@@ -1,0 +1,266 @@
+@font-face { 
+    font-family: 'IceValley'; 
+    src:url('fonts/ice_valley.ttf') format('truetype'),
+        url('fonts/ice_valley.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Trebuchet';
+    src: url('fonts/trebuc.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Pintgram';
+    src: url('fonts/Pintgram-Regular.ttf') format('truetype');
+}
+
+body {
+    margin: 0;
+    font-family: 'Trebuchet';
+    font-size: 14px;
+    background-image: 
+        repeating-linear-gradient(90deg,
+                                rgb(255,240,225) 0%,rgb(255,240,225) 2%,
+                                rgb(255,247,238) 2%,rgb(255,247,238) 4%, 
+                                rgb(255,240,225) 4%);
+}
+
+.header {
+    z-index: 100;
+    /*position: absolute;*/
+    width: 100%;
+    height: 150px;
+    background: rgb(145,225,225);
+}
+
+.header__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 0 51px;
+    height: 100%;
+}
+
+.header__inner > ul {
+    list-style: none;
+    display: inline-block;
+    margin: 0;
+    margin-bottom: 10px;
+    padding: 0;
+}
+
+.header__inner > ul > li {
+    display: inline-block;
+    padding: 10px 0;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.header__inner > .title {
+    margin-bottom: 30px;
+    font-family: 'IceValley';
+    font-size: 50px;
+    color: rgb(59,36,8); 
+    text-decoration: none;
+}
+
+.header__button {
+    text-decoration: none;
+    padding: 10px 22px;
+    color: rgb(145,225,225);
+}
+
+.header__button:not(:first-of-type) {
+    margin-left: 10px;
+}
+
+.loggedIn {
+    display: none;
+}
+
+.ladestatus {
+    position: absolute;
+    height: 100%;
+}
+
+.schoko-balken {
+    position: relative;
+    z-index: 1;
+    top: 0;
+    height: 100%;
+    width: 51px;
+    background: url('img/schoko-streifen.jpg');
+    background-size: cover;
+}
+
+.lade-balken {
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    width: 51px;
+    background-color: rgba(255,240,225,0.8);
+}
+
+.schoko-balken:nth-of-type(1) > .lade-balken{
+    height: 100%;
+}
+
+.schoko-balken:nth-of-type(2) > .lade-balken{
+    height: 75%;
+}
+
+.schoko-balken:nth-of-type(3) > .lade-balken{
+    height: 50%;
+}
+
+.schoko-balken:nth-of-type(4) > .lade-balken{
+    height: 25%;
+}
+
+.schoko-balken:nth-of-type(5) > .lade-balken{
+    height: 0%;
+}
+
+.main__inner {
+    display: flex;
+    justify-content: space-around;
+    margin: 40px 0 0;
+    width: 100%;
+}
+
+.info {
+    display: inline-block;
+    width: 506px;
+    height: 300px;
+    text-align: center;
+    background-color: rgba(255,255,255,0.5);
+    padding: 22px;
+}
+
+.info-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: calc(100% - 76px);
+}
+
+.info-content > img {
+    height: 100%;
+    max-width: 160px;
+}
+
+.info-content > div {
+    width: calc(100% - 160px);
+    font-size: 18px;
+    color: rgb(59,36,8);
+}
+
+.info-content > div > p {
+    display: inline-block;
+    margin: 0;
+    font-family: 'IceValley';
+    font-size: 28px;
+    color: rgb(145,225,225);
+}
+
+.info-button {
+    display: inline-block;
+    width: 60%;
+    margin-top: 22px;
+    padding: 14px 10px;
+    background-color: rgb(59,36,8);
+    font-family: 'IceValley';
+    font-size: 24px;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+/*Schokowunschbrunnen*/
+
+.infobox {
+    margin: 0 auto;
+    width: 1000px;
+    height: 300px;
+    background-color: white;
+    padding: 22px;
+    text-align: center;
+}
+
+.infotext > p {
+    margin: 0;
+    display: inline-block;
+    font-family: 'IceValley';
+    font-size: 24px;
+}
+
+.start-button {
+    text-decoration: none;
+    color: white;
+    font-family: 'IceValley';
+    font-size: 26px;
+    background-color: rgb(59,36,8);
+    display: inline-block;
+    width: 200px;
+}
+
+.schoko-category {
+    margin: 0 auto;
+    width: 1000px;
+    height: 300px;
+    background-color: white;
+    padding: 22px;
+    text-align: center;
+}
+
+/*Schokoshop*/
+
+.shop-inner {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    margin: 40px 51px;
+}
+
+.product-view {
+    width: calc((100% - 60px) / 3);
+    height: 400px;
+    background-color: rgba(255,255,255,0.6); 
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.product-img {
+    width: 100%;
+    height: 295px;
+    background-image: url("img/topping.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.product-ingredients {
+    display: flex;
+    justify-content: space-between;
+    width: calc(100% - 44px);
+    margin: 12px 22px 10px;
+}
+
+.product-ingredients > div {
+    width: 50px;
+    height: 50px;
+    background-color: rgb(255,240,225);
+    border-radius: 5px;
+    background-image: url('icons/Logout.svg');
+}
+
+.product-view > h3 {
+    text-align: center;
+    color: rgb(59,36,8);
+    font-family: 'Pintgram';
+    font-size: 24px;
+    margin: 0;
+    letter-spacing: 2px;
+}
