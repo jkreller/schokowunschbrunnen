@@ -1,0 +1,17 @@
+{% extends 'layout.twig' %}
+
+{% block main %}
+  <div>
+    <h1>Anmelden</h1>
+    {{ message }}
+    <form method="post" action="/user/login">
+      E-Mail-Adresse:<br>
+      <input type="email" name="email"><br>
+      Passwort:<br>
+      <input type="password" name="password"><br>
+      <input type="submit" value="Anmelden">
+    </form>
+    <h1>Neu am Schokowunschbrunnen?</h1>
+    <a href="/user/register">Jetzt Registrieren!</a>
+  </div>
+{% endblock %}
