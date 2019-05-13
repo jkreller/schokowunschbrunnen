@@ -2,6 +2,7 @@
     <head>
         <title>Schoko-Wunschbrunnen</title>
         <link rel="stylesheet" href="style.css">
+        <link rel="shortcut icon" type="image/png" href="icons/favicon.png" />
     </head>
     <body>
         <header class="header">
@@ -22,7 +23,26 @@
             </div>
         </header>
         <main>
-            <div class="ladestatus">
+            <section class="brunnen-section">
+                <div class="ladestatus">
+                    <div class="schoko-balken">
+                        <div class="lade-balken"></div>
+                    </div>
+                </div>
+                <div class="infobox">
+                    <div class="infotext">
+                        <p>Herzlich Willkommen beim Schokowunschbrunnen!</p><br>
+                        Hier werden <p>Schokowünsche</p> war!<br>
+                        Im Folgenden kannst du dir deine Schokolade ganz nach deinen Wünschen erstellen.<br>
+                        Wähle dafür in den Kategorien Form, Sorte, Creme, Füllung und Topping jeweils deinen Favourit.<br>
+                        Anhand des Schokobalkens am linken Bildschirmrand kannst du ablesen, wie weit du im Erstellprozess schon gekommen bist.
+                        Am Ende der Seite angelangt, kannst du dir noch einmal einen Überblick über deine Kreation verschaffen. Diese kannst du dann in den Warenkorb legen und dir nach Hause wünschen. Achte hierbei darauf, dass dies nur im angemeldeten Zustand möglich ist und dass eine Zwischenspeicherung nicht möglich ist.
+                        Viel Spaß wünscht dir das Schokowunschbrunnen-Team !
+                    </div>
+                    <a href="#" class="start-button">Los gehts!</a>
+                </div>
+            </section>
+            <!--<div class="ladestatus">
                 <div class="schoko-balken">
                     <div class="lade-balken"></div>
                 </div>
@@ -38,79 +58,112 @@
                 <div class="schoko-balken">
                     <div class="lade-balken"></div>
                 </div>
-            </div>
-            <div class="infobox">
-                <div class="infotext">
-                    <p>Herzlich Willkommen beim Schokowunschbrunnen!</p><br>
-                    Hier werden <p>Schokowünsche</p> war!<br>
-                    Im Folgenden kannst du dir deine Schokolade ganz nach deinen Wünschen erstellen.<br>
-                    Wähle dafür in den Kategorien Form, Sorte, Creme, Füllung und Topping jeweils deinen Favourit. Die Creme, die Füllung und das Topping kannst du jedoch auch weglassen.
-                    Anhand des Schokobalkens am linken Bildschirmrand kannst du ablesen, wie weit du im Erstellprozess schon gekommen bist.
-                    Am Ende der Seite angelangt, kannst du dir noch einmal einen Überblick über deine Kreation verschaffen. Diese kannst du dann in den Warenkorb legen und dir nach Hause wünschen. Achte hierbei darauf, dass dies nur im angemeldeten Zustand möglich ist und dass eine Zwischenspeicherung nicht möglich ist.
-                    Viel Spaß wünscht dir das Schokowunschbrunnen-Team !
+            </div>-->
+            <section class="brunnen-section">
+                <div class="ladestatus">
+                    <div class="schoko-balken">
+                        <div class="lade-balken"></div>
+                    </div>
                 </div>
-                <a href="#" class="start-button">Los gehts!</a>
-            </div>
-            <div class="schoko-category">
-                <div class="3D-animation"></div>
-                <div class="category">
-                    <p>Form :</p>
-                    <input type="radio" name="shape" id="rectangle" checked>
-                    <label for="rectangle">Rechteck</label>
-                    <input type="radio" name="shape" id="heart">
-                    <label for="heart">Herz</label>
-                    <input type="radio" name="shape" id="circle">
-                    <label for="circle">Kreis</label>
+                <div class="schoko-category">
+                    <div class="animation">
+                        <div class="shape"></div>
+                        <div class="variety"></div>
+                    </div>
+                    <div class="category">
+                        <p>Form :</p>
+                        <input type="radio" name="shape" id="rectangle" checked>
+                        <label for="rectangle">Rechteck</label>
+                        <input type="radio" name="shape" id="heart">
+                        <label for="heart">Herz</label>
+                        <input type="radio" name="shape" id="circle">
+                        <label for="circle">Kreis</label>
+                    </div>
+                    <div class="category">
+                        <p>Sorte :</p>
+                        <input type="radio" name="variety" id="dark">
+                        <label for="dark">Zartbitter</label>
+                        <input type="radio" name="variety" id="milk" checked>
+                        <label for="milk">Vollmilch</label>
+                        <input type="radio" name="variety" id="white">
+                        <label for="white">Weiß</label>
+                    </div>
                 </div>
-                <div class="category">
-                    <p>Sorte :</p>
-                    <input type="radio" name="variety" id="dark">
-                    <label for="dark">Zartbitter</label>
-                    <input type="radio" name="variety" id="milk" checked>
-                    <label for="milk">Vollmilch</label>
-                    <input type="radio" name="variety" id="white">
-                    <label for="white">Weiß</label>
+            </section>
+            <section class="brunnen-section">
+                <div class="ladestatus">
+                    <div class="schoko-balken">
+                        <div class="lade-balken"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="schoko-category">
-                <div class="3D-animation"></div>
-                <div class="category">
-                    <p>Creme :</p>
-                    <input type="radio" name="cream" id="no-cream" checked>
-                    <label for="no-cream">Keine</label>
-                    <input type="radio" name="cream" id="pistachio">
-                    <label for="pistachio">Pistazie</label>
-                    <input type="radio" name="cream" id="vanilla">
-                    <label for="vanilla">Vanille</label>
-                    <input type="radio" name="cream" id="raspberry">
-                    <label for="raspberry">Himbeere</label>
+                <div class="schoko-category">
+                    <div class="animation">
+                        <div class="side-view"></div>
+                        <div class="cream"></div>
+                        <div class="stuffing"></div>
+                    </div>
+                    <div class="category">
+                        <p>Creme :</p>
+                        <input type="radio" name="cream" id="no-cream" checked>
+                        <label for="no-cream">Keine</label>
+                        <input type="radio" name="cream" id="pistachio">
+                        <label for="pistachio">Pistazie</label>
+                        <input type="radio" name="cream" id="vanilla">
+                        <label for="vanilla">Vanille</label>
+                        <input type="radio" name="cream" id="raspberry">
+                        <label for="raspberry">Himbeere</label>
+                    </div>
+                    <div class="category">
+                        <p>Füllung :</p>
+                        <input type="radio" name="stuffing" id="no-stuffing" checked>
+                        <label for="no-stuffing">Keine</label>
+                        <input type="radio" name="stuffing" id="blueberry">
+                        <label for="blueberry">Blaubeere</label>
+                        <input type="radio" name="stuffing" id="hazelnut">
+                        <label for="hazelnut">Haselnuss</label>
+                        <input type="radio" name="stuffing" id="oreo">
+                        <label for="oreo">Oreo-Keks</label>
+                    </div>
                 </div>
-                <div class="category">
-                    <p>Füllung :</p>
-                    <input type="radio" name="stuffing" id="no-stuffing" checked>
-                    <label for="no-stuffing">Keine</label>
-                    <input type="radio" name="stuffing" id="blueberry">
-                    <label for="blueberry">Blaubeere</label>
-                    <input type="radio" name="stuffing" id="hazelnut">
-                    <label for="hazelnut">Haselnuss</label>
-                    <input type="radio" name="stuffing" id="oreo">
-                    <label for="oreo">Oreo-Keks</label>
+            </section>
+            <section class="brunnen-section">
+                <div class="ladestatus">
+                    <div class="schoko-balken">
+                        <div class="lade-balken"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="schoko-category">
-                <div class="3D-animation"></div>
-                <div class="category">
-                    <p>Topping :</p>
-                    <input type="radio" name="topping" id="no-topping" checked>
-                    <label for="no-topping">Keins</label>
-                    <input type="radio" name="topping" id="strawberry">
-                    <label for="strawberry">Erdbeere</label>
-                    <input type="radio" name="topping" id="smarties">
-                    <label for="smarties">Schokolinsen</label>
-                    <input type="radio" name="topping" id="gold">
-                    <label for="gold">Blattgold</label>
+                <div class="schoko-category">
+                    <div class="animation">
+                        <div class="top-view"></div>
+                        <div class="topping"></div>
+                    </div>
+                    <div class="category">
+                        <p>Topping :</p>
+                        <input type="radio" name="topping" id="no-topping" checked>
+                        <label for="no-topping">Keins</label>
+                        <input type="radio" name="topping" id="strawberry">
+                        <label for="strawberry">Erdbeere</label>
+                        <input type="radio" name="topping" id="smarties">
+                        <label for="smarties">Schokolinsen</label>
+                        <input type="radio" name="topping" id="gold">
+                        <label for="gold">Blattgold</label>
+                    </div>
                 </div>
-            </div>
+            </section>
+            <section class="brunnen-section">
+                <div class="ladestatus">
+                    <div class="schoko-balken">
+                        <div class="lade-balken"></div>
+                    </div>
+                </div>
+                <div class="zusammenfassung">
+                    <h3>Form und Sorte:</h3>
+
+                    <h3>Creme und Füllung:</h3>
+
+                    <h3>Topping:</h3>
+                </div>
+            </section>
         </main>
     </body>
 </html>

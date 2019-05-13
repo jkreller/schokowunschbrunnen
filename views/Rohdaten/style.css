@@ -25,6 +25,8 @@ body {
                                 rgb(255,240,225) 4%);
 }
 
+/*Header*/
+
 .header {
     z-index: 100;
     /*position: absolute;*/
@@ -57,11 +59,14 @@ body {
 }
 
 .header__inner > .title {
-    margin-bottom: 30px;
-    font-family: 'IceValley';
-    font-size: 50px;
-    color: rgb(59,36,8); 
+    margin-bottom: 10px;
+    width: 400px;
+    height: 80px;
     text-decoration: none;
+    background-image: url(img/LOGO_FINAL_PNG.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .header__button {
@@ -76,49 +81,6 @@ body {
 
 .loggedIn {
     display: none;
-}
-
-.ladestatus {
-    position: absolute;
-    height: 100%;
-}
-
-.schoko-balken {
-    position: relative;
-    z-index: 1;
-    top: 0;
-    height: 100%;
-    width: 51px;
-    background: url('img/schoko-streifen.jpg');
-    background-size: cover;
-}
-
-.lade-balken {
-    position: absolute;
-    z-index: 2;
-    bottom: 0;
-    width: 51px;
-    background-color: rgba(255,240,225,0.8);
-}
-
-.schoko-balken:nth-of-type(1) > .lade-balken{
-    height: 100%;
-}
-
-.schoko-balken:nth-of-type(2) > .lade-balken{
-    height: 75%;
-}
-
-.schoko-balken:nth-of-type(3) > .lade-balken{
-    height: 50%;
-}
-
-.schoko-balken:nth-of-type(4) > .lade-balken{
-    height: 25%;
-}
-
-.schoko-balken:nth-of-type(5) > .lade-balken{
-    height: 0%;
 }
 
 .main__inner {
@@ -178,6 +140,59 @@ body {
 
 /*Schokowunschbrunnen*/
 
+.brunnen-section {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.brunnen-section:first-of-type {
+    height: calc(100% - 150px);
+}
+
+.ladestatus {
+    position: absolute;
+    height: 100%;
+}
+
+.schoko-balken {
+    position: relative;
+    z-index: 1;
+    top: 0;
+    height: 100%;
+    width: 51px;
+    background: url('img/schoko-streifen.jpg');
+    background-size: cover;
+}
+
+.lade-balken {
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    width: 51px;
+    background-color: rgba(255,240,225,0.8);
+}
+
+.brunnen-section:nth-of-type(1) .lade-balken{
+    height: 100%;
+}
+
+.brunnen-section:nth-of-type(2) .lade-balken{
+    height: 75%;
+}
+
+.brunnen-section:nth-of-type(3) .lade-balken{
+    height: 50%;
+}
+
+.brunnen-section:nth-of-type(4) .lade-balken{
+    height: 25%;
+}
+
+.brunnen-section:nth-of-type(5) .lade-balken{
+    height: 0%;
+}
+
 .infobox {
     margin: 0 auto;
     width: 1000px;
@@ -207,10 +222,62 @@ body {
 .schoko-category {
     margin: 0 auto;
     width: 1000px;
-    height: 300px;
+    height: 100%;
     background-color: white;
     padding: 22px;
     text-align: center;
+}
+
+.animation {
+    width: 500px;
+    height: 350px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.animation > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 500px;
+    height: 350px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.animation > div:last-of-type {
+    z-index: 2;
+}
+
+.shape {
+    background-image: url('img/Tafelansicht_oben_Schoko-03.png');
+}
+
+.variety {
+    background-image: url('img/Tafelansicht_oben_Schoko-03.png');
+}
+
+.side-view {
+    background-image: url('img/Tafelansicht_Seite_schoko-04.png');
+    z-index: 0;
+}
+
+.cream {
+    background-image: url('img/Tafelansicht_Seite_Creme-06.png');
+}
+
+.stuffing {
+    background-image: url('img/Tafelansicht_Seite_Füllung-05.png');
+}
+
+.top-view {
+    background-image: url('img/Tafelansicht_oben_Schoko-03.png');
+}
+
+.topping {
+    background-image: url('img/Tafelansicht_oben_Topping-02.png');
 }
 
 /*Schokoshop*/
@@ -218,6 +285,7 @@ body {
 .shop-inner {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     height: 100%;
     margin: 40px 51px;
 }
@@ -225,6 +293,7 @@ body {
 .product-view {
     width: calc((100% - 60px) / 3);
     height: 400px;
+    margin-bottom: 30px;
     background-color: rgba(255,255,255,0.6); 
     border-radius: 10px;
     text-decoration: none;
@@ -253,7 +322,6 @@ body {
     height: 50px;
     background-color: rgb(255,240,225);
     border-radius: 5px;
-    background-image: url('icons/Logout.svg');
 }
 
 .product-view > h3 {
@@ -263,4 +331,187 @@ body {
     font-size: 24px;
     margin: 0;
     letter-spacing: 2px;
+}
+
+/*Produkt Nr.1*/
+.product-view.nr1 > .product-ingredients > div:nth-of-type(1) {
+    background-image: url('icons/shape/Rechteck.svg');
+}
+
+.product-view.nr1 > .product-ingredients > div:nth-of-type(2) {
+    background-color: rgb(255,235,159); /*weiße Schokolade*/
+}
+
+.product-view.nr1 > .product-ingredients > div:nth-of-type(3) {
+    background-image: url('icons/cream/Pistazie.svg');
+}
+
+.product-view.nr1 > .product-ingredients > div:nth-of-type(4) {
+    background-image: url('icons/stuffing/Oreo.svg');
+}
+
+.product-view.nr1 > .product-ingredients > div:nth-of-type(5) {
+    background-image: url('icons/topping/Erdbeere.svg');
+}
+
+/*Produkt Nr. 2*/
+.product-view.nr2 > .product-ingredients > div:nth-of-type(1) {
+    background-image: url('icons/shape/Rechteck.svg');
+}
+
+.product-view.nr2 > .product-ingredients > div:nth-of-type(2) {
+    background-color: rgb(59,36,8); /*dunkle Schokolade*/
+}
+
+.product-view.nr2 > .product-ingredients > div:nth-of-type(3) {
+    background-image: url('icons/cream/Pistazie.svg');
+}
+
+.product-view.nr2 > .product-ingredients > div:nth-of-type(4) {
+    background-image: url('icons/stuffing/Blaubeere.svg');
+}
+
+.product-view.nr2 > .product-ingredients > div:nth-of-type(5) {
+    background-image: url('icons/topping/Gold.svg');
+}
+
+/*Produkt Nr. 3*/
+.product-view.nr3 > .product-ingredients > div:nth-of-type(1) {
+    background-image: url('icons/shape/Rechteck.svg');
+}
+
+.product-view.nr3 > .product-ingredients > div:nth-of-type(2) {
+    background-color: rgb(127,79,44); /*Vollmilchschokolade*/
+}
+
+.product-view.nr3 > .product-ingredients > div:nth-of-type(3) {
+    background-image: url('icons/cream/Himbeere.svg');
+}
+
+.product-view.nr3 > .product-ingredients > div:nth-of-type(4) {
+    background-image: url('icons/stuffing/Haselnuss.svg');
+}
+
+.product-view.nr3 > .product-ingredients > div:nth-of-type(5) {
+    background-image: url('icons/topping/Schokolinsen.svg');
+}
+
+/*Produkt Nr. 4*/
+.product-view.nr4 > .product-ingredients > div:nth-of-type(1) {
+    background-image: url('icons/shape/Rechteck.svg');
+}
+
+.product-view.nr4 > .product-ingredients > div:nth-of-type(2) {
+    background-color: rgb(59,36,8); /*dunkle Schokolade*/
+}
+
+.product-view.nr4 > .product-ingredients > div:nth-of-type(3) {
+    background-image: url('icons/cream/Vanille.svg');
+}
+
+.product-view.nr4 > .product-ingredients > div:nth-of-type(4) {
+    background-image: url('icons/stuffing/Blaubeere.svg');
+}
+
+.product-view.nr4 > .product-ingredients > div:nth-of-type(5) {
+    background-image: url('icons/topping/Erdbeere.svg');
+}
+
+/*Produkt Nr. 5*/
+.product-view.nr5 > .product-ingredients > div:nth-of-type(1) {
+    background-image: url('icons/shape/Rechteck.svg');
+}
+
+.product-view.nr5 > .product-ingredients > div:nth-of-type(2) {
+    background-color: rgb(255,235,159); /*weiße Schokolade*/
+}
+
+.product-view.nr5 > .product-ingredients > div:nth-of-type(3) {
+    background-image: url('icons/cream/Himbeere.svg');
+}
+
+.product-view.nr5 > .product-ingredients > div:nth-of-type(4) {
+    background-image: url('icons/stuffing/Haselnuss.svg');
+}
+
+.product-view.nr5 > .product-ingredients > div:nth-of-type(5) {
+    background-image: url('icons/topping/Gold.svg');
+}
+
+/*Produkt Nr. 6*/
+.product-view.nr6 > .product-ingredients > div:nth-of-type(1) {
+    background-image: url('icons/shape/Rechteck.svg');
+}
+
+.product-view.nr6 > .product-ingredients > div:nth-of-type(2) {
+    background-color: rgb(127,79,44); /*Vollmilchschokolade*/
+}
+
+.product-view.nr6 > .product-ingredients > div:nth-of-type(3) {
+    background-image: url('icons/cream/Vanille.svg');
+}
+
+.product-view.nr6 > .product-ingredients > div:nth-of-type(4) {
+    background-image: url('icons/stuffing/Oreo.svg');
+}
+
+.product-view.nr6 > .product-ingredients > div:nth-of-type(5) {
+    background-image: url('icons/topping/Schokolinsen.svg');
+}
+
+/*Produktseite*/
+
+.product-inner {
+    display: flex;
+    justify-content: space-between;
+    margin: 22px 51px;
+}
+
+.productdetail-images {
+    width: 700px;
+    height: 330px;
+    background-image: url('img/Tafelansicht_oben_Schoko-03.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.productdetail-details {
+    margin-left: 51px;
+    background: rgba(255,255,255,0.5);
+    padding: 22px;
+    border-radius: 10px;
+}
+
+.productdetail-ingredients {
+    display: flex;
+    justify-content: space-between;
+    width: calc((50px * 5) + 40px);
+}
+
+.product-inner.nr1 .productdetail-ingredients > div {
+    width: 50px;
+    height: 50px;
+    background-color: rgb(255,240,225);
+    border-radius: 5px;
+}
+
+.product-inner.nr1 .productdetail-ingredients > div:nth-of-type(1) {
+    background-image: url('icons/shape/Rechteck.svg');
+}
+
+.product-inner.nr1 .productdetail-ingredients > div:nth-of-type(2) {
+    background: rgb(255,235,159);
+}
+
+.product-inner.nr1 .productdetail-ingredients > div:nth-of-type(3) {
+    background-image: url('icons/cream/Pistazie.svg');
+}
+
+.product-inner.nr1 .productdetail-ingredients > div:nth-of-type(4) {
+    background-image: url('icons/stuffing/Oreo.svg');
+}
+
+.product-inner.nr1 .productdetail-ingredients > div:nth-of-type(5) {
+    background-image: url('icons/topping/Erdbeere.svg');
 }
