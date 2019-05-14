@@ -1,0 +1,34 @@
+{% extends 'layout.twig' %}
+
+{% block main %}
+  <div>
+    <h1>Registrieren</h1>
+    {{ message }}
+    <form method="post" action="/user/register">
+      Anrede:
+      <input type="radio" name="title" value="Herr">
+      <label for="herr">Herr</label>
+      <input type="radio" name="title" value="Frau">
+      <label for="herr">Frau</label><br>
+      Name:<br>
+      <input type="text" name="lname"><br>
+      Vorname:<br>
+      <input type="text" name="fname"><br>
+      Straße:<br>
+      <input type="text" name="street"><br>
+      PLZ:<br>
+      <input type="text" name="postcode"><br>
+      Stadt:<br>
+      <input type="text" name="city"><br>
+      Geburtsdatum:<br>
+      <input type="date" name="birthday"><br>
+      E-Mail-Adresse:<br>
+      <input type="email" name="email"><br>
+      Passwort:<br>
+      <input type="password" name="password"><br>
+      Passwort wiederholen:<br>
+      <input type="password" name="password-repeat"><br>
+      <input type="submit" value="Registrieren">
+    </form>
+  </div>
+{% endblock %}

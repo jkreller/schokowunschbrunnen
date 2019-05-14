@@ -1,10 +1,30 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>{{ title }}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    {% block body %}{% endblock %}
-  </body>
+<html lang="de">
+<head>
+  <title>
+    {{ title != null ? title : 'Schoko-Wunschbrunnen' }}
+  </title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+<header class="header">
+  <div class="header__inner">
+    <ul>
+      <li><a href="/wishing-well" class="header__button">Schoko-Wunschbrunnen</a></li>
+      <li><a href="/shop" class="header__button">Schoko-Shop</a></li>
+    </ul>
+    <a href="/" class="title">
+      Schoko-Wunschbrunnen
+    </a>
+    <ul>
+      <li><a href="/user/login" class="header__button notLoggedIn">Anmelden</a></li>
+      <li><a href="#" class="header__button loggedIn">1</a></li>
+      <li><a href="#" class="header__button loggedIn">2</a></li>
+      <li><a href="#" class="header__button loggedIn">3</a></li>
+    </ul>
+  </div>
+</header>
+<main>
+  {% block main %}{% endblock %}
+</main>
+</body>
 </html>
