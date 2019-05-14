@@ -140,6 +140,10 @@ body {
 
 /*Schokowunschbrunnen*/
 
+.wunschbrunnen-body {
+    overflow: hidden;
+}
+
 .brunnen-section {
     position: relative;
     height: 100%;
@@ -251,34 +255,61 @@ body {
     z-index: 2;
 }
 
-.shape {
-    background-image: url('img/Tafelansicht_oben_Schoko-03.png');
+.zusammenfassung {
+    margin: 0 auto;
+    width: 1000px;
+    height: 100%;
+    background-color: white;
+    padding: 22px;
+    text-align: center;
 }
 
-.variety {
-    background-image: url('img/Tafelansicht_oben_Schoko-03.png');
-}
-
+/*Seitenansicht*/
 .side-view {
     background-image: url('img/Tafelansicht_Seite_schoko-04.png');
     z-index: 0;
 }
 
-.cream {
-    background-image: url('img/Tafelansicht_Seite_Creme-06.png');
-}
-
-.stuffing {
-    background-image: url('img/Tafelansicht_Seite_Füllung-05.png');
-}
-
+/*Draufsicht*/
 .top-view {
     background-image: url('img/Tafelansicht_oben_Schoko-03.png');
 }
 
-.topping {
+/*Form- und Sorte-Bild*/
+.shapeAndVariety {
+    background-image: url('img/Tafelansicht_oben_Schoko-03.png');
+}
+
+/*Creme-Bild*/
+#cream.cream0 {
+    background-image: none; 
+}
+#cream.cream1 {
+    background-image: url('img/Tafelansicht_Seite_Creme-06.png');
+}
+
+/*Füllungs-Bild*/
+#stuffing.stuffing0 {
+    background-image: none;
+}
+#stuffing.stuffing2 {
+    background-image: url('img/Tafelansicht_Seite_Füllung-05.png');
+}
+
+/*Topping-Bild*/
+#topping.topping0 {
+    background-image: none;
+}
+#topping.topping1 {
     background-image: url('img/Tafelansicht_oben_Topping-02.png');
 }
+
+/*.category label {
+    display: none;
+}
+.category input:checked + label {
+    display: inline;
+  } */
 
 /*Schokoshop*/
 
