@@ -4,10 +4,10 @@
     {{ title != null ? title : 'Schoko-Wunschbrunnen' }}
   </title>
   <link rel="stylesheet" href="/stylesheets/style.css">
-  <link rel="shortcut icon" type="image/png" href="icons/favicon.png" />
+  <link rel="shortcut icon" type="image/png" href="/icons/favicon.png"/>
 </head>
-<body>
-<header class="header">
+<body {% if bodyClass %}class="{{ bodyClass }}"{% endif %}>
+<header class="header" id="1">
   <div class="header__inner">
     <ul>
       <li><a href="/wishing-well" class="header__button">Schoko-Wunschbrunnen</a></li>
