@@ -227,7 +227,7 @@ body {
     margin: 0 auto;
     width: 1000px;
     height: 100%;
-    background-color: white;
+    background-color: rgba(255,255,255,0.6);
     padding: 22px;
     text-align: center;
 }
@@ -304,12 +304,77 @@ body {
     background-image: url('img/Tafelansicht_oben_Topping-02.png');
 }
 
-/*.category label {
-    display: none;
+.category > p {
+    display: inline-block;
 }
-.category input:checked + label {
-    display: inline;
-  } */
+
+/*Icons der Kategorien*/
+.category-icon {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-color: rgb(255,240,225);
+    border-radius: 5px;
+}
+
+.category input:checked + label > .category-icon {
+    border: 5px solid rgb(145,225,225);
+}
+
+/*Form-Icons*/
+.category-icon.shape-1 {
+    background-image: url('icons/shape/Rechteck.svg');
+}
+.category-icon.shape-2 {
+    background-image: url('icons/shape/Herz.svg');
+}
+.category-icon.shape-3 {
+    background-image: url('icons/shape/Kreis.svg');
+}
+
+/*Sorte-Icons*/
+.category-icon.variety-1 {
+    background-color: rgb(59,36,8);
+}
+.category-icon.variety-2 {
+    background-color: rgb(127,79,44);
+}
+.category-icon.variety-3 {
+    background-color: rgb(255,235,159);
+}
+
+/*Creme-Icons*/
+.category-icon.cream-1 {
+    background-image: url('icons/cream/Pistazie.svg');
+}
+.category-icon.cream-2 {
+    background-image: url('icons/cream/Vanille.svg');
+}
+.category-icon.cream-3 {
+    background-image: url('icons/cream/Himbeere.svg');
+}
+
+/*Füllungs-Icons*/
+.category-icon.stuffing-1 {
+    background-image: url('icons/stuffing/Blaubeere.svg');
+}
+.category-icon.stuffing-2 {
+    background-image: url('icons/stuffing/Haselnuss.svg');
+}
+.category-icon.stuffing-3 {
+    background-image: url('icons/stuffing/Oreo.svg');
+}
+
+/*Topping-Icons*/
+.category-icon.topping-1 {
+    background-image: url('icons/topping/Erdbeere.svg');
+}
+.category-icon.topping-2 {
+    background-image: url('icons/topping/Schokolinsen.svg');
+}
+.category-icon.topping-3 {
+    background-image: url('icons/topping/Gold.svg');
+}
 
 /*Schokoshop*/
 
