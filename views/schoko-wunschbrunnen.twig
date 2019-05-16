@@ -1,97 +1,283 @@
 {% extends 'layout.twig' %}
 
 {% block main %}
-  <div class="ladestatus">
-    <div class="schoko-balken">
-      <div class="lade-balken"></div>
+  <section class="brunnen-section">
+    <div class="ladestatus">
+      <div class="schoko-balken">
+        <div class="lade-balken"></div>
+      </div>
     </div>
-    <div class="schoko-balken">
-      <div class="lade-balken"></div>
+    <div class="infobox">
+      <div class="infotext">
+        <p>Herzlich Willkommen beim Schokowunschbrunnen!</p><br>
+        Hier werden <p>Schokowünsche</p> war!<br>
+        Im Folgenden kannst du dir deine Schokolade ganz nach deinen Wünschen erstellen.<br>
+        Wähle dafür in den Kategorien Form, Sorte, Creme, Füllung und Topping jeweils deinen Favourit.<br>
+        Anhand des Schokobalkens am linken Bildschirmrand kannst du ablesen, wie weit du im Erstellprozess schon
+        gekommen bist.
+        Am Ende der Seite angelangt, kannst du dir noch einmal einen Überblick über deine Kreation verschaffen. Diese
+        kannst du dann in den Warenkorb legen und dir nach Hause wünschen. Achte hierbei darauf, dass dies nur im
+        angemeldeten Zustand möglich ist und dass eine Zwischenspeicherung nicht möglich ist.
+        Viel Spaß wünscht dir das Schokowunschbrunnen-Team !
+      </div>
+      <a href="#2" class="weiter-button">Los gehts!</a>
     </div>
-    <div class="schoko-balken">
-      <div class="lade-balken"></div>
+  </section>
+  <!--<div class="ladestatus">
+      <div class="schoko-balken">
+          <div class="lade-balken"></div>
+      </div>
+      <div class="schoko-balken">
+          <div class="lade-balken"></div>
+      </div>
+      <div class="schoko-balken">
+          <div class="lade-balken"></div>
+      </div>
+      <div class="schoko-balken">
+          <div class="lade-balken"></div>
+      </div>
+      <div class="schoko-balken">
+          <div class="lade-balken"></div>
+      </div>
+  </div>-->
+  <section class="brunnen-section" id="2">
+    <div class="ladestatus">
+      <div class="schoko-balken">
+        <div class="lade-balken"></div>
+      </div>
     </div>
-    <div class="schoko-balken">
-      <div class="lade-balken"></div>
+    <div class="schoko-category">
+      <a href="#1" class="zurück-button">Zurück</a>
+      <div class="animation">
+        <div class="shapeAndVariety"></div>
+      </div>
+      <div class="category">
+        <p>Form :</p>
+        <input type="radio" name="shape" id="rectangle" checked="checked">Rechteck
+        <label for="rectangle">
+          <div class="category-icon shape-1"></div>
+        </label>
+        <input type="radio" name="shape" id="heart">Herz
+        <label for="heart">
+          <div class="category-icon shape-2"></div>
+        </label>
+        <input type="radio" name="shape" id="circle">Kreis
+        <label for="circle">
+          <div class="category-icon shape-3"></div>
+        </label>
+      </div>
+      <div class="category">
+        <p>Sorte :</p>
+        <input type="radio" name="variety" id="dark">Zartbitter
+        <label for="dark">
+          <div class="category-icon variety-1"></div>
+        </label>
+        <input type="radio" name="variety" id="milk" checked="checked">Vollmilch
+        <label for="milk">
+          <div class="category-icon variety-2"></div>
+        </label>
+        <input type="radio" name="variety" id="white">Weiß
+        <label for="white">
+          <div class="category-icon variety-3"></div>
+        </label>
+      </div>
+      <a href="#3" class="weiter-button">Weiter</a>
     </div>
-    <div class="schoko-balken">
-      <div class="lade-balken"></div>
+  </section>
+  <section class="brunnen-section" id="3">
+    <div class="ladestatus">
+      <div class="schoko-balken">
+        <div class="lade-balken"></div>
+      </div>
     </div>
-  </div>
-  <div class="infobox">
-    <div class="infotext">
-      <p>Herzlich Willkommen beim Schokowunschbrunnen!</p><br>
-      Hier werden <p>Schokowünsche</p> war!<br>
-      Im Folgenden kannst du dir deine Schokolade ganz nach deinen Wünschen erstellen.<br>
-      Wähle dafür in den Kategorien Form, Sorte, Creme, Füllung und Topping jeweils deinen Favourit. Die Creme, die
-      Füllung und das Topping kannst du jedoch auch weglassen.
-      Anhand des Schokobalkens am linken Bildschirmrand kannst du ablesen, wie weit du im Erstellprozess schon gekommen
-      bist.
-      Am Ende der Seite angelangt, kannst du dir noch einmal einen Überblick über deine Kreation verschaffen. Diese
-      kannst du dann in den Warenkorb legen und dir nach Hause wünschen. Achte hierbei darauf, dass dies nur im
-      angemeldeten Zustand möglich ist und dass eine Zwischenspeicherung nicht möglich ist.
-      Viel Spaß wünscht dir das Schokowunschbrunnen-Team !
+    <div class="schoko-category">
+      <a href="#2" class="zurück-button">Zurück</a>
+      <div class="animation">
+        <div class="side-view"></div>
+        <div id="cream" class="cream0"></div>
+        <div id="stuffing" class="stuffing0"></div>
+      </div>
+      <div class="category">
+        <p>Creme :</p>
+        <input type="radio" name="cream" id="no-cream" checked="checked">Keine
+        <label for="no-cream">
+          <div class="category-icon cream-0"></div>
+        </label>
+        <input type="radio" name="cream" id="pistachio">Pistazie
+        <label for="pistachio">
+          <div class="category-icon cream-1"></div>
+        </label>
+        <input type="radio" name="cream" id="vanilla">Vanille
+        <label for="vanilla">
+          <div class="category-icon cream-2"></div>
+        </label>
+        <input type="radio" name="cream" id="raspberry">Himbeere
+        <label for="raspberry">
+          <div class="category-icon cream-3"></div>
+        </label>
+      </div>
+      <div class="category">
+        <p>Füllung :</p>
+        <input type="radio" name="stuffing" id="no-stuffing" checked="checked">Keine
+        <label for="no-stuffing">
+          <div class="category-icon stuffing-0"></div>
+        </label>
+        <input type="radio" name="stuffing" id="blueberry">Blaubeere
+        <label for="blueberry">
+          <div class="category-icon stuffing-1"></div>
+        </label>
+        <input type="radio" name="stuffing" id="hazelnut">Haselnuss
+        <label for="hazelnut">
+          <div class="category-icon stuffing-2"></div>
+        </label>
+        <input type="radio" name="stuffing" id="oreo">Oreo-Keks
+        <label for="oreo">
+          <div class="category-icon stuffing-3"></div>
+        </label>
+      </div>
+      <a href="#4" class="weiter-button">Weiter</a>
     </div>
-    <a href="#" class="start-button">Los gehts!</a>
-  </div>
-  <div class="schoko-category">
-    <div class="3D-animation"></div>
-    <div class="category">
-      <p>Form :</p>
-      <input type="radio" name="shape" id="rectangle" checked>
-      <label for="rectangle">Rechteck</label>
-      <input type="radio" name="shape" id="heart">
-      <label for="heart">Herz</label>
-      <input type="radio" name="shape" id="circle">
-      <label for="circle">Kreis</label>
+  </section>
+  <section class="brunnen-section" id="4">
+    <div class="ladestatus">
+      <div class="schoko-balken">
+        <div class="lade-balken"></div>
+      </div>
     </div>
-    <div class="category">
-      <p>Sorte :</p>
-      <input type="radio" name="variety" id="dark">
-      <label for="dark">Zartbitter</label>
-      <input type="radio" name="variety" id="milk" checked>
-      <label for="milk">Vollmilch</label>
-      <input type="radio" name="variety" id="white">
-      <label for="white">Weiß</label>
+    <div class="schoko-category">
+      <a href="#3" class="zurück-button">Zurück</a>
+      <div class="animation">
+        <div class="top-view"></div>
+        <div id="topping" class="topping0"></div>
+      </div>
+      <div class="category">
+        <p>Topping :</p>
+        <input type="radio" name="topping" id="no-topping" checked="checked">Keins
+        <label for="no-topping">
+          <div class="category-icon topping-0"></div>
+        </label>
+        <input type="radio" name="topping" id="strawberry">Erdbeere
+        <label for="strawberry">
+          <div class="category-icon topping-1"></div>
+        </label>
+        <input type="radio" name="topping" id="smarties">Schokolinsen
+        <label for="smarties">
+          <div class="category-icon topping-2"></div>
+        </label>
+        <input type="radio" name="topping" id="gold">Blattgold
+        <label for="gold">
+          <div class="category-icon topping-3"></div>
+        </label>
+      </div>
+      <a href="#5" class="weiter-button">Weiter</a>
     </div>
-  </div>
-  <div class="schoko-category">
-    <div class="3D-animation"></div>
-    <div class="category">
-      <p>Creme :</p>
-      <input type="radio" name="cream" id="no-cream" checked>
-      <label for="no-cream">Keine</label>
-      <input type="radio" name="cream" id="pistachio">
-      <label for="pistachio">Pistazie</label>
-      <input type="radio" name="cream" id="vanilla">
-      <label for="vanilla">Vanille</label>
-      <input type="radio" name="cream" id="raspberry">
-      <label for="raspberry">Himbeere</label>
+  </section>
+  <section class="brunnen-section" id="5">
+    <div class="ladestatus">
+      <div class="schoko-balken">
+        <div class="lade-balken"></div>
+      </div>
     </div>
-    <div class="category">
-      <p>Füllung :</p>
-      <input type="radio" name="stuffing" id="no-stuffing" checked>
-      <label for="no-stuffing">Keine</label>
-      <input type="radio" name="stuffing" id="blueberry">
-      <label for="blueberry">Blaubeere</label>
-      <input type="radio" name="stuffing" id="hazelnut">
-      <label for="hazelnut">Haselnuss</label>
-      <input type="radio" name="stuffing" id="oreo">
-      <label for="oreo">Oreo-Keks</label>
+    <div class="zusammenfassung">
+      <a href="#4" class="zurück-button">Zurück</a>
+      <h2>Zusammenfassung</h2>
+      <h3>Form und Sorte:</h3>
+
+      <h3>Creme und Füllung:</h3>
+
+      <h3>Topping:</h3>
+      <a href="#">Schokolade wünschen!</a>
     </div>
-  </div>
-  <div class="schoko-category">
-    <div class="3D-animation"></div>
-    <div class="category">
-      <p>Topping :</p>
-      <input type="radio" name="topping" id="no-topping" checked>
-      <label for="no-topping">Keins</label>
-      <input type="radio" name="topping" id="strawberry">
-      <label for="strawberry">Erdbeere</label>
-      <input type="radio" name="topping" id="smarties">
-      <label for="smarties">Schokolinsen</label>
-      <input type="radio" name="topping" id="gold">
-      <label for="gold">Blattgold</label>
-    </div>
-  </div>
+  </section>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    /*Creme-Bild wechseln*/
+    var creamradios = document.querySelectorAll('input[type=radio][name="cream"]');
+    console.log(creamradios);
+    var imgcream = document.getElementById("cream");
+    console.log(imgcream);
+
+    function changeCream(event) {
+      if (this.id === 'no-cream') {
+        imgcream.classList.remove('cream1', 'cream2', 'cream3');
+        imgcream.classList.add('cream0');
+      } else if (this.id === 'pistachio') {
+        imgcream.classList.remove('cream0', 'cream2', 'cream3');
+        imgcream.classList.add('cream1');
+      } else if (this.id === 'vanilla') {
+        imgcream.classList.remove('cream0', 'cream1', 'cream3');
+        imgcream.classList.add('cream2');
+      } else if (this.id === 'raspberry') {
+        imgcream.classList.remove('cream0', 'cream1', 'cream2');
+        imgcream.classList.add('cream3');
+      }
+    }
+
+    Array.prototype.forEach.call(creamradios, function (radio) {
+      radio.addEventListener('change', changeCream);
+    });
+
+    /*Füllung-Bild wechseln*/
+    var stuffingradios = document.querySelectorAll('input[type=radio][name="stuffing"]');
+    console.log(stuffingradios);
+    var imgstuffing = document.getElementById("stuffing");
+    console.log(imgstuffing);
+
+    function changeStuffing(event) {
+      if (this.id === 'no-stuffing') {
+        imgstuffing.classList.remove('stuffing1', 'stuffing2', 'stuffing3');
+        imgstuffing.classList.add('stuffing0');
+      } else if (this.id === 'blueberry') {
+        imgstuffing.classList.remove('stuffing0', 'stuffing2', 'stuffing3');
+        imgstuffing.classList.add('stuffing1');
+      } else if (this.id === 'hazelnut') {
+        imgstuffing.classList.remove('stuffing0', 'stuffing1', 'stuffing3');
+        imgstuffing.classList.add('stuffing2');
+      } else if (this.id === 'oreo') {
+        imgstuffing.classList.remove('stuffing0', 'stuffing1', 'stuffing2');
+        imgstuffing.classList.add('stuffing3');
+      }
+    }
+
+    Array.prototype.forEach.call(stuffingradios, function (radio) {
+      radio.addEventListener('change', changeStuffing);
+    });
+
+    /*Topping-Bild wechseln*/
+    var toppingradios = document.querySelectorAll('input[type=radio][name="topping"]');
+    var imgtopping = document.getElementById("topping");
+
+    function changeTopping(event) {
+      if (this.id === 'no-topping') {
+        imgtopping.classList.remove('topping1', 'topping2', 'topping3');
+        imgtopping.classList.add('topping0');
+      } else if (this.id === 'strawberry') {
+        imgtopping.classList.remove('topping0', 'topping2', 'topping3');
+        imgtopping.classList.add('topping1');
+      } else if (this.id === 'smarties') {
+        imgtopping.classList.remove('topping0', 'topping1', 'topping3');
+        imgtopping.classList.add('topping2');
+      } else if (this.id === 'gold') {
+        imgtopping.classList.remove('topping0', 'topping1', 'topping2');
+        imgtopping.classList.add('topping3');
+      }
+    }
+
+    Array.prototype.forEach.call(toppingradios, function (radio) {
+      radio.addEventListener('change', changeTopping);
+    });
+
+
+    /*
+  element.classList.add("mystyle");
+
+    vom aktuellen anchorpunkt aus den nächsten und den vorherigen speichern
+    zu jeweiligen punkt springen bei hoch bzw runterscrollen
+    */
+    /*window.addEventListener('scroll', function(){
+        console.log('scrolled!');
+    });*/
+  </script>
 {% endblock %}

@@ -36,7 +36,6 @@ router.get('/logout', function (req, res, next) {
 
 /* GET profile. */
 router.get('/profile', loginHandler.ensureAuthentication, function (req, res, next) {
-  console.log(req.user);
   res.render('user/profil', {user: req.user});
 });
 
