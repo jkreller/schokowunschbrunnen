@@ -1,17 +1,17 @@
 {% extends 'layout.twig' %}
 
 {% block main %}
-  <div>
+  <div class="useraction-inner">
     <h1>Anmelden</h1>
     {{ message }}
     <form method="post" action="/user/login">
-      E-Mail-Adresse:<br>
-      <input type="email" name="email"><br>
-      Passwort:<br>
-      <input type="password" name="password"><br>
-      <input type="submit" value="Anmelden">
+      <label class="useraction-label">E-Mail-Adresse:</label>
+      <input type="email" name="email" class="useraction-input">
+      <label class="useraction-label">Passwort:</label>
+      <input type="password" name="password" class="useraction-input">
+      <input type="submit" value="Anmelden" class="useraction-button">
     </form>
-    <h1>Neu am Schokowunschbrunnen?</h1>
-    <a href="/user/register">Jetzt Registrieren!</a>
+    <h2>Neu am Schokowunschbrunnen?</h2>
+    <a href="/user/register" class="getregistered-button">Jetzt Registrieren!</a>
   </div>
 {% endblock %}

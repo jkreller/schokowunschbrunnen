@@ -1,34 +1,34 @@
 {% extends 'layout.twig' %}
 
 {% block main %}
-  <div>
+  <div class="useraction-inner">
     <h1>Registrieren</h1>
     {{ message }}
     <form method="post" action="/user/register">
-      Anrede:
+      <label class="useraction-label">Anrede:</label>
       <input type="radio" name="title" value="Herr">
       <label for="herr">Herr</label>
       <input type="radio" name="title" value="Frau">
-      <label for="herr">Frau</label><br>
-      Name:<br>
-      <input type="text" name="lname"><br>
-      Vorname:<br>
-      <input type="text" name="fname"><br>
-      Straße:<br>
-      <input type="text" name="street"><br>
-      PLZ:<br>
-      <input type="text" name="postcode"><br>
-      Stadt:<br>
-      <input type="text" name="city"><br>
-      Geburtsdatum:<br>
-      <input type="date" name="birthday"><br>
-      E-Mail-Adresse:<br>
-      <input type="email" name="email"><br>
-      Passwort:<br>
-      <input type="password" name="password"><br>
-      Passwort wiederholen:<br>
-      <input type="password" name="password-repeat"><br>
-      <input type="submit" value="Registrieren">
+      <label for="herr">Frau</label>
+      <label class="useraction-label">Name:</label>
+      <input type="text" name="lname" class="useraction-input">
+      <label class="useraction-label">Vorname:</label>
+      <input type="text" name="fname" class="useraction-input">
+      <label class="useraction-label">Straße:</label>
+      <input type="text" name="street" class="useraction-input">
+      <label class="useraction-label">PLZ:</label>
+      <input type="text" name="postcode" class="useraction-input">
+      <label class="useraction-label">Stadt:</label>
+      <input type="text" name="city" class="useraction-input">
+      <label class="useraction-label">Geburtsdatum:</label>
+      <input type="date" name="birthday" class="useraction-input">
+      <label class="useraction-label">E-Mail-Adresse:</label>
+      <input type="email" name="email" class="useraction-input">
+      <label class="useraction-label">Passwort:</label>
+      <input type="password" name="password" class="useraction-input">
+      <label class="useraction-label">Passwort wiederholen:</label>
+      <input type="password" name="password-repeat" class="useraction-input">
+      <input type="submit" value="Registrieren" class="useraction-button">
     </form>
   </div>
 {% endblock %}
