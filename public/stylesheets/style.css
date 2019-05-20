@@ -5,18 +5,18 @@
 }
 
 @font-face {
-    font-family: 'Trebuchet';
-    src: url('../fonts/trebuc.ttf') format('truetype');
-}
-
-@font-face {
     font-family: 'Pintgram';
     src: url('../fonts/Pintgram-Regular.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'CaviarDreamsBold';
+    src: url('../fonts/CaviarDreams_Bold.ttf') format('truetype');
+}
+
 body {
     margin: 0;
-    font-family: 'Trebuchet';
+    font-family: 'CaviarDreamsBold';
     font-size: 14px;
     color: rgb(59,36,8);
     background-image: 
@@ -27,7 +27,6 @@ body {
 }
 
 /*** Header ***/
-
 .header {
     width: 100%;
     height: 140px;
@@ -45,7 +44,7 @@ body {
 .header__inner > ul {
     list-style: none;
     display: inline-block;
-    width: 300px;
+    width: 315px;
     margin: 0;
     margin-bottom: 20px;
     padding: 0;
@@ -162,7 +161,7 @@ body {
 }
 
 .brunnen-section:first-of-type {
-    height: calc(100% - 150px);
+    height: calc(100% - 140px);
 }
 
 .ladestatus {
@@ -287,8 +286,32 @@ body {
 }
 
 /*Form- und Sorte-Bild*/
-.shapeAndVariety {
-    background-image: url('../img/Tafelansicht_oben_Schoko-03.png');
+.shapeAndVariety.rectangle.dark {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_1_b_1.png');
+}
+.shapeAndVariety.rectangle.normal {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_1_m_1.png')
+}
+.shapeAndVariety.rectangle.white {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_1_w_2.png')
+}
+.shapeAndVariety.circle.dark {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_2_b_1_0001.png')
+}
+.shapeAndVariety.circle.normal {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_2_m_1_0001.png')
+}
+.shapeAndVariety.circle.white {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_2_w_1_0001.png')
+}
+.shapeAndVariety.heart.dark {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_3_b_3_0002.png')
+}
+.shapeAndVariety.heart.normal {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_3_m_3_0002.png')
+}
+.shapeAndVariety.heart.white {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_3_w_3_0002.png')
 }
 
 /*Creme-Bild*/
@@ -451,6 +474,9 @@ body {
 }
 
 /*Produkt Nr.1*/
+.product-view.nr1 > .product-img {
+    background-image: url('../img/schoko_shop_img/Kombi1_A.png');
+}
 .product-view.nr1 > .product-ingredients > div:nth-of-type(1) {
     background-image: url('../icons/shape/Rechteck.svg');
 }
@@ -468,8 +494,11 @@ body {
 }
 
 /*Produkt Nr. 2*/
+.product-view.nr2 > .product-img {
+    background-image: url('../img/schoko_shop_img/Kombi2_A.png');
+}
 .product-view.nr2 > .product-ingredients > div:nth-of-type(1) {
-    background-image: url('../icons/shape/Rechteck.svg');
+    background-image: url('../icons/shape/Kreis.svg');
 }
 .product-view.nr2 > .product-ingredients > div:nth-of-type(2) {
     background-color: rgb(59,36,8); /*dunkle Schokolade*/
@@ -481,12 +510,15 @@ body {
     background-image: url('../icons/stuffing/Blaubeere.svg');
 }
 .product-view.nr2 > .product-ingredients > div:nth-of-type(5) {
-    background-image: url('../icons/topping/Gold.svg');
+    background-image: url('../icons/topping/Erdbeere.svg');
 }
 
 /*Produkt Nr. 3*/
+.product-view.nr3 > .product-img {
+    background-image: url('../img/schoko_shop_img/Kombi3_A.png');
+}
 .product-view.nr3 > .product-ingredients > div:nth-of-type(1) {
-    background-image: url('../icons/shape/Rechteck.svg');
+    background-image: url('../icons/shape/Herz.svg');
 }
 .product-view.nr3 > .product-ingredients > div:nth-of-type(2) {
     background-color: rgb(127,79,44); /*Vollmilchschokolade*/
@@ -502,6 +534,9 @@ body {
 }
 
 /*Produkt Nr. 4*/
+.product-view.nr4 > .product-img {
+    background-image: url('../img/schoko_shop_img/Kombi4_A.png');
+}
 .product-view.nr4 > .product-ingredients > div:nth-of-type(1) {
     background-image: url('../icons/shape/Rechteck.svg');
 }
@@ -515,18 +550,21 @@ body {
     background-image: url('../icons/stuffing/Blaubeere.svg');
 }
 .product-view.nr4 > .product-ingredients > div:nth-of-type(5) {
-    background-image: url('../icons/topping/Erdbeere.svg');
+    background-image: url('../icons/topping/Gold.svg');
 }
 
 /*Produkt Nr. 5*/
+.product-view.nr5 > .product-img {
+    background-image: url('../img/schoko_shop_img/Kombi5_A.png');
+}
 .product-view.nr5 > .product-ingredients > div:nth-of-type(1) {
-    background-image: url('../icons/shape/Rechteck.svg');
+    background-image: url('../icons/shape/Kreis.svg');
 }
 .product-view.nr5 > .product-ingredients > div:nth-of-type(2) {
-    background-color: rgb(255,235,159); /*weiße Schokolade*/
+    background-color: rgb(127,79,44); /*Vollmilch*/
 }
 .product-view.nr5 > .product-ingredients > div:nth-of-type(3) {
-    background-image: url('../icons/cream/Himbeere.svg');
+    background-image: url('../icons/cream/Vanille.svg');
 }
 .product-view.nr5 > .product-ingredients > div:nth-of-type(4) {
     background-image: url('../icons/stuffing/Haselnuss.svg');
@@ -536,14 +574,17 @@ body {
 }
 
 /*Produkt Nr. 6*/
+.product-view.nr6 > .product-img {
+    background-image: url('../img/schoko_shop_img/Kombi6_A.png');
+}
 .product-view.nr6 > .product-ingredients > div:nth-of-type(1) {
-    background-image: url('../icons/shape/Rechteck.svg');
+    background-image: url('../icons/shape/Herz.svg');
 }
 .product-view.nr6 > .product-ingredients > div:nth-of-type(2) {
-    background-color: rgb(127,79,44); /*Vollmilchschokolade*/
+    background-color: rgb(255,235,159); /*weiße Schokolade*/
 }
 .product-view.nr6 > .product-ingredients > div:nth-of-type(3) {
-    background-image: url('../icons/cream/Vanille.svg');
+    background-image: url('../icons/cream/Himbeere.svg');
 }
 .product-view.nr6 > .product-ingredients > div:nth-of-type(4) {
     background-image: url('../icons/stuffing/Oreo.svg');
@@ -677,7 +718,7 @@ input.personal-data {
 }
 
 .save-data {
-    font-family: 'Trebuchet';
+    font-family: 'CaviarDreamsBold';
     font-size: 14px;
     background-color: rgb(145,225,225);
 }
@@ -855,7 +896,7 @@ input.personal-data {
     text-decoration: none;
     border-radius: 5px;
     border: none;
-    font-family: 'Trebuchet';
+    font-family: 'CaviarDreamsBold';
     font-size: 14px;
 }
 
