@@ -277,8 +277,32 @@ body {
 }
 
 /*Form- und Sorte-Bild*/
-.shapeAndVariety {
-    background-image: url('img/Tafelansicht_oben_Schoko-03.png');
+.shapeAndVariety.shape1.variety1 {
+    background-image: url('../../public/img/schoko_brunnen_img/Draufsichten/Schokobrunnen_1_b_1.png');
+}
+.shapeAndVariety.shape1.variety2 {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_1_m_1.png')
+}
+.shapeAndVariety.shape1.variety3 {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_1_w_2.png')
+}
+.shapeAndVariety.shape3.variety1 {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_2_b_1_0001.png')
+}
+.shapeAndVariety.shape3.variety2 {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_2_m_1_0001.png')
+}
+.shapeAndVariety.shape3.variety3 {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_2_w_1_0001.png')
+}
+.shapeAndVariety.shape2.variety1 {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_3_b_3_0002.png')
+}
+.shapeAndVariety.shape2.variety2 {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_3_m_3_0002.png')
+}
+.shapeAndVariety.shape2.variety3 {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_3_w_3_0002.png')
 }
 
 /*Creme-Bild*/

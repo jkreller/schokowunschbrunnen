@@ -51,7 +51,7 @@
     <div class="schoko-category">
       <a href="#1" class="zurück-button">Zurück</a>
       <div class="animation">
-        <div class="shapeAndVariety"></div>
+        <div id="shapeAndVariety" class="shapeClass varietyClass shape1 variety2"></div>
       </div>
       <div class="category">
         <p>Form :</p>
@@ -95,7 +95,7 @@
     <div class="schoko-category">
       <a href="#2" class="zurück-button">Zurück</a>
       <div class="animation">
-        <div class="side-view"></div>
+        <div id="side-view" class="varietyClass variety2"></div>
         <div id="cream" class="cream0"></div>
         <div id="stuffing" class="stuffing0"></div>
       </div>
@@ -148,8 +148,8 @@
     </div>
     <div class="schoko-category">
       <a href="#3" class="zurück-button">Zurück</a>
-      <div class="animation">
-        <div class="top-view"></div>
+      <div class="animation shapeClass shape1">
+        <div id="top-view" class="shapeClass varietyClass shape1 variety2"></div>
         <div id="topping" class="topping0"></div>
       </div>
       <div class="category">
@@ -194,92 +194,5 @@
 {% endblock %}
 
 {% block scripts %}
-  <script>
-    /*Creme-Bild wechseln*/
-    var creamradios = document.querySelectorAll('input[type=radio][name="cream"]');
-    console.log(creamradios);
-    var imgcream = document.getElementById("cream");
-    console.log(imgcream);
-
-    function changeCream(event) {
-      if (this.id === 'no-cream') {
-        imgcream.classList.remove('cream1', 'cream2', 'cream3');
-        imgcream.classList.add('cream0');
-      } else if (this.id === 'pistachio') {
-        imgcream.classList.remove('cream0', 'cream2', 'cream3');
-        imgcream.classList.add('cream1');
-      } else if (this.id === 'vanilla') {
-        imgcream.classList.remove('cream0', 'cream1', 'cream3');
-        imgcream.classList.add('cream2');
-      } else if (this.id === 'raspberry') {
-        imgcream.classList.remove('cream0', 'cream1', 'cream2');
-        imgcream.classList.add('cream3');
-      }
-    }
-
-    Array.prototype.forEach.call(creamradios, function (radio) {
-      radio.addEventListener('change', changeCream);
-    });
-
-    /*Füllung-Bild wechseln*/
-    var stuffingradios = document.querySelectorAll('input[type=radio][name="stuffing"]');
-    console.log(stuffingradios);
-    var imgstuffing = document.getElementById("stuffing");
-    console.log(imgstuffing);
-
-    function changeStuffing(event) {
-      if (this.id === 'no-stuffing') {
-        imgstuffing.classList.remove('stuffing1', 'stuffing2', 'stuffing3');
-        imgstuffing.classList.add('stuffing0');
-      } else if (this.id === 'blueberry') {
-        imgstuffing.classList.remove('stuffing0', 'stuffing2', 'stuffing3');
-        imgstuffing.classList.add('stuffing1');
-      } else if (this.id === 'hazelnut') {
-        imgstuffing.classList.remove('stuffing0', 'stuffing1', 'stuffing3');
-        imgstuffing.classList.add('stuffing2');
-      } else if (this.id === 'oreo') {
-        imgstuffing.classList.remove('stuffing0', 'stuffing1', 'stuffing2');
-        imgstuffing.classList.add('stuffing3');
-      }
-    }
-
-    Array.prototype.forEach.call(stuffingradios, function (radio) {
-      radio.addEventListener('change', changeStuffing);
-    });
-
-    /*Topping-Bild wechseln*/
-    var toppingradios = document.querySelectorAll('input[type=radio][name="topping"]');
-    var imgtopping = document.getElementById("topping");
-
-    function changeTopping(event) {
-      if (this.id === 'no-topping') {
-        imgtopping.classList.remove('topping1', 'topping2', 'topping3');
-        imgtopping.classList.add('topping0');
-      } else if (this.id === 'strawberry') {
-        imgtopping.classList.remove('topping0', 'topping2', 'topping3');
-        imgtopping.classList.add('topping1');
-      } else if (this.id === 'smarties') {
-        imgtopping.classList.remove('topping0', 'topping1', 'topping3');
-        imgtopping.classList.add('topping2');
-      } else if (this.id === 'gold') {
-        imgtopping.classList.remove('topping0', 'topping1', 'topping2');
-        imgtopping.classList.add('topping3');
-      }
-    }
-
-    Array.prototype.forEach.call(toppingradios, function (radio) {
-      radio.addEventListener('change', changeTopping);
-    });
-
-
-    /*
-  element.classList.add("mystyle");
-
-    vom aktuellen anchorpunkt aus den nächsten und den vorherigen speichern
-    zu jeweiligen punkt springen bei hoch bzw runterscrollen
-    */
-    /*window.addEventListener('scroll', function(){
-        console.log('scrolled!');
-    });*/
-  </script>
+  <script src="javascript/wishing-well.js"></script>
 {% endblock %}
