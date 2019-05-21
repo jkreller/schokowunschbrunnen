@@ -6,4 +6,4 @@ const schema = new Schema({
     name: {type: String, required: true}
 });
 
-module.exports = mongoose.model('filling', schema);
+module.exports = mongoose.model('Filling', schema);

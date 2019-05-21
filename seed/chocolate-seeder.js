@@ -12,57 +12,63 @@ mongoose.connect(mongoDbDatabase, {
     useNewUrlParser: true
 }).catch((err) => console.error('Error when connecting to database.'));
 
-var cremes = [
+var Creme = [
     new Creme({
-        name: "pistazie"
-    }),
-    new Creme({
-        name: "himbeer"
+        name: 'pistazie'
     }),
     new Creme({
-        name: "vanille"
-    })];
+        name: 'himbeer'
+    }),
+    new Creme({
+        name: 'vanille'
+    })
+];
 
-var fillings = [
+var Filling = [
     new Filling({
-        name: "blaubeer"
+        name: 'blaubeer'
     }),
     new Filling({
-        name: "haselnuss"
+        name: 'haselnuss'
     }),
     new Filling({
-        name: "oreo"
-    })];
+        name: 'oreo'
+    })
+];
 
-var shapes = [
+var Shape = [
     new Shape({
-        name: "rechteck"
-    }),
-    new Shape({
-        name: "herz"
+        name: 'rechteck'
     }),
     new Shape({
-        name: "kreis"
-    })];
+        name: 'herz'
+    }),
+    new Shape({
+        name: 'kreis'
+    })
+];
 
-var varieties = [
+var Variety = [
     new Variety({
-        name: "zartbitter"
+        name: 'zartbitter'
     }),
     new Variety({
-        name: "vollmilch"
+        name: 'vollmilch'
     }),
     new Variety({
-        name: "weiß"
-    })];
+        name: 'weiß'
+    })
+];
 
-for(var i = 0; i < cremes.length;i++){
+for (var i = 0; i < Creme.length; i++) {
 
-    cremes[i].save();
-    fillings[i].save();
-    varieties[i].save();
-    shapes[i].save();
+    Creme[i].save();
+    Filling[i].save();
+    Shape[i].save();
+    Variety[i].save();
+
 
 }
 
-mongoose.disconnect();
+
+
