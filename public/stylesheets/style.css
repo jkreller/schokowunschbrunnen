@@ -275,42 +275,50 @@ body {
 }
 
 /*Seitenansicht*/
-.side-view {
-    background-image: url('../img/Tafelansicht_Seite_schoko-04.png');
+#side-view.variety1 {
+    background-image: url('../img/schoko_brunnen_img/Seitenansichten/Bitter_Seite_1.png');
+    z-index: 0;
+}
+#side-view.variety2 {
+    background-image: url('../img/schoko_brunnen_img/Seitenansichten/Milch_Seite_1.png');
+    z-index: 0;
+}
+#side-view.variety3 {
+    background-image: url('../img/schoko_brunnen_img/Seitenansichten/Weiß_Seite_1.png');
     z-index: 0;
 }
 
 /*Draufsicht*/
-.top-view {
-    background-image: url('../img/Tafelansicht_oben_Schoko-03.png');
+#top-view.shape1.variety2 {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_1_m_1.png');
 }
 
 /*Form- und Sorte-Bild*/
-.shapeAndVariety.rectangle.dark {
+.shapeClass.shape1.variety1 {
     background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_1_b_1.png');
 }
-.shapeAndVariety.rectangle.normal {
+.shapeClass.shape1.variety2 {
     background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_1_m_1.png')
 }
-.shapeAndVariety.rectangle.white {
+.shapeClass.shape1.variety3 {
     background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_1_w_2.png')
 }
-.shapeAndVariety.circle.dark {
+.shapeClass.shape3.variety1 {
     background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_2_b_1_0001.png')
 }
-.shapeAndVariety.circle.normal {
+.shapeClass.shape3.variety2 {
     background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_2_m_1_0001.png')
 }
-.shapeAndVariety.circle.white {
+.shapeClass.shape3.variety3 {
     background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_2_w_1_0001.png')
 }
-.shapeAndVariety.heart.dark {
+.shapeClass.shape2.variety1 {
     background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_3_b_3_0002.png')
 }
-.shapeAndVariety.heart.normal {
+.shapeClass.shape2.variety2 {
     background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_3_m_3_0002.png')
 }
-.shapeAndVariety.heart.white {
+.shapeClass.shape2.variety3 {
     background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_3_w_3_0002.png')
 }
 
@@ -319,23 +327,59 @@ body {
     background-image: none; 
 }
 #cream.cream1 {
-    background-image: url('../img/Tafelansicht_Seite_Creme-06.png');
+    background-image: url('../img/schoko_brunnen_img/Creme/Pistazie_Seite_1.png');
+}
+#cream.cream2 {
+    background-image: url('../img/schoko_brunnen_img/Creme/Vanille_Seite_1.png');
+}
+#cream.cream3 {
+    background-image: url('../img/schoko_brunnen_img/Creme/Himbeere_Seite_1.png');
 }
 
 /*Füllungs-Bild*/
 #stuffing.stuffing0 {
     background-image: none;
 }
+#stuffing.stuffing1 {
+    background-image: url('../img/schoko_brunnen_img/Füllung/Heidelbeere_Seite_1.png');
+}
 #stuffing.stuffing2 {
-    background-image: url('../img/Tafelansicht_Seite_Füllung-05.png');
+    background-image: url('../img/schoko_brunnen_img/Füllung/Haselnuss_Seite_1.png');
+}
+#stuffing.stuffing3 {
+    background-image: url('../img/schoko_brunnen_img/Füllung/Oreo_Seite_1.png');
 }
 
 /*Topping-Bild*/
 #topping.topping0 {
     background-image: none;
 }
-#topping.topping1 {
-    background-image: url('../img/Tafelansicht_oben_Topping-02.png');
+#top-view.shape1 + #topping.topping1 {
+    background-image: url('../img/schoko_brunnen_img/Topping/Erdbeere_Quader_1_0002.png');
+}
+#top-view.shape1 + #topping.topping2 {
+    background-image: url('../img/schoko_brunnen_img/Topping/Schokolinsen_Quader_1_0002.png');
+}
+#top-view.shape1 + #topping.topping3 {
+    background-image: url('../img/schoko_brunnen_img/Topping/Gold_Quader_1_0001.png');
+}
+#top-view.shape2 + #topping.topping1 {
+    background-image: url('../img/schoko_brunnen_img/Topping/Erdbeere_Herz_1_0002.png');
+}
+#top-view.shape2 + #topping.topping2 {
+    background-image: url('../img/schoko_brunnen_img/Topping/Schokolinsen_Herz_1_0002.png');
+}
+#top-view.shape2 + #topping.topping3 {
+    background-image: url('../img/schoko_brunnen_img/Topping/Gold_Herz_1_0001.png');
+}
+#top-view.shape3 + #topping.topping1 {
+    background-image: url('../img/schoko_brunnen_img/Topping/Erdbeere_Kreis_1_0002.png');
+}
+#top-view.shape3 + #topping.topping2 {
+    background-image: url('../img/schoko_brunnen_img/Topping/Schokolinsen_Kreis_1_0002.png');
+}
+#top-view.shape3 + #topping.topping3 {
+    background-image: url('../img/schoko_brunnen_img/Topping/Gold_Kreis_1_0001.png1');
 }
 
 .category > p {
