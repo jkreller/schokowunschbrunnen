@@ -12,7 +12,7 @@ mongoose.connect(mongoDbDatabase, {
     useNewUrlParser: true
 }).catch((err) => console.error('Error when connecting to database.'));
 
-var Creme = [
+var Cremes = [
     new Creme({
         name: 'pistazie'
     }),
@@ -24,7 +24,7 @@ var Creme = [
     })
 ];
 
-var Filling = [
+var Fillings = [
     new Filling({
         name: 'blaubeer'
     }),
@@ -36,7 +36,7 @@ var Filling = [
     })
 ];
 
-var Shape = [
+var Shapes = [
     new Shape({
         name: 'rechteck'
     }),
@@ -48,7 +48,7 @@ var Shape = [
     })
 ];
 
-var Variety = [
+var Varietys = [
     new Variety({
         name: 'zartbitter'
     }),
@@ -62,13 +62,30 @@ var Variety = [
 
 for (var i = 0; i < Creme.length; i++) {
 
-    Creme[i].save();
-    Filling[i].save();
-    Shape[i].save();
-    Variety[i].save();
-
-
+    Cremes[i].save();
+    Fillings[i].save();
+    Shapes[i].save();
+    Varietys[i].save();
 }
+
+
+var cremeobject = Creme.find({name: 'vanille'});
+var varietyobject = Variety.find({name: 'zartbitter'});
+var shapeobject = Shape.find({name: 'kreis'});
+var fillingobject = Filling.find({name: 'blaubeer'});
+
+var Chocolate1;
+Chocolate1 = new Chocolate({
+    shapeId: shapeobject,
+    varietyId: varietyobject,
+    cremeId: cremeobject,
+    fillingId: fillingobject,
+    selfmadeId: false
+});
+
+
+Chocolate1.save();
+
 
 
 
