@@ -61,11 +61,10 @@ var Varietys = [
 ];
 
 for (var i = 0; i < Creme.length; i++) {
-
-    Cremes[i].save();
-    Fillings[i].save();
-    Shapes[i].save();
-    Varietys[i].save();
+    Cremes[i].save().catch(console.error);
+    Fillings[i].save().catch(console.error);
+    Shapes[i].save().catch(console.error);
+    Varietys[i].save().catch(console.error);
 }
 
 
@@ -74,8 +73,7 @@ var varietyobject = Variety.find({name: 'zartbitter'});
 var shapeobject = Shape.find({name: 'kreis'});
 var fillingobject = Filling.find({name: 'blaubeer'});
 
-var Chocolate1;
-Chocolate1 = new Chocolate({
+var Chocolate1 = new Chocolate({
     shapeId: shapeobject,
     varietyId: varietyobject,
     cremeId: cremeobject,
@@ -84,8 +82,4 @@ Chocolate1 = new Chocolate({
 });
 
 
-Chocolate1.save();
-
-
-
-
+Chocolate1.save().catch(console.error);

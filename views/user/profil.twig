@@ -64,12 +64,16 @@
     <div class="input-wrapper">
       <label for="birthday" class="profil-data">Geburtsdatum</label>
       {% if not edit %}
-        <span class="personal-data">
-        {{ user.birthday }}</span>
+        <span class="personal-data">{{ user.birthday }}</span>
       {% else %}
         <input id="birthday" type="date" value="{{ user.birthday }}">
       {% endif %}
     </div>
-    <a href="#" class="change-password">Passwort ändern</a>
+    {% if not edit %}
+      <h2><label for="password">Mit deinem Passwort bestätigen:</label></h2>
+      <input id="password" type="password" class="personal-data">
+      <button type="submit" class="save-data">Daten speichern</button>
+      <a href="/user/profile" class="abort">Abbrechen</a>
+    {% endif %}
   </div>
 {% endblock %}
