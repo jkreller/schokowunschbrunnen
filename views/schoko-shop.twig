@@ -3,6 +3,24 @@
 {% block main %}
   <h1 class="shop-heading">Herzlich Willkommen im Schoko-Shop !</h1>
   <div class="shop-inner">
+      {% for key, user in users %}
+
+        <a class="product-view nr1" href="/shop/1">
+          <div class="product-img"></div>
+          <div class="product-ingredients">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <h3>5,95 €</h3>
+        </a>
+
+
+
+      {% endfor %}
+
     <a class="product-view nr1" href="/shop/1">
       <div class="product-img"></div>
       <div class="product-ingredients">

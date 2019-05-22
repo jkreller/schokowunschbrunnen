@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+var Chocolate = require('../models/Chocolate');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -13,10 +14,12 @@ router.get('/wishing-well', function(req, res, next) {
 
 /* GET choco shop. */
 router.get('/shop', function(req, res, next) {
-  res.render('schoko-shop');
+  var chocolates = Chocolate.find();
+  res.render('schoko-shop', {chocolates: chocolates});
 });
 
 /* GET choco shop product. */
+// schokoladen übergeben
 router.get('/shop/:productId', function(req, res, next) {
   res.render('produktseite');
 });
