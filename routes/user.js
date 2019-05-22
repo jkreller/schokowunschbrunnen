@@ -44,4 +44,9 @@ router.get('/profile/edit', loginHandler.ensureAuthentication, function (req, re
   res.render('user/profil', {user: req.user, edit: true});
 });
 
+/* POST profile edit. */
+router.post('/profile/edit', loginHandler.ensureAuthentication, function (req, res, next) {
+  res.render('user/profil', {user: req.user, edit: false});
+});
+
 module.exports = router;

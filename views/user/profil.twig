@@ -6,7 +6,7 @@
     {% if not edit %}
     <a href="/user/profile/edit" class="edit">Bearbeiten</a>
   {% else %}
-    <form>
+    <form action="/user/profile/edit">
       {% endif %}
       <p>Hier kannst du deine Daten einsehen und ändern.</p>
       <div class="input-wrapper">
@@ -68,7 +68,7 @@
       <div class="input-wrapper">
         <label for="birthday" class="profil-data">Geburtsdatum</label>
         {% if not edit %}
-          <span class="personal-data">{{ user.birthday }}</span>
+          <span class="personal-data">{{ user.birthday.date }}</span>
         {% else %}
           <input id="birthday" type="date" class="personal-data" value="{{ user.birthday }}">
         {% endif %}
@@ -77,8 +77,10 @@
       <h2><label for="password">Mit deinem Passwort bestätigen:</label></h2>
       <input id="password" type="password" class="personal-data">
       <button class="save-data">Daten speichern</button>
+      <a href="/user/profile" class="abort">Abbrechen</a>
     </form>
-    <a href="/user/profile" class="abort">Abbrechen</a>
+  {% else %}
+    <a href="/user/profile/edit-password" class="change-password">Passwort ändern</a>
     {% endif %}
   </div>
 {% endblock %}
