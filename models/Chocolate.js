@@ -7,7 +7,9 @@ const schema = new Schema({
     varietyId: {type: String, required: true},
     cremeId: {type: String, required: true},
     fillingId: {type: String, required: true},
-    selfmadeId:{type: Boolean, required: true}
+    selfmade:{type: Boolean, required: true},
+    price:{type: Number, required: true},
+    image:{type: String}
 });
 
 module.exports = mongoose.model('Chocolate', schema);
