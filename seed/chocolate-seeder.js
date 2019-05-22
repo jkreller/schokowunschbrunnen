@@ -67,17 +67,44 @@ for (var i = 0; i < Creme.length; i++) {
     Varietys[i].save().catch(console.error);
 }
 
-var cremeobject = Creme.findOne({name: 'vanille'});
-var varietyobject = Variety.findOne({name: 'zartbitter'});
-var shapeobject = Shape.findOne({name: 'kreis'});
-var fillingobject = Filling.findOne({name: 'blaubeer'});
+var cremeobject;
+var varietyobject;
+var shapeobject;
+var fillingobject;
 
-var Chocolate1 = new Chocolate({
-    shapeId: shapeobject.id,
-    varietyId: varietyobject.id,
-    cremeId: cremeobject.id,
-    fillingId: fillingobject.id,
-    selfmadeId: false
+Creme.findOne({name: 'vanille'}).then(function (object) {
+    cremeobject = object;
+
+    Variety.findOne({name: 'zartbitter'}).then(function (object) {
+        varietyobject = object;
+
+        Shape.findOne({name: 'kreis'}).then(function (object) {
+            shapeobject = object;
+
+            Filling.findOne({name: 'blaubeer'}).then(function (object) {
+                fillingobject = object;
+
+
+                var Chocolate1 = new Chocolate({
+                    shapeId: shapeobject.id,
+                    varietyId: varietyobject.id,
+                    cremeId: cremeobject.id,
+                    fillingId: fillingobject.id,
+                    selfmade: false
+                });
+
+                Chocolate1.save().catch(console.error);
+
+
+            });
+
+        });
+
+    });
+
 });
 
-Chocolate1.save().catch(console.error);
+
+
+
+
