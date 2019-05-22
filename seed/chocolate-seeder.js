@@ -67,7 +67,6 @@ for (var i = 0; i < Creme.length; i++) {
     Varietys[i].save().catch(console.error);
 }
 
-
 var cremeobject = Creme.findOne({name: 'vanille'});
 var varietyobject = Variety.findOne({name: 'zartbitter'});
 var shapeobject = Shape.findOne({name: 'kreis'});
@@ -80,6 +79,5 @@ var Chocolate1 = new Chocolate({
     fillingId: fillingobject.id,
     selfmadeId: false
 });
-
 
 Chocolate1.save().catch(console.error);
