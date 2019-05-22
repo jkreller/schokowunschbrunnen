@@ -68,16 +68,16 @@ for (var i = 0; i < Creme.length; i++) {
 }
 
 
-var cremeobject = Creme.find({name: 'vanille'});
-var varietyobject = Variety.find({name: 'zartbitter'});
-var shapeobject = Shape.find({name: 'kreis'});
-var fillingobject = Filling.find({name: 'blaubeer'});
+var cremeobject = Creme.findOne({name: 'vanille'});
+var varietyobject = Variety.findOne({name: 'zartbitter'});
+var shapeobject = Shape.findOne({name: 'kreis'});
+var fillingobject = Filling.findOne({name: 'blaubeer'});
 
 var Chocolate1 = new Chocolate({
-    shapeId: shapeobject,
-    varietyId: varietyobject,
-    cremeId: cremeobject,
-    fillingId: fillingobject,
+    shapeId: shapeobject.id,
+    varietyId: varietyobject.id,
+    cremeId: cremeobject.id,
+    fillingId: fillingobject.id,
     selfmadeId: false
 });
 
