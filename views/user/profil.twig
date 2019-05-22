@@ -3,39 +3,72 @@
 {% block main %}
   <div class=profil-inner>
     <h1>Meine Daten</h1>
-    <a href="#" class="edit">Bearbeiten</a>
+    <a href="/user/profile/edit" class="edit">Bearbeiten</a>
     <p>Hier kannst du deine Daten einsehen und ändern.</p>
     <div class="input-wrapper">
-        <label class="profil-data">Titel</label>
+      <label for="title" class="profil-data">Titel</label>
+      {% if not edit %}
         <span class="personal-data">{{ user.title }}</span>
+      {% else %}
+        <input id="title" type="text" value="{{ user.title }}">
+      {% endif %}
     </div>
     <div class="input-wrapper">
-        <label class="profil-data">Vorname</label>
+      <label for="fname" class="profil-data">Vorname</label>
+      {% if not edit %}
         <span class="personal-data">{{ user.fname }}</span>
+      {% else %}
+        <input id="fname" type="text" value="{{ user.fname }}">
+      {% endif %}
     </div>
     <div class="input-wrapper">
-        <label class="profil-data">Nachname</label>
+      <label for="lname" class="profil-data">Nachname</label>
+      {% if not edit %}
         <span class="personal-data">{{ user.lname }}</span>
+      {% else %}
+        <input id="lname" type="text" value="{{ user.lname }}">
+      {% endif %}
     </div>
     <div class="input-wrapper">
-        <label class="profil-data">E-Mail</label>
+      <label for="email" class="profil-data">E-Mail</label>
+      {% if not edit %}
         <span class="personal-data">{{ user.email }}</span>
+      {% else %}
+        <input id="email" type="text" value="{{ user.email }}">
+      {% endif %}
     </div>
     <div class="input-wrapper">
-        <label class="profil-data">Straße</label>
+      <label for="street" class="profil-data">Straße</label>
+      {% if not edit %}
         <span class="personal-data">{{ user.street }}</span>
+      {% else %}
+        <input id="street" type="text" value="{{ user.street }}">
+      {% endif %}
     </div>
     <div class="input-wrapper">
-        <label class="profil-data">PLZ</label>
+      <label for="postcode" class="profil-data">PLZ</label>
+      {% if not edit %}
         <span class="personal-data">{{ user.postcode }}</span>
+      {% else %}
+        <input id="postcode" type="text" value="{{ user.postcode }}">
+      {% endif %}
     </div>
     <div class="input-wrapper">
-        <label class="profil-data">Stadt</label>
+      <label for="city" class="profil-data">Stadt</label>
+      {% if not edit %}
         <span class="personal-data">{{ user.city }}</span>
+      {% else %}
+        <input id="city" type="text" value="{{ user.city }}">
+      {% endif %}
     </div>
     <div class="input-wrapper">
-        <label class="profil-data">Geburtsdatum</label>
-        <span class="personal-data">{{ user.birthday }}</span>
+      <label for="birthday" class="profil-data">Geburtsdatum</label>
+      {% if not edit %}
+        <span class="personal-data">
+        {{ user.birthday }}</span>
+      {% else %}
+        <input id="birthday" type="date" value="{{ user.birthday }}">
+      {% endif %}
     </div>
     <a href="#" class="change-password">Passwort ändern</a>
   </div>
