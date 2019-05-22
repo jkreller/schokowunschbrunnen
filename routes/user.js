@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const moment = require('moment');
 const passport = require('passport');
 const loginHandler = require('../middlewares/LoginHandler');
 
@@ -36,12 +37,14 @@ router.get('/logout', function (req, res, next) {
 
 /* GET profile. */
 router.get('/profile', loginHandler.ensureAuthentication, function (req, res, next) {
-  res.render('user/profil', {user: req.user});
+  const birthdayFormatted = moment().format('DD.MM.YYYY');
+  res.render('user/profil', {user: req.user, birthdayFormatted: birthdayFormatted});
 });
 
 /* GET profile edit. */
 router.get('/profile/edit', loginHandler.ensureAuthentication, function (req, res, next) {
-  res.render('user/profil', {user: req.user, edit: true});
+  const birthdayFormatted = moment().format('YYYY-MM-DD');
+  res.render('user/profil', {user: req.user, birthdayFormatted: birthdayFormatted, edit: true});
 });
 
 /* POST profile edit. */

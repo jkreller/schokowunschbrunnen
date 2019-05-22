@@ -6,15 +6,19 @@
     {% if not edit %}
     <a href="/user/profile/edit" class="edit">Bearbeiten</a>
   {% else %}
-    <form action="/user/profile/edit">
+    <form action="/user/profile/edit" method="post">
       {% endif %}
       <p>Hier kannst du deine Daten einsehen und ändern.</p>
       <div class="input-wrapper">
-        <label for="title" class="profil-data">Titel</label>
+
+        <label for="title" class="profil-data">Anrede</label>
         {% if not edit %}
           <span class="personal-data">{{ user.title }}</span>
         {% else %}
-          <input id="title" type="text" class="personal-data" value="{{ user.title }}">
+          <label for="herr">Herr</label>
+          <input id="herr" type="radio" name="title" value="Herr" {% if user.title == 'Herr' %}checked{% endif %}>
+          <label for="frau">Frau</label>
+          <input id="frau" type="radio" name="title" value="Frau" {% if user.title == 'Frau' %}checked{% endif %}>
         {% endif %}
       </div>
       <div class="input-wrapper">
@@ -68,9 +72,9 @@
       <div class="input-wrapper">
         <label for="birthday" class="profil-data">Geburtsdatum</label>
         {% if not edit %}
-          <span class="personal-data">{{ user.birthday.date }}</span>
+          <span class="personal-data">{{ birthdayFormatted }}</span>
         {% else %}
-          <input id="birthday" type="date" class="personal-data" value="{{ user.birthday }}">
+          <input id="birthday" type="date" class="personal-data" value="{{ birthdayFormatted }}">
         {% endif %}
       </div>
       {% if edit %}
