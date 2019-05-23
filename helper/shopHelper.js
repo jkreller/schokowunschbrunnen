@@ -71,6 +71,10 @@ const shopHelper = {
                 counter++;
             });
 
+            if(counter === 5){
+                console.log("parts collected")
+                return stringParts;
+            }
 
         })
     }
