@@ -27,9 +27,9 @@ const shopHelper = {
     },
 
     getChocolatePartsAsArray: function (id) {
-        this.getChocolateByID(id).then(function (chocolate) {
-            var stringParts = [];
-            var counter = 0;
+        var stringParts = [];
+        var counter = 0;
+        return this.getChocolateByID(id).then(function (chocolate) {
 
             Shape.find({"_id": chocolate.shapeId}).then(function (result, err) {
                 if (err) {
@@ -69,12 +69,12 @@ const shopHelper = {
                 }
                 stringParts[4] = result;
                 counter++;
+                console.log(stringParts);
+                console.log("counter"+counter);
+
             });
 
-            if(counter === 5){
-                console.log("parts collected")
-                return stringParts;
-            }
+            return stringParts;
 
         })
     }
