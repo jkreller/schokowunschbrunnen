@@ -3,101 +3,20 @@
 {% block main %}
   <h1 class="shop-heading">Herzlich Willkommen im Schoko-Shop !</h1>
   <div class="shop-inner">
-      {% for key, user in users %}
-
-        <a class="product-view nr1" href="/shop/1">
-          <div class="product-img"></div>
-          <div class="product-ingredients">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+      {% for chocolate in chocolates %}
+        <a class="product-view nr{{ chocolate._id }}" href="/shop/{{ chocolate._id }}">
+          <div class="product-img">
+            <img src="{{ chocolate.image }}">
           </div>
-          <h3>5,95 €</h3>
+          <div class="product-ingredients">
+            <div class="category-icon shape-1"></div>
+            <div class="category-icon variety-3"></div>
+            <div class="category-icon cream-1"></div>
+            <div class="category-icon stuffing-3"></div>
+            <div class="category-icon topping-1"></div>
+          </div>
+          <h3>{{ chocolate.price }} €</h3>
         </a>
-
-
-
       {% endfor %}
-
-    <a class="product-view nr1" href="/shop/1">
-      <div class="product-img">
-        <img src="/img/schoko_shop_img/Kombi1_A.png">
-      </div>
-      <div class="product-ingredients">
-        <div class="category-icon shape-1"></div>
-        <div class="category-icon variety-3"></div>
-        <div class="category-icon cream-1"></div>
-        <div class="category-icon stuffing-3"></div>
-        <div class="category-icon topping-1"></div>
-      </div>
-      <h3>5,95 €</h3>
-    </a>
-    <a class="product-view nr2" href="/shop/2">
-      <div class="product-img">
-        <img src="/img/schoko_shop_img/Kombi2_A.png">
-      </div>
-      <div class="product-ingredients">
-        <div class="category-icon shape-3"></div>
-        <div class="category-icon variety-1"></div>
-        <div class="category-icon cream-1"></div>
-        <div class="category-icon stuffing-1"></div>
-        <div class="category-icon topping-1"></div>
-      </div>
-      <h3>7,35 €</h3>
-    </a>
-    <a class="product-view nr3" href="/shop/3">
-      <div class="product-img">
-        <img src="/img/schoko_shop_img/Kombi3_A.png">
-      </div>
-      <div class="product-ingredients">
-        <div class="category-icon shape-2"></div>
-        <div class="category-icon variety-2"></div>
-        <div class="category-icon cream-3"></div>
-        <div class="category-icon stuffing-2"></div>
-        <div class="category-icon topping-2"></div>
-      </div>
-      <h3>4,55 €</h3>
-    </a>
-    <a class="product-view nr4" href="/shop/4">
-      <div class="product-img">
-        <img src="/img/schoko_shop_img/Kombi4_A.png">
-      </div>
-      <div class="product-ingredients">
-        <div class="category-icon shape-1"></div>
-        <div class="category-icon variety-1"></div>
-        <div class="category-icon cream-2"></div>
-        <div class="category-icon stuffing-1"></div>
-        <div class="category-icon topping-3"></div>
-      </div>
-      <h3>6,75 €</h3>
-    </a>
-    <a class="product-view nr5" href="/shop/5">
-      <div class="product-img">
-        <img src="/img/schoko_shop_img/Kombi5_A.png">
-      </div>
-      <div class="product-ingredients">
-        <div class="category-icon shape-3"></div>
-        <div class="category-icon variety-2"></div>
-        <div class="category-icon cream-2"></div>
-        <div class="category-icon stuffing-2"></div>
-        <div class="category-icon topping-3"></div>
-      </div>
-      <h3>7,15 €</h3>
-    </a>
-    <a class="product-view nr6" href="/shop/6">
-      <div class="product-img">
-        <img src="/img/schoko_shop_img/Kombi6_A.png">
-      </div>
-      <div class="product-ingredients">
-        <div class="category-icon shape-2"></div>
-        <div class="category-icon variety-3"></div>
-        <div class="category-icon cream-3"></div>
-        <div class="category-icon stuffing-3"></div>
-        <div class="category-icon topping-2"></div>
-      </div>
-      <h3>5,55 €</h3>
-    </a>
   </div>
 {% endblock %}
