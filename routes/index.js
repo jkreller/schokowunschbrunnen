@@ -23,11 +23,9 @@ router.get('/shop', function (req, res, next) {
 /* GET choco shop product. */
 router.get('/shop/:productId', function (req, res, next) {
   shopHelper.getChocolateByID(req.params.productId).then(function (chocolate) {
-      shopHelper.getChocolatePartsAsArray(req.params.productId).then(function (result) {
-          console.log("fefe"+result);
-          res.render('produktseite', {chocolate: chocolate});
+      shopHelper.getChocolatePartsAsArray(req.params.productId).then(function (chocolateparts) {
+          res.render('produktseite', {chocolate: chocolate, categories: chocolateparts});
       });
-
   });
 });
 

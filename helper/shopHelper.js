@@ -31,7 +31,7 @@ const shopHelper = {
         var counter = 0;
         return this.getChocolateByID(id).then(function (chocolate) {
 
-            Shape.find({"_id": chocolate.shapeId}).then(function (result, err) {
+            var promise1 = Shape.findOne({"_id": chocolate.shapeId}).then(function (result, err) {
                 if (err) {
                     console.error(err);
                 }
@@ -39,7 +39,7 @@ const shopHelper = {
                 counter++;
             });
 
-            Variety.find({"_id": chocolate.varietyId}).then(function (result, err) {
+            var promise2 = Variety.findOne({"_id": chocolate.varietyId}).then(function (result, err) {
                 if (err) {
                     console.error(err);
                 }
@@ -47,7 +47,7 @@ const shopHelper = {
                 counter++;
             });
 
-            Creme.find({"_id": chocolate.cremeId}).then(function (result, err) {
+            var promise3 = Creme.findOne({"_id": chocolate.cremeId}).then(function (result, err) {
                 if (err) {
                     console.error(err);
                 }
@@ -55,7 +55,7 @@ const shopHelper = {
                 counter++;
             });
 
-            Filling.find({"_id": chocolate.fillingId}).then(function (result, err) {
+            var promise4 = Filling.findOne({"_id": chocolate.fillingId}).then(function (result, err) {
                 if (err) {
                     console.error(err);
                 }
@@ -63,20 +63,21 @@ const shopHelper = {
                 counter++;
             });
 
-            Topping.find({"_id": chocolate.toppingId}).then(function (result, err) {
+            var promise5 =Topping.findOne({"_id": chocolate.toppingId}).then(function (result, err) {
                 if (err) {
                     console.error(err);
                 }
                 stringParts[4] = result;
                 counter++;
-                console.log(stringParts);
-                console.log("counter"+counter);
 
             });
 
-            return stringParts;
+            return Promise.all([promise1, promise2, promise3, promise4, promise5]).then(function(values) {
+                return stringParts;
+            });
 
-        })
+        });
+
     }
 };
 
