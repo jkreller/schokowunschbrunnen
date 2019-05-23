@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Chocolate = require('../models/Chocolate');
+const shopHelper = require('../helper/shopHelper');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -14,15 +15,17 @@ router.get('/wishing-well', function (req, res, next) {
 
 /* GET choco shop. */
 router.get('/shop', function (req, res, next) {
-    Chocolate.find({"selfmade": false}).then(function (chocolates) {
+    shopHelper.getShopChocolates().then(function (chocolates) {
         res.render('schoko-shop', {chocolates: chocolates});
     });
 });
 
 /* GET choco shop product. */
 router.get('/shop/:productId', function (req, res, next) {
-    Chocolate.findOne({'_id': req.params.productId}).then(function (chocolate) {
-        res.render('produktseite', {chocolate: chocolate});
+    shopHelper.getChocolateByID(req.params.productId).then(function (chocolate) {
+        shopHelper.getChocolatePartsAsArray(req.params.productId).then(function (chocolateparts) {
+            res.render('produktseite', {chocolate: chocolate, categories: chocolateparts});
+        });
     });
 });
 

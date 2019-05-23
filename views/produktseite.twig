@@ -12,16 +12,15 @@
     </div>
     <div class="productdetail-details">
       <h2>Inhalte:</h2>
-      <p>Weiße Schokolade in Rechtecksform mit Pistaziencreme und Oreo-Füllung. Oben drauf Erdbeeren als Topping.</p>
+      <p>{{ chocolate.info }}</p>
       <div class="productdetail-ingredients">
-        <div class="category-icon shape-1"></div>
-        <div class="category-icon variety-3"></div>
-        <div class="category-icon cream-1"></div>
-        <div class="category-icon stuffing-3"></div>
-        <div class="category-icon topping-1"></div>
+        <div class="category-icon {{ categories[0].className }}"></div>
+        <div class="category-icon {{ categories[1].className }}"></div>
+        <div class="category-icon {{ categories[2].className }}"></div>
+        <div class="category-icon {{ categories[3].className }}"></div>
+        <div class="category-icon {{ categories[4].className }}"></div>
       </div>
       <h2>Preis:</h2>
-      {{ chocolate.price }}
       <h3>{{ chocolate.price }} €</h3>
       <a href="#">In den Warenkorb legen</a>
     </div>
