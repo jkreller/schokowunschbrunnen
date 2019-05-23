@@ -1,7 +1,7 @@
 var Chocolate = require('../models/Chocolate');
 var Creme = require('../models/Creme');
 var Filling = require('../models/Filling');
-var Shape = require('../models/shape');
+var Shape = require('../models/Shape');
 var Variety = require('../models/Variety');
 const mongoose = require('mongoose');
 

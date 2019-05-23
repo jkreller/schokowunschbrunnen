@@ -8,4 +8,4 @@ const schema = new Schema({
     className: {type: String, required: true}
 });
 
-module.exports = mongoose.model('Filling', schema);
+module.exports = mongoose.model('Shape', schema);
