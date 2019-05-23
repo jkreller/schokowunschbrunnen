@@ -208,43 +208,90 @@ body {
 }
 
 .infobox {
-    margin: 0 auto;
-    width: 1000px;
-    height: 300px;
-    background-color: white;
+    margin: 0 51px;
+    width: calc(100% - 146px);
+    height: calc(100% - 44px);
     padding: 22px;
     text-align: center;
 }
 
-.infotext > p {
+.infobox > h1 {
     margin: 0;
-    display: inline-block;
-    font-family: 'IceValley';
-    font-size: 24px;
+    color: rgb(59,36,8);
+    font-size: 25px;
+    font-weight: normal;
 }
 
-.start-button {
+.infotext > p {
+    margin: 0;
+    margin-top: 20px;
+    display: block;
+    font-size: 20px;
+    color: rgb(145,225,225);
+}
+
+.infotext > span {
+    margin: 0 auto;
+    display: block;
+    margin-top: 10px;
+    max-width: 850px;
+}
+
+.infotext > span:first-of-type {
+    font-size: 18px;
+}
+
+.weiter-button, .zurück-button {
+    z-index: 20;
+    bottom: 22px;
     text-decoration: none;
-    color: white;
-    font-family: 'IceValley';
-    font-size: 26px;
-    background-color: rgb(59,36,8);
-    display: inline-block;
+    background-color: rgb(145,225,225);
+    padding: 10px;
+    border-radius: 5px;
+    color: rgb(59,36,8);
+    font-weight: normal;
+    position: absolute;
+    left: 150px;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 120px;
+}
+
+.zurück-button {
+    right: 150px;
+    left: 0;
+}
+
+.weiter-button:first-of-type {
+    left: 0;
+    right: 0;
+}
+
+.weiter-button.wünschen {
     width: 200px;
+    left: 180px;
+}
+
+.zurück-button.last {
+    right: 200px;
 }
 
 .schoko-category {
     margin: 0 auto;
     width: 1000px;
-    height: 100%;
-    background-color: rgba(255,255,255,0.6);
+    height: calc(100% - 44px);
     padding: 22px;
     text-align: center;
 }
 
+/*.schoko-category .category-icon {
+    background-color: rgba(255,255,255,0.5);
+}*/
+
 .animation {
-    width: 500px;
-    height: 350px;
+    width: 600px;
+    height: 310px;
     margin: 0 auto;
     position: relative;
 }
@@ -254,8 +301,8 @@ body {
     top: 0;
     left: 0;
     z-index: 1;
-    width: 500px;
-    height: 350px;
+    width: 100%;
+    height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -263,6 +310,45 @@ body {
 
 .animation > div:last-of-type {
     z-index: 2;
+}
+
+.category {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 600px;
+    margin: 0 auto;
+    padding: 5px 0;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.5);
+}
+
+.category > p {
+    font-family: 'IceValley';
+    font-size: 30px;
+    margin: 0;
+    position: absolute;
+    left: 50px;
+}
+
+.category > input {
+    display: none;
+}
+
+.category > input:checked + label > span {
+    color: unset;
+}
+
+.category > label {
+    width: 70px;
+    display: inline-block;
+}
+
+.category > label > span {
+    display: block;
+    width: 100%;
+    color: rgba(1,1,1,0);
 }
 
 .zusammenfassung {
@@ -382,10 +468,6 @@ body {
     background-image: url('../img/schoko_brunnen_img/Topping/Gold_Kreis_1_0001.png');
 }
 
-.category > p {
-    display: inline-block;
-}
-
 /*Icons der Kategorien*/
 .category-icon {
     display: inline-block;
@@ -422,6 +504,9 @@ body {
 }
 
 /*Creme-Icons*/
+.category-icon.cream-0 {
+    background-image: repeating-linear-gradient(135deg, rgba(59,36,8,0.5) 0%,rgba(59,36,8,0.5) 5%, rgb(255,247,238) 5%,rgb(255,247,238) 10%, rgba(59,36,8,0.5) 10%);
+}
 .category-icon.cream-1 {
     background-image: url('../icons/cream/Pistazie.svg');
 }
@@ -433,6 +518,9 @@ body {
 }
 
 /*Füllungs-Icons*/
+.category-icon.stuffing-0 {
+    background-image: repeating-linear-gradient(135deg, rgba(59,36,8,0.5) 0%,rgba(59,36,8,0.5) 5%, rgb(255,247,238) 5%,rgb(255,247,238) 10%, rgba(59,36,8,0.5) 10%);
+}
 .category-icon.stuffing-1 {
     background-image: url('../icons/stuffing/Blaubeere.svg');
 }
@@ -444,6 +532,9 @@ body {
 }
 
 /*Topping-Icons*/
+.category-icon.topping-0 {
+    background-image: repeating-linear-gradient(135deg, rgba(59,36,8,0.5) 0%, rgba(59,36,8,0.5) 5%, rgb(255,247,238) 5%,rgb(255,247,238) 10%, rgba(59,36,8,0.5) 10%);
+}
 .category-icon.topping-1 {
     background-image: url('../icons/topping/Erdbeere.svg');
 }
