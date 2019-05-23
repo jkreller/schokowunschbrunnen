@@ -9,7 +9,9 @@ const schema = new Schema({
     fillingId: {type: String, required: true},
     selfmade:{type: Boolean, required: true},
     price:{type: Number, required: true},
-    image:{type: String}
+    imageA:{type: String},
+    imageB:{type: String},
+    info:{type: String}
 });
 
 module.exports = mongoose.model('Chocolate', schema);
