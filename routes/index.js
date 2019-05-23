@@ -20,10 +20,12 @@ router.get('/shop', function(req, res, next) {
 
 });
 
-/* GET choco shop product. */
-// schokoladen übergeben
+
 router.get('/shop/:productId', function(req, res, next) {
-  res.render('produktseite');
+  Chocolate.find({"_id":req.params.productId}).then(function(chocolate){
+      console.log(chocolate);
+      res.render('produktseite', {chocolate: chocolate});
+  });
 });
 
 /* GET shopping cart. */

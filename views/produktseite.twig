@@ -7,8 +7,8 @@
       <input type="radio" name="AorB" id="B">
       <label for="A"><</label>
       <label for="B">></label>
-      <img src="/img/schoko_shop_img/Kombi1_A.png" class="A">
-      <img src="/img/schoko_shop_img/Kombi1_B.png" class="B">
+      <img src="{{ chocolates.imageA }}" class="A">
+      <img src="{{ chocolates.imageB }}" class="B">
     </div>
     <div class="productdetail-details">
       <h2>Inhalte:</h2>
@@ -21,7 +21,7 @@
         <div class="category-icon topping-1"></div>
       </div>
       <h2>Preis:</h2>
-      <h3>5,95 €</h3>
+      <h3>{{ chocolates.price }} €</h3>
       <a href="#">In den Warenkorb legen</a>
     </div>
   </div>
