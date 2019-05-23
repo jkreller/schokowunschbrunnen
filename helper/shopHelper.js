@@ -3,7 +3,7 @@ const Chocolate = require('../models/Chocolate');
 
 const shopHelper = {
 
-    getShopChocolate: function () {
+    getShopChocolates: function () {
         return Chocolate.find({"selfmade": false}).then(function (result, err) {
             if (err) {
                 console.error(err);
@@ -11,6 +11,17 @@ const shopHelper = {
             return result;
         });
     },
+
+    getChocolateByID: function (id) {
+        return Chocolate.findOne({'_id': id}).then(function (result, err) {
+            if (err) {
+                console.error(err);
+            }
+            return result;
+        })
+
+    }
+
 
 };
 

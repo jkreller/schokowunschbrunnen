@@ -15,14 +15,14 @@ router.get('/wishing-well', function (req, res, next) {
 
 /* GET choco shop. */
 router.get('/shop', function (req, res, next) {
-    shopHelper.getShopChocolate().then(function (chocolates) {
+    shopHelper.getShopChocolates().then(function (chocolates) {
         res.render('schoko-shop', {chocolates: chocolates});
     });
 });
 
 /* GET choco shop product. */
 router.get('/shop/:productId', function (req, res, next) {
-  Chocolate.findOne({'_id': req.params.productId}).then(function (chocolate) {
+  shopHelper.getChocolateByID(req.params.productId).then(function (chocolate) {
     res.render('produktseite', {chocolate: chocolate});
   });
 });
