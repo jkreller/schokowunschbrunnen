@@ -71,14 +71,9 @@ const shopHelper = {
                 counter++;
             });
 
-            if(counter === 5){
-                return stringParts;
-            }
 
         })
     }
-
-
 };
 
 module.exports = shopHelper;
