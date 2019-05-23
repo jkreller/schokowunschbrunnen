@@ -1085,3 +1085,7 @@ input.personal-data {
     border-radius: 5px;
     text-decoration: none;
 }
+
+.error-message {
+    color: #ff6d72;
+}

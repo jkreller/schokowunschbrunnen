@@ -1,90 +1,120 @@
 {% extends 'layout.twig' %}
 
 {% block main %}
-  <div class=profil-inner>
-    <h1>Meine Daten</h1>
-    {% if not edit %}
-    <a href="/user/profile/edit" class="edit">Bearbeiten</a>
-  {% else %}
-    <form action="/user/profile/edit" method="post">
-      {% endif %}
-      <p>Hier kannst du deine Daten einsehen und ändern.</p>
-      <div class="input-wrapper">
+    <div class=profil-inner>
+        <h1>Meine Daten</h1>
+        {% if not edit %}
+        <a href="/user/profile/edit" class="edit">Bearbeiten</a>
+    {% else %}
+        <form action="/user/profile/edit" method="post">
+            {% endif %}
+            <p>Hier kannst du deine Daten einsehen und ändern.</p>
+            <div class="input-wrapper">
 
-        <label for="title" class="profil-data">Anrede</label>
-        {% if not edit %}
-          <span class="personal-data">{{ user.title }}</span>
-        {% else %}
-          <label for="herr">Herr</label>
-          <input id="herr" type="radio" name="title" value="Herr" {% if user.title == 'Herr' %}checked{% endif %}>
-          <label for="frau">Frau</label>
-          <input id="frau" type="radio" name="title" value="Frau" {% if user.title == 'Frau' %}checked{% endif %}>
+                <label for="title" class="profil-data">Anrede</label>
+                {% if not edit %}
+                    <span class="personal-data">{{ user.title }}</span>
+                {% else %}
+                    {% if errors.title %}
+                        <div class="error-message">{{ errors.title.msg }}</div>
+                    {% endif %}
+                    <label for="herr">Herr</label>
+                    <input id="herr" type="radio" name="title" value="Herr"
+                           {% if user.title == 'Herr' %}checked{% endif %}>
+                    <label for="frau">Frau</label>
+                    <input id="frau" type="radio" name="title" value="Frau"
+                           {% if user.title == 'Frau' %}checked{% endif %}>
+                {% endif %}
+            </div>
+            <div class="input-wrapper">
+                <label for="fname" class="profil-data">Vorname</label>
+                {% if not edit %}
+                    <span class="personal-data">{{ user.fname }}</span>
+                {% else %}
+                    {% if errors.fname %}
+                        <div class="error-message">{{ errors.fname.msg }}</div>
+                    {% endif %}
+                    <input id="fname" type="text" name="fname" class="personal-data" value="{{ user.fname }}">
+                {% endif %}
+            </div>
+            <div class="input-wrapper">
+                <label for="lname" class="profil-data">Nachname</label>
+                {% if not edit %}
+                    <span class="personal-data">{{ user.lname }}</span>
+                {% else %}
+                    {% if errors.lname %}
+                        <div class="error-message">{{ errors.lname.msg }}</div>
+                    {% endif %}
+                    <input id="lname" type="text" name="lname" class="personal-data" value="{{ user.lname }}">
+                {% endif %}
+            </div>
+            <div class="input-wrapper">
+                <label for="email" class="profil-data">E-Mail</label>
+                {% if not edit %}
+                    <span class="personal-data">{{ user.email }}</span>
+                {% else %}
+                    {% if errors.email %}
+                        <div class="error-message">{{ errors.email.msg }}</div>
+                    {% endif %}
+                    <input id="email" type="text" name="email" class="personal-data" value="{{ user.email }}">
+                {% endif %}
+            </div>
+            <div class="input-wrapper">
+                <label for="street" class="profil-data">Straße</label>
+                {% if not edit %}
+                    <span class="personal-data">{{ user.street }}</span>
+                {% else %}
+                    {% if errors.street %}
+                        <div class="error-message">{{ errors.street.msg }}</div>
+                    {% endif %}
+                    <input id="street" type="text" name="street" class="personal-data" value="{{ user.street }}">
+                {% endif %}
+            </div>
+            <div class="input-wrapper">
+                <label for="postcode" class="profil-data">PLZ</label>
+                {% if not edit %}
+                    <span class="personal-data">{{ user.postcode }}</span>
+                {% else %}
+                    {% if errors.postcode %}
+                        <div class="error-message">{{ errors.postcode.msg }}</div>
+                    {% endif %}
+                    <input id="postcode" type="text" name="postcode" class="personal-data" value="{{ user.postcode }}">
+                {% endif %}
+            </div>
+            <div class="input-wrapper">
+                <label for="city" class="profil-data">Stadt</label>
+                {% if not edit %}
+                    <span class="personal-data">{{ user.city }}</span>
+                {% else %}
+                    {% if errors.city %}
+                        <div class="error-message">{{ errors.city.msg }}</div>
+                    {% endif %}
+                    <input id="city" type="text" name="city" class="personal-data" value="{{ user.city }}">
+                {% endif %}
+            </div>
+            <div class="input-wrapper">
+                <label for="birthday" class="profil-data">Geburtsdatum</label>
+                {% if not edit %}
+                    <span class="personal-data">{{ birthdayFormatted }}</span>
+                {% else %}
+                    {% if errors.birthday %}
+                        <div class="error-message">{{ errors.birthday.msg }}</div>
+                    {% endif %}
+                    <input id="birthday" type="date" name="birthday" class="personal-data"
+                           value="{{ birthdayFormatted }}">
+                {% endif %}
+            </div>
+            {% if edit %}
+            <h2><label for="password">Mit deinem Passwort bestätigen:</label></h2>
+            {% if errors.password %}
+                <div class="error-message">{{ errors.password.msg }}</div>
+            {% endif %}
+            <input id="password" type="password" name="password" class="personal-data">
+            <button class="save-data">Daten speichern</button>
+            <a href="/user/profile" class="abort">Abbrechen</a>
+        </form>
+    {% else %}
+        <a href="/user/profile/edit-password" class="change-password">Passwort ändern</a>
         {% endif %}
-      </div>
-      <div class="input-wrapper">
-        <label for="fname" class="profil-data">Vorname</label>
-        {% if not edit %}
-          <span class="personal-data">{{ user.fname }}</span>
-        {% else %}
-          <input id="fname" type="text" class="personal-data" value="{{ user.fname }}">
-        {% endif %}
-      </div>
-      <div class="input-wrapper">
-        <label for="lname" class="profil-data">Nachname</label>
-        {% if not edit %}
-          <span class="personal-data">{{ user.lname }}</span>
-        {% else %}
-          <input id="lname" type="text" class="personal-data" value="{{ user.lname }}">
-        {% endif %}
-      </div>
-      <div class="input-wrapper">
-        <label for="email" class="profil-data">E-Mail</label>
-        {% if not edit %}
-          <span class="personal-data">{{ user.email }}</span>
-        {% else %}
-          <input id="email" type="text" class="personal-data" value="{{ user.email }}">
-        {% endif %}
-      </div>
-      <div class="input-wrapper">
-        <label for="street" class="profil-data">Straße</label>
-        {% if not edit %}
-          <span class="personal-data">{{ user.street }}</span>
-        {% else %}
-          <input id="street" type="text" class="personal-data" value="{{ user.street }}">
-        {% endif %}
-      </div>
-      <div class="input-wrapper">
-        <label for="postcode" class="profil-data">PLZ</label>
-        {% if not edit %}
-          <span class="personal-data">{{ user.postcode }}</span>
-        {% else %}
-          <input id="postcode" type="text" class="personal-data" value="{{ user.postcode }}">
-        {% endif %}
-      </div>
-      <div class="input-wrapper">
-        <label for="city" class="profil-data">Stadt</label>
-        {% if not edit %}
-          <span class="personal-data">{{ user.city }}</span>
-        {% else %}
-          <input id="city" type="text" class="personal-data" value="{{ user.city }}">
-        {% endif %}
-      </div>
-      <div class="input-wrapper">
-        <label for="birthday" class="profil-data">Geburtsdatum</label>
-        {% if not edit %}
-          <span class="personal-data">{{ birthdayFormatted }}</span>
-        {% else %}
-          <input id="birthday" type="date" class="personal-data" value="{{ birthdayFormatted }}">
-        {% endif %}
-      </div>
-      {% if edit %}
-      <h2><label for="password">Mit deinem Passwort bestätigen:</label></h2>
-      <input id="password" type="password" class="personal-data">
-      <button class="save-data">Daten speichern</button>
-      <a href="/user/profile" class="abort">Abbrechen</a>
-    </form>
-  {% else %}
-    <a href="/user/profile/edit-password" class="change-password">Passwort ändern</a>
-    {% endif %}
-  </div>
+    </div>
 {% endblock %}
