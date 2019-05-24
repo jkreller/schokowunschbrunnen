@@ -55,12 +55,6 @@ router.post('/profile/edit', [
     check(['title', 'fname', 'lname', 'email', 'street', 'postcode', 'city', 'birthday', 'password'], 'Bitte fülle dieses Feld aus.').not().isEmpty(),
     check('email').isEmail().withMessage('Bitte gebe eine valide E-Mail Adresse an.'),
     check('birthday').isBefore(moment().format('YYYY-MM-DD')).withMessage('Das ist etwas zu jung...'),
-    check('title').custom(title => {
-        if (title !== 'Herr' && title !== 'Frau') {
-            throw new Error('Bitte wähle eine der möglichen Anreden.');
-        }
-        return true;
-    }),
     check('password').custom(async (password, {req}) => {
         const passwordMatch = await bcrypt.compare(password, req.user.password);
         if (!passwordMatch) {
@@ -76,7 +70,7 @@ router.post('/profile/edit', [
         const userId = req.user['_id'];
 
         try {
-            const result = await User.updateOne({'_id': userId}, req.body);
+            await User.updateOne({'_id': userId}, req.body, {runValidators: true});
             req.login(await User.findById(userId), function (err) {
                 if (err) {
                     next(err);
@@ -87,11 +81,11 @@ router.post('/profile/edit', [
             next(e);
         }
     } else {
-        Object.assign(req.user, req.body);
         res.render('user/profil', {
             birthdayFormatted: req.user.birthday,
             edit: true,
-            errors: errors.mapped({onlyFirstError: true})
+            user: req.body,
+            errors: errors.mapped()
         });
     }
 });
