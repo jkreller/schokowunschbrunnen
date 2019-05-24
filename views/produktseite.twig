@@ -1,28 +1,31 @@
 {% extends 'layout.twig' %}
 
 {% block main %}
-  <div class="product-inner nr1">
-    <div class="productdetail-images">
-      <input type="radio" name="AorB" id="A" checked="checked">
-      <input type="radio" name="AorB" id="B">
-      <label for="A"></label>
-      <label for="B"></label>
-      <img src="{{ chocolate.imageA }}" class="A">
-      <img src="{{ chocolate.imageB }}" class="B">
+    <div class="product-inner nr1">
+        <div class="productdetail-images">
+            <input type="radio" name="AorB" id="A" checked="checked">
+            <input type="radio" name="AorB" id="B">
+            <label for="A"></label>
+            <label for="B"></label>
+            <img src="{{ chocolate.imageA }}" class="A">
+            <img src="{{ chocolate.imageB }}" class="B">
+        </div>
+        <div class="productdetail-details">
+            <h2>Inhalte:</h2>
+            <p>{{ chocolate.info }}</p>
+            <div class="productdetail-ingredients">
+                <div class="category-icon {{ chocolate.shape.className }}"></div>
+                <div class="category-icon {{ chocolate.variety.className }}"></div>
+                <div class="category-icon {{ chocolate.creme.className }}"></div>
+                <div class="category-icon {{ chocolate.filling.className }}"></div>
+                <div class="category-icon {{ chocolate.topping.className }}"></div>
+            </div>
+            <h2>Preis:</h2>
+            <h3>{{ chocolate.price }} €</h3>
+            <form method="post" action="/shopping-cart">
+                <input type="hidden" name="chocolateId" value="{{ chocolate._id }}">
+                <button>In den Warenkorb legen</button>
+            </form>
+        </div>
     </div>
-    <div class="productdetail-details">
-      <h2>Inhalte:</h2>
-      <p>{{ chocolate.info }}</p>
-      <div class="productdetail-ingredients">
-        <div class="category-icon {{ chocolate.shape.className }}"></div>
-        <div class="category-icon {{ chocolate.variety.className }}"></div>
-        <div class="category-icon {{ chocolate.creme.className }}"></div>
-        <div class="category-icon {{ chocolate.filling.className }}"></div>
-        <div class="category-icon {{ chocolate.topping.className }}"></div>
-      </div>
-      <h2>Preis:</h2>
-      <h3>{{ chocolate.price }} €</h3>
-      <a href="#">In den Warenkorb legen</a>
-    </div>
-  </div>
 {% endblock %}

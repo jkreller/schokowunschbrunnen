@@ -866,7 +866,7 @@ button {
     margin-bottom: 10px;
 }
 
-.productdetail-details > a {
+.productdetail-details > button {
     width: 200px;
     background-color: rgb(59,36,8);
     color: white;

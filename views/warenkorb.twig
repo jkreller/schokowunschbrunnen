@@ -37,7 +37,7 @@
             <table>
                 <tr>
                     <td>Artikel:</td>
-                    <td>{{ totalPriceChocolates }} €</td>
+                    <td>{{ totalPriceChocolates|number_format(2) }} €</td>
                 </tr>
                 <tr>
                     <td>Verpackung & Versand:</td>
@@ -50,7 +50,7 @@
                 </tr>
                 <tr>
                     <td>Gesamtbetrag:</td>
-                    <td>{{ totalPriceChocolates + 4.9 }} €</td>
+                    <td>{{ (totalPriceChocolates + 4.9)|number_format(2) }} €</td>
                 </tr>
             </table>
             <a href=# class="buy-button">Kaufen</a>

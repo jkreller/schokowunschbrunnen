@@ -16,19 +16,30 @@ router.get('/wishing-well', function (req, res, next) {
 });
 
 /* GET choco shop. */
-router.get('/shop', function (req, res, next) {
-    shopHelper.getShopChocolates().then(function (chocolates) {
-        shopHelper.getAllChocolatePartsAsArray().then(function (parts) {
-            console.log(parts);
-            res.render('schoko-shop', {chocolates: chocolates, categories: parts});
-        });
-    });
+router.get('/shop', async function (req, res, next) {
+    try {
+        const chocolates = await shopHelper.getShopChocolates();
+        const chocolatesWithProperties = [];
+
+        for (const chocolate of chocolates) {
+            console.log(chocolate);
+            chocolatesWithProperties.push(await shopHelper.getChocolateWithProperties(chocolate.id));
+        }
+
+        res.render('schoko-shop', {chocolates: chocolatesWithProperties});
+    } catch (e) {
+        next(e);
+    }
 });
 
 /* GET choco shop product. */
 router.get('/shop/:productId', async function (req, res, next) {
-    const chocolate = await shopHelper.getChocolateWithProperties(req.params.productId);
-    res.render('produktseite', {chocolate: chocolate});
+    try {
+        const chocolate = await shopHelper.getChocolateWithProperties(req.params.productId);
+        res.render('produktseite', {chocolate: chocolate});
+    } catch (e) {
+        next(e);
+    }
 });
 
 /* GET shopping cart. */
@@ -46,7 +57,7 @@ router.get('/shopping-cart', loginHandler.ensureAuthentication, async function (
             }
         }
 
-        res.render('warenkorb', {chocolates: chocolates, totalPriceChocolates: totalPriceChocolates});
+        res.render('warenkorb', {chocolates: chocolates, totalPriceChocolates: totalPriceChocolates.toFixed(2)});
     } catch (e) {
         next(e);
     }
@@ -57,29 +68,29 @@ router.post('/shopping-cart', loginHandler.ensureAuthentication, async function 
     let properties;
     let chocolate;
 
+    const selfmade = req.body.selfmade === '1' ? true : false;
+
     try {
-        properties = await shopHelper.getPropertyObjects(req.body);
-        chocolate = await shopHelper.createChocolateByPropertyObjects(properties);
+        if (selfmade) {
+            properties = await shopHelper.getPropertyObjects(req.body);
+            chocolate = await shopHelper.createChocolateByPropertyObjects(properties);
 
-        if (req.body.selfmade) {
-            chocolate.selfmade = true;
-        } else {
-            chocolate.selfmade = false;
-        }
+            chocolate.selfmade = selfmade;
 
-        chocolate.price = 0;
-        for (const property in properties) {
-            if (properties[property]) {
-                chocolate.price += properties[property].price;
+            chocolate.price = 0;
+            for (const property in properties) {
+                if (properties[property]) {
+                    chocolate.price += properties[property].price;
+                }
             }
+            chocolate.price = chocolate.price.toFixed(2);
+
+            await chocolate.save();
         }
-        chocolate.price = chocolate.price.toFixed(2);
-
-        await chocolate.save();
-
+console.log(req.body);
         await ShoppingCart.findOneAndUpdate({_id: req.user._id}, {
             $set: {userId: req.user._id},
-            $push: {chocolateIds: chocolate.id}
+            $push: {chocolateIds: selfmade ? chocolate.id : req.body.chocolateId}
         }, {upsert: true, useFindAndModify: false});
 
         res.redirect('/shopping-cart');

@@ -59,6 +59,8 @@ const shopHelper = {
             cremeId: propertyObjects.cream ? propertyObjects.cream.id : null,
             fillingId: propertyObjects.stuffing ? propertyObjects.stuffing.id : null,
             toppingId: propertyObjects.topping ? propertyObjects.topping.id : null
-};
+        });
+    }
+}
 
 module.exports = shopHelper;
