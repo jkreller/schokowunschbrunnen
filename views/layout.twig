@@ -1,29 +1,32 @@
 <html lang="de">
 <head>
-  <title>
-    {{ title != null ? title : 'Schokowunschbrunnen' }}
-  </title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
-  <link rel="shortcut icon" type="image/png" href="/icons/favicon.png"/>
+    <title>
+        {{ title != null ? title : 'Schokowunschbrunnen' }}
+    </title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="shortcut icon" type="image/png" href="/icons/favicon.png"/>
 </head>
 <body {% if bodyClass %}class="{{ bodyClass }}"{% endif %}>
 <header class="header" id="1">
-  <div class="header__inner">
-    <ul>
-      <li><a href="/wishing-well" class="header__button">Schokowunschbrunnen</a></li>
-      <li><a href="/shop" class="header__button">Schokoshop</a></li>
-    </ul>
-    <a href="/" class="title"></a>
-    <ul>
-      <li><a href="/user/login" class="header__button notLoggedIn">Anmelden</a></li>
-      <li><a href="#" class="header__button loggedIn">1</a></li>
-      <li><a href="#" class="header__button loggedIn">2</a></li>
-      <li><a href="#" class="header__button loggedIn">3</a></li>
-    </ul>
-  </div>
+    <div class="header__inner">
+        <ul>
+            <li><a href="/wishing-well" class="header__button">Schokowunschbrunnen</a></li>
+            <li><a href="/shop" class="header__button">Schokoshop</a></li>
+        </ul>
+        <a href="/" class="title"></a>
+        <ul>
+            {% if user %}
+                <li><a href="/user/profile" class="header__button loggedIn1"></a></li>
+                <li><a href="/user/profile" class="header__button loggedIn2"></a></li>
+                <li><a href="/shopping-cart" class="header__button loggedIn3"></a></li>
+            {% else %}
+                <li><a href="/user/login" class="header__button notLoggedIn">Anmelden</a></li>
+            {% endif %}
+        </ul>
+    </div>
 </header>
 <main>
-  {% block main %}{% endblock %}
+    {% block main %}{% endblock %}
 </main>
 {% block scripts %}{% endblock %}
 </body>

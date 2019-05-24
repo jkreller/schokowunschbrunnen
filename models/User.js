@@ -8,7 +8,7 @@ const schema = new Schema({
     password: {type: String, required: true},
     fname: {type: String, required: true},
     lname: {type: String, required: true},
-    title: {type: String, required: true},
+    title: {type: String, enum: ['Herr', 'Frau'], required: true},
     street: {type: String, required: true},
     postcode: {type: String, required: true},
     city: {type: String, required: true},
