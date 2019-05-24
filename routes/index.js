@@ -16,7 +16,10 @@ router.get('/wishing-well', function (req, res, next) {
 /* GET choco shop. */
 router.get('/shop', function (req, res, next) {
     shopHelper.getShopChocolates().then(function (chocolates) {
-        res.render('schoko-shop', {chocolates: chocolates});
+        shopHelper.getAllChocolatePartsAsArray().then(function (parts) {
+            console.log(parts);
+            res.render('schoko-shop', {chocolates: chocolates, categories: parts});
+        });
     });
 });
 

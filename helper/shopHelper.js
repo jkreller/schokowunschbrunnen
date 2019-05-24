@@ -63,7 +63,7 @@ const shopHelper = {
                 counter++;
             });
 
-            var promise5 =Topping.findOne({"_id": chocolate.toppingId}).then(function (result, err) {
+            var promise5 = Topping.findOne({"_id": chocolate.toppingId}).then(function (result, err) {
                 if (err) {
                     console.error(err);
                 }
@@ -72,13 +72,33 @@ const shopHelper = {
 
             });
 
-            return Promise.all([promise1, promise2, promise3, promise4, promise5]).then(function(values) {
+            return Promise.all([promise1, promise2, promise3, promise4, promise5]).then(function (values) {
                 return stringParts;
             });
 
         });
+    },
 
+    getAllChocolatePartsAsArray: function () {
+
+        return this.getShopChocolates().then(function (chocolates) {
+
+            var partArray = [];
+            var arrayOfPromise = [];
+            var counter = 0;
+            chocolates.forEach((chocolate) => {
+                arrayOfPromise.push(this.getChocolatePartsAsArray(chocolate._id).then(function (parts) {
+                    console.log(parts);
+                    partArray[counter] = parts;
+                }));
+                counter++;
+            });
+            return Promise.all(arrayOfPromise).then(function () {
+                return partArray;
+            });
+        });
     }
 };
+
 
 module.exports = shopHelper;
