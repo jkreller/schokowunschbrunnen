@@ -17,67 +17,49 @@ const shopHelper = {
     },
 
     getChocolateByID: function (id) {
-        return Chocolate.findOne({'_id': id}).then(function (result, err) {
+        return Chocolate.findOne({_id: id}).then(function (result, err) {
             if (err) {
                 console.error(err);
             }
             return result;
         })
-
     },
 
-    getChocolatePartsAsArray: function (id) {
-        var stringParts = [];
-        var counter = 0;
-        return this.getChocolateByID(id).then(function (chocolate) {
+    getChocolateWithProperties: async function (id) {
+        const chocolate = (await this.getChocolateByID(id)).toObject();
 
-            var promise1 = Shape.findOne({"_id": chocolate.shapeId}).then(function (result, err) {
-                if (err) {
-                    console.error(err);
-                }
-                stringParts[0] = result;
-                counter++;
-            });
+        chocolate.shape = await Shape.findOne({"_id": chocolate.shapeId});
+        delete chocolate.shapeId;
+        chocolate.variety = await Variety.findOne({"_id": chocolate.varietyId});
+        delete chocolate.varietyId;
+        chocolate.creme = await Creme.findOne({"_id": chocolate.cremeId});
+        delete chocolate.cremeId;
+        chocolate.filling = await Filling.findOne({"_id": chocolate.fillingId});
+        delete chocolate.fillingId;
+        chocolate.topping = await Topping.findOne({"_id": chocolate.toppingId});
+        delete chocolate.toppingId;
 
-            var promise2 = Variety.findOne({"_id": chocolate.varietyId}).then(function (result, err) {
-                if (err) {
-                    console.error(err);
-                }
-                stringParts[1] = result;
-                counter++;
-            });
+        return chocolate;
+    },
 
-            var promise3 = Creme.findOne({"_id": chocolate.cremeId}).then(function (result, err) {
-                if (err) {
-                    console.error(err);
-                }
-                stringParts[2] = result;
-                counter++;
-            });
+    async getPropertyObjects(propertyNames) {
+        return {
+            shape: await Shape.findOne({'name': propertyNames.shape}),
+            variety: await Variety.findOne({'name': propertyNames.variety}),
+            cream: await Creme.findOne({'name': propertyNames.cream}),
+            stuffing: await Filling.findOne({'name': propertyNames.stuffing}),
+            topping: await Topping.findOne({'name': propertyNames.topping})
+        };
+    },
 
-            var promise4 = Filling.findOne({"_id": chocolate.fillingId}).then(function (result, err) {
-                if (err) {
-                    console.error(err);
-                }
-                stringParts[3] = result;
-                counter++;
-            });
-
-            var promise5 =Topping.findOne({"_id": chocolate.toppingId}).then(function (result, err) {
-                if (err) {
-                    console.error(err);
-                }
-                stringParts[4] = result;
-                counter++;
-
-            });
-
-            return Promise.all([promise1, promise2, promise3, promise4, promise5]).then(function(values) {
-                return stringParts;
-            });
-
+    async createChocolateByPropertyObjects(propertyObjects) {
+        return new Chocolate({
+            shapeId: propertyObjects.shape.id,
+            varietyId: propertyObjects.variety.id,
+            cremeId: propertyObjects.cream ? propertyObjects.cream.id : null,
+            fillingId: propertyObjects.stuffing ? propertyObjects.stuffing.id : null,
+            toppingId: propertyObjects.topping ? propertyObjects.topping.id : null
         });
-
     }
 };
 

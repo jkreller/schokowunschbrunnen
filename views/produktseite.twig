@@ -14,11 +14,11 @@
       <h2>Inhalte:</h2>
       <p>{{ chocolate.info }}</p>
       <div class="productdetail-ingredients">
-        <div class="category-icon {{ categories[0].className }}"></div>
-        <div class="category-icon {{ categories[1].className }}"></div>
-        <div class="category-icon {{ categories[2].className }}"></div>
-        <div class="category-icon {{ categories[3].className }}"></div>
-        <div class="category-icon {{ categories[4].className }}"></div>
+        <div class="category-icon {{ chocolate.shape.className }}"></div>
+        <div class="category-icon {{ chocolate.variety.className }}"></div>
+        <div class="category-icon {{ chocolate.creme.className }}"></div>
+        <div class="category-icon {{ chocolate.filling.className }}"></div>
+        <div class="category-icon {{ chocolate.topping.className }}"></div>
       </div>
       <h2>Preis:</h2>
       <h3>{{ chocolate.price }} €</h3>

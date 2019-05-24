@@ -70,7 +70,7 @@ router.post('/profile/edit', [
         const userId = req.user['_id'];
 
         try {
-            await User.updateOne({'_id': userId}, req.body, {runValidators: true});
+            await User.updateOne({_id: userId}, req.body, {runValidators: true});
             req.login(await User.findById(userId), function (err) {
                 if (err) {
                     next(err);
