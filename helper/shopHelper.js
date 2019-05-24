@@ -42,7 +42,7 @@ const shopHelper = {
         return chocolate;
     },
 
-    async getPropertyObjects(propertyNames) {
+    getPropertyObjects: async function (propertyNames) {
         return {
             shape: await Shape.findOne({'name': propertyNames.shape}),
             variety: await Variety.findOne({'name': propertyNames.variety}),
@@ -52,15 +52,13 @@ const shopHelper = {
         };
     },
 
-    async createChocolateByPropertyObjects(propertyObjects) {
+    createChocolateByPropertyObjects: async function (propertyObjects) {
         return new Chocolate({
             shapeId: propertyObjects.shape.id,
             varietyId: propertyObjects.variety.id,
             cremeId: propertyObjects.cream ? propertyObjects.cream.id : null,
             fillingId: propertyObjects.stuffing ? propertyObjects.stuffing.id : null,
             toppingId: propertyObjects.topping ? propertyObjects.topping.id : null
-        });
-    }
 };
 
 module.exports = shopHelper;
