@@ -54,6 +54,7 @@ body {
 
 .header__inner > ul:last-of-type {
     flex-direction: row-reverse;
+    justify-content: flex-start;
 }
 
 .header__inner > ul > li {
@@ -61,6 +62,10 @@ body {
     padding: 10px 0;
     border-radius: 5px;
     background-color: white;
+}
+
+.header__inner > ul:last-of-type > li:not(:first-of-type) {
+    margin-right: 5px;
 }
 
 .header__inner > .title {
@@ -84,8 +89,20 @@ body {
     margin-left: 10px;
 }
 
-.loggedIn {
-    display: none;
+.header__button:not(.notLoggedIn) {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.loggedIn1 {
+    background-image: url('../icons/header/Logout_t.svg')
+}
+.loggedIn2 {
+    background-image: url('../icons/header/Profil_t.svg')
+}
+.loggedIn3 {
+    background-image: url('../icons/header/Warenkorb_t.svg')
 }
 
 /*** Index ***/
@@ -355,9 +372,28 @@ body {
     margin: 0 auto;
     width: 1000px;
     height: 100%;
-    background-color: white;
     padding: 22px;
     text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.zusammenfassung > h2 {
+    font-size: 25px;
+}
+
+.zusammenfassung-icons {
+    background-color: rgba(255,255,255,0.5);
+    width: 300px;
+    border-radius: 10px;
+    padding: 10px 0;
+    margin-bottom: 10px;
+}
+
+.zusammenfassung-icons > h3 {
+    margin: 0;
+    margin-bottom: 20px;
 }
 
 /*Seitenansicht*/
@@ -848,7 +884,7 @@ input.personal-data {
     border: none;
     cursor: pointer;
     display: inline-block;
-    width: 150px;
+    width: 155px;
     margin-top: 20px;
     padding: 13px 20px 12px 20px;
     text-align: center;

@@ -16,13 +16,12 @@
         <a href="/" class="title"></a>
         <ul>
             {% if user %}
-                <li><a href="/user/profile" class="header__button notLoggedIn">Profil</a></li>
+                <li><a href="/user/profile" class="header__button loggedIn1"></a></li>
+                <li><a href="/user/profile" class="header__button loggedIn2"></a></li>
+                <li><a href="/shopping-cart" class="header__button loggedIn3"></a></li>
             {% else %}
                 <li><a href="/user/login" class="header__button notLoggedIn">Anmelden</a></li>
             {% endif %}
-            <li><a href="#" class="header__button loggedIn">1</a></li>
-            <li><a href="#" class="header__button loggedIn">2</a></li>
-            <li><a href="#" class="header__button loggedIn">3</a></li>
         </ul>
     </div>
 </header>
