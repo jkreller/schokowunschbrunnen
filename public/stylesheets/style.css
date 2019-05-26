@@ -182,7 +182,7 @@ button {
     width: 100%;
 }
 
-.brunnen-section:first-of-type {
+.brunnen-section.erklärung {
     height: calc(100% - 140px);
 }
 
@@ -295,6 +295,8 @@ button {
     left: 180px;
     background-color: rgb(59,36,8);
     color: white;
+    border: none;
+    cursor: pointer;
 }
 
 .zurück-button.last {
@@ -903,6 +905,10 @@ button {
     margin: 0;
 }
 
+.profil-inner > p, .profil-inner > form > p {
+    color: rgb(145,225,225);
+}
+
 .edit {
     text-decoration: none;
     padding: 7px 12px;
@@ -1127,6 +1133,8 @@ input.personal-data {
     font-size: 28px;
     text-decoration: none;
     border-radius: 5px;
+    border:none;
+    cursor: pointer;
 }
 
 /*** Anmelden ***/
@@ -1174,6 +1182,7 @@ input.personal-data {
     border: none;
     font-family: 'CaviarDreamsBold';
     font-size: 14px;
+    cursor: pointer;
 }
 
 .getregistered-button {
