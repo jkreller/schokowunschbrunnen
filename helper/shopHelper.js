@@ -1,45 +1,24 @@
+const User = require('../models/User');
 const Chocolate = require('../models/Chocolate');
 const Creme = require('../models/Creme');
 const Shape = require('../models/Shape');
 const Variety = require('../models/Variety');
 const Filling = require('../models/Filling');
 const Topping = require('../models/Topping');
+const ShoppingCart = require('../models/ShoppingCart');
 
 const shopHelper = {
 
     getShopChocolates: function () {
-        return Chocolate.find({"selfmade": false}).then(function (result, err) {
-            if (err) {
-                console.error(err);
-            }
-            return result;
-        });
+        return Chocolate.find({selfmade: false}).populate('shape variety creme filling topping');
     },
 
-    getChocolateByID: function (id) {
-        return Chocolate.findOne({_id: id}).then(function (result, err) {
-            if (err) {
-                console.error(err);
-            }
-            return result;
-        })
+    getPopulatedChocolate: async function (id) {
+        return Chocolate.findOne({_id: id}).populate('shape variety creme filling topping');
     },
 
-    getChocolateWithProperties: async function (id) {
-        const chocolate = (await this.getChocolateByID(id)).toObject();
-
-        chocolate.shape = await Shape.findOne({"_id": chocolate.shapeId});
-        delete chocolate.shapeId;
-        chocolate.variety = await Variety.findOne({"_id": chocolate.varietyId});
-        delete chocolate.varietyId;
-        chocolate.creme = await Creme.findOne({"_id": chocolate.cremeId});
-        delete chocolate.cremeId;
-        chocolate.filling = await Filling.findOne({"_id": chocolate.fillingId});
-        delete chocolate.fillingId;
-        chocolate.topping = await Topping.findOne({"_id": chocolate.toppingId});
-        delete chocolate.toppingId;
-
-        return chocolate;
+    getPopulatedShoppingCart: async function (userId) {
+        return ShoppingCart.findOne({user: userId}).populate({path : 'chocolates', populate : {path: 'shape variety creme filling topping'}});
     },
 
     getPropertyObjects: async function (propertyNames) {
@@ -54,11 +33,11 @@ const shopHelper = {
 
     createChocolateByPropertyObjects: async function (propertyObjects) {
         return new Chocolate({
-            shapeId: propertyObjects.shape.id,
-            varietyId: propertyObjects.variety.id,
-            cremeId: propertyObjects.cream ? propertyObjects.cream.id : null,
-            fillingId: propertyObjects.stuffing ? propertyObjects.stuffing.id : null,
-            toppingId: propertyObjects.topping ? propertyObjects.topping.id : null
+            shape: propertyObjects.shape.id,
+            variety: propertyObjects.variety.id,
+            creme: propertyObjects.cream ? propertyObjects.cream.id : null,
+            filling: propertyObjects.stuffing ? propertyObjects.stuffing.id : null,
+            topping: propertyObjects.topping ? propertyObjects.topping.id : null
         });
     }
 }

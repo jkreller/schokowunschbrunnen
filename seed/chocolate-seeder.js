@@ -86,10 +86,10 @@ Creme.findOne({name: 'vanille'}).then(function (object) {
 
 
                 var Chocolate1 = new Chocolate({
-                    shapeId: shapeobject.id,
-                    varietyId: varietyobject.id,
-                    cremeId: cremeobject.id,
-                    fillingId: fillingobject.id,
+                    shape: shapeobject.id,
+                    variety: varietyobject.id,
+                    creme: cremeobject.id,
+                    filling: fillingobject.id,
                     selfmade: false
                 });
 

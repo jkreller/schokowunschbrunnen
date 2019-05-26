@@ -4,6 +4,7 @@ const Chocolate = require('../models/Chocolate');
 const ShoppingCart = require('../models/ShoppingCart');
 const shopHelper = require('../helper/shopHelper');
 const loginHandler = require('../middlewares/LoginHandler');
+const ObjectId = require('mongoose').Types.ObjectId;
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -19,14 +20,8 @@ router.get('/wishing-well', function (req, res, next) {
 router.get('/shop', async function (req, res, next) {
     try {
         const chocolates = await shopHelper.getShopChocolates();
-        const chocolatesWithProperties = [];
 
-        for (const chocolate of chocolates) {
-            console.log(chocolate);
-            chocolatesWithProperties.push(await shopHelper.getChocolateWithProperties(chocolate.id));
-        }
-
-        res.render('schoko-shop', {chocolates: chocolatesWithProperties});
+        res.render('schoko-shop', {chocolates: chocolates});
     } catch (e) {
         next(e);
     }
@@ -35,7 +30,7 @@ router.get('/shop', async function (req, res, next) {
 /* GET choco shop product. */
 router.get('/shop/:productId', async function (req, res, next) {
     try {
-        const chocolate = await shopHelper.getChocolateWithProperties(req.params.productId);
+        const chocolate = await shopHelper.getPopulatedChocolate(req.params.productId);
         res.render('produktseite', {chocolate: chocolate});
     } catch (e) {
         next(e);
@@ -45,19 +40,14 @@ router.get('/shop/:productId', async function (req, res, next) {
 /* GET shopping cart. */
 router.get('/shopping-cart', loginHandler.ensureAuthentication, async function (req, res, next) {
     try {
-        const shoppingCart = await ShoppingCart.findOne({userId: req.user._id});
-        const chocolates = [];
+        const shoppingCart = await shopHelper.getPopulatedShoppingCart(req.user._id);
         let totalPriceChocolates = 0;
 
         if (shoppingCart) {
-            for (const chocolateId of shoppingCart.chocolateIds) {
-                const chocolate = await shopHelper.getChocolateWithProperties(chocolateId);
-                totalPriceChocolates += chocolate.price;
-                chocolates.push(chocolate);
-            }
+            shoppingCart.chocolates.forEach(chocolate => totalPriceChocolates += chocolate.price);
         }
 
-        res.render('warenkorb', {chocolates: chocolates, totalPriceChocolates: totalPriceChocolates.toFixed(2)});
+        res.render('warenkorb', {chocolates: shoppingCart.chocolates, totalPriceChocolates: totalPriceChocolates.toFixed(2)});
     } catch (e) {
         next(e);
     }
@@ -87,10 +77,10 @@ router.post('/shopping-cart', loginHandler.ensureAuthentication, async function 
 
             await chocolate.save();
         }
-console.log(req.body);
-        await ShoppingCart.findOneAndUpdate({_id: req.user._id}, {
-            $set: {userId: req.user._id},
-            $push: {chocolateIds: selfmade ? chocolate.id : req.body.chocolateId}
+
+        await ShoppingCart.findOneAndUpdate({user: req.user._id}, {
+            $set: {user: req.user._id},
+            $push: {chocolates: selfmade ? chocolate.id : req.body.chocolateId}
         }, {upsert: true, useFindAndModify: false});
 
         res.redirect('/shopping-cart');
