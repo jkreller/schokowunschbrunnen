@@ -1030,7 +1030,7 @@ input.personal-data {
     background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_1_m_1.png')
 }
 .shapeAndVariety.shape-1.variety-3 {
-    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_1_w_1.png')
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_1_w_2.png')
 }
 .shapeAndVariety.shape-2.variety-1 {
     background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_3_b_3_0002.png')
@@ -1224,6 +1224,44 @@ input.personal-data {
     text-decoration: none;
 }
 
+/*Bezahlmittel und Bestellbestätigung*/
+.payment-inner {
+    margin: 20px auto;
+    padding: 22px;
+    width: 500px;
+    background-color: rgba(255,255,255,0.5);
+}
+.payment-inner.bestätigung {
+    text-align: center;
+}
+
+.payment-inner > h2 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.payment-inner.bestätigung > h3 {
+    color: rgb(145,225,225);
+}
+
+.payment-inner > div {
+    padding: 10px;
+    background-color: rgb(255,247,238);
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.payment-inner > a {
+    background-color: rgb(59,36,8);
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+/*Sonstiges*/
 .error-message {
     color: #ff6d72;
 }

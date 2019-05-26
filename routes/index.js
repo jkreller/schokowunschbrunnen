@@ -4,7 +4,6 @@ const Chocolate = require('../models/Chocolate');
 const ShoppingCart = require('../models/ShoppingCart');
 const shopHelper = require('../helper/shopHelper');
 const loginHandler = require('../middlewares/LoginHandler');
-const ObjectId = require('mongoose').Types.ObjectId;
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -75,4 +74,13 @@ router.get('/shopping-cart/remove/:productId', loginHandler.ensureAuthentication
     }
 });
 
+router.get('/orderconfirmation', async function (req, res, next) {
+    res.render('bestellbestätigung');
+});
+
+router.get('/payment', async function (req, res, next) {
+    res.render('bezahlmittel');
+});
+
 module.exports = router;
+

@@ -24,8 +24,8 @@
                             <div class="warenkorb-product-ingredients">
                                 <div class="category-icon {{ chocolate.shape.className }}"></div>
                                 <div class="category-icon {{ chocolate.variety.className }}"></div>
-                                <div class="category-icon {{ chocolate.cream.className|default('cream-0') }}"></div>
-                                <div class="category-icon {{ chocolate.stuffing.className|default('stuffing-0') }}"></div>
+                                <div class="category-icon {{ chocolate.creme.className|default('cream-0') }}"></div>
+                                <div class="category-icon {{ chocolate.filling.className|default('stuffing-0') }}"></div>
                                 <div class="category-icon {{ chocolate.topping.className|default('topping-0') }}"></div>
                             </div>
                             <h3>Preis: {{ chocolate.price|number_format(2) }} €</h3>
@@ -54,12 +54,13 @@
                         <td>{{ (totalPriceChocolates + 4.9)|number_format(2) }} €</td>
                     </tr>
                 </table>
-                <a href=# class="buy-button">Kaufen</a>
+                <a href="/payment" class="buy-button">Kaufen</a>
             </div>
         {% else %}
             <div class="warenkorb-empty">
                 <h1>Huch, noch nix los hier?</h1>
-                <p>Dein Warenkorb ist leer. Kreiire deine eigene Schokolade im <a href="/wishing-well">Schokowunschbrunnen</a> oder
+                <p>Dein Warenkorb ist leer. Kreiire deine eigene Schokolade im <a href="/wishing-well">Schokowunschbrunnen</a>
+                    oder
                     kaufe eine fertige Schokolade im <a href="/shop">Schokoshop</a>.</p>
             </div>
         {% endif %}
