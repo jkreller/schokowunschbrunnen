@@ -9,11 +9,11 @@
             <img src="{{ chocolate.imageA }}">
           </div>
           <div class="product-ingredients">
-            <div class="category-icon shape-1"></div>
-            <div class="category-icon variety-3"></div>
-            <div class="category-icon cream-1"></div>
-            <div class="category-icon stuffing-3"></div>
-            <div class="category-icon topping-1"></div>
+            <div class="category-icon {{ chocolate.shape.className }}"></div>
+            <div class="category-icon {{ chocolate.variety.className }}"></div>
+            <div class="category-icon {{ chocolate.creme.className }}"></div>
+            <div class="category-icon {{ chocolate.filling.className }}"></div>
+            <div class="category-icon {{ chocolate.topping.className }}"></div>
           </div>
           <h3>{{ chocolate.price }} €</h3>
         </a>
