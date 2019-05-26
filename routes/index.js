@@ -20,7 +20,6 @@ router.get('/wishing-well', function (req, res, next) {
 router.get('/shop', async function (req, res, next) {
     try {
         const chocolates = await shopHelper.getShopChocolates();
-
         res.render('schoko-shop', {chocolates: chocolates});
     } catch (e) {
         next(e);
@@ -47,7 +46,10 @@ router.get('/shopping-cart', loginHandler.ensureAuthentication, async function (
             shoppingCart.chocolates.forEach(chocolate => totalPriceChocolates += chocolate.price);
         }
 
-        res.render('warenkorb', {chocolates: shoppingCart.chocolates, totalPriceChocolates: totalPriceChocolates.toFixed(2)});
+        res.render('warenkorb', {
+            chocolates: shoppingCart ? shoppingCart.chocolates : [],
+            totalPriceChocolates: totalPriceChocolates.toFixed(2)
+        });
     } catch (e) {
         next(e);
     }
@@ -55,34 +57,18 @@ router.get('/shopping-cart', loginHandler.ensureAuthentication, async function (
 
 /* POST shopping cart. */
 router.post('/shopping-cart', loginHandler.ensureAuthentication, async function (req, res, next) {
-    let properties;
-    let chocolate;
-
-    const selfmade = req.body.selfmade === '1' ? true : false;
-
     try {
-        if (selfmade) {
-            properties = await shopHelper.getPropertyObjects(req.body);
-            chocolate = await shopHelper.createChocolateByPropertyObjects(properties);
+        await shopHelper.addToShoppingCart(req.user._id, req.body);
+        res.redirect('/shopping-cart');
+    } catch (e) {
+        next(e);
+    }
+});
 
-            chocolate.selfmade = selfmade;
-
-            chocolate.price = 0;
-            for (const property in properties) {
-                if (properties[property]) {
-                    chocolate.price += properties[property].price;
-                }
-            }
-            chocolate.price = chocolate.price.toFixed(2);
-
-            await chocolate.save();
-        }
-
-        await ShoppingCart.findOneAndUpdate({user: req.user._id}, {
-            $set: {user: req.user._id},
-            $push: {chocolates: selfmade ? chocolate.id : req.body.chocolateId}
-        }, {upsert: true, useFindAndModify: false});
-
+/* GET remove shopping cart product. */
+router.get('/shopping-cart/remove/:productId', loginHandler.ensureAuthentication, async function (req, res, next) {
+    try {
+        await shopHelper.removeFromShoppingCart(req.params.productId, req.user._id);
         res.redirect('/shopping-cart');
     } catch (e) {
         next(e);

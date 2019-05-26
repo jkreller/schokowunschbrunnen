@@ -1018,6 +1018,11 @@ input.personal-data {
     z-index: 2;
 }
 
+.warenkorb-empty {
+    margin: auto;
+    text-align: center;
+}
+
 .shapeAndVariety.shape-1.variety-1 {
     background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_1_b_1.png')
 }

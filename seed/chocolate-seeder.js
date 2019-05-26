@@ -1,110 +1,210 @@
-var Chocolate = require('../models/Chocolate');
-var Creme = require('../models/Creme');
-var Filling = require('../models/Filling');
-var Shape = require('../models/Shape');
-var Variety = require('../models/Variety');
 const mongoose = require('mongoose');
+const ObjectId = require('mongoose').Types.ObjectId;
+const Chocolate = require('../models/Chocolate');
+const Shape = require('../models/Shape');
+const Variety = require('../models/Variety');
+const Cream = require('../models/Cream');
+const Stuffing = require('../models/Stuffing');
+const Topping = require('../models/Topping');
 
 const mongoDbDatabase = 'mongodb+srv://admin:Schoko98Wunsch76Brunnen!@schokowunschbrunnen-buupz.mongodb.net/schokowunschbrunnen?retryWrites=true';
 
-// connect to database
-mongoose.connect(mongoDbDatabase, {
+const conn = mongoose.connect(mongoDbDatabase, {
     useNewUrlParser: true
-}).catch((err) => console.error('Error when connecting to database.'));
-
-var Cremes = [
-    new Creme({
-        name: 'pistazie'
-    }),
-    new Creme({
-        name: 'himbeer'
-    }),
-    new Creme({
-        name: 'vanille'
-    })
-];
-
-var Fillings = [
-    new Filling({
-        name: 'blaubeer'
-    }),
-    new Filling({
-        name: 'haselnuss'
-    }),
-    new Filling({
-        name: 'oreo'
-    })
-];
-
-var Shapes = [
-    new Shape({
-        name: 'rechteck'
-    }),
-    new Shape({
-        name: 'herz'
-    }),
-    new Shape({
-        name: 'kreis'
-    })
-];
-
-var Varietys = [
-    new Variety({
-        name: 'zartbitter'
-    }),
-    new Variety({
-        name: 'vollmilch'
-    }),
-    new Variety({
-        name: 'weiß'
-    })
-];
-
-for (var i = 0; i < Creme.length; i++) {
-    Cremes[i].save().catch(console.error);
-    Fillings[i].save().catch(console.error);
-    Shapes[i].save().catch(console.error);
-    Varietys[i].save().catch(console.error);
-}
-
-var cremeobject;
-var varietyobject;
-var shapeobject;
-var fillingobject;
-
-Creme.findOne({name: 'vanille'}).then(function (object) {
-    cremeobject = object;
-
-    Variety.findOne({name: 'zartbitter'}).then(function (object) {
-        varietyobject = object;
-
-        Shape.findOne({name: 'kreis'}).then(function (object) {
-            shapeobject = object;
-
-            Filling.findOne({name: 'blaubeer'}).then(function (object) {
-                fillingobject = object;
-
-
-                var Chocolate1 = new Chocolate({
-                    shape: shapeobject.id,
-                    variety: varietyobject.id,
-                    creme: cremeobject.id,
-                    filling: fillingobject.id,
-                    selfmade: false
-                });
-
-                Chocolate1.save().catch(console.error);
-
-
-            });
-
-        });
-
-    });
-
 });
 
+Chocolate.find({}).then(items => items.forEach((item) => item.remove()));
+Shape.find({}).then(items => items.forEach((item) => item.remove()));
+Variety.find({}).then(items => items.forEach((item) => item.remove()));
+Cream.find({}).then(items => items.forEach((item) => item.remove()));
+Stuffing.find({}).then(items => items.forEach((item) => item.remove()));
+Topping.find({}).then(items => items.forEach((item) => item.remove()));
 
+const Shapes = [
+    new Shape({
+        name: 'rectangle',
+        price: 1,
+        className: 'shape-1'
+    }),
+    new Shape({
+        name: 'heart',
+        price: 1,
+        className: 'shape-2'
+    }),
+    new Shape({
+        name: 'circle',
+        price: 1,
+        className: 'shape-3'
+    }),
+];
 
+const Varieties = [
+    new Variety({
+        name: 'dark',
+        price: 1,
+        className: 'variety-1'
+    }),
+    new Variety({
+        name: 'milk',
+        price: 1,
+        className: 'variety-2'
+    }),
+    new Variety({
+        name: 'white',
+        price: 1,
+        className: 'variety-3'
+    }),
+];
 
+const Creams = [
+    new Cream({
+        name: 'empty',
+        price: 0,
+        className: 'cream-0'
+    }),
+    new Cream({
+        name: 'pistachio',
+        price: 0.65,
+        className: 'cream-1'
+    }),
+    new Cream({
+        name: 'vanilla',
+        price: 0.45,
+        className: 'cream-2'
+    }),
+    new Cream({
+        name: 'raspberry',
+        price: 0.55,
+        className: 'cream-3'
+    })
+];
 
+const Stuffings = [
+    new Stuffing({
+        name: 'empty',
+        price: 0,
+        className: 'stuffing-0'
+    }),
+    new Stuffing({
+        name: 'blueberry',
+        price: 0.55,
+        className: 'stuffing-1'
+    }),
+    new Stuffing({
+        name: 'hazelnut',
+        price: 0.45,
+        className: 'stuffing-2'
+    }),
+    new Stuffing({
+        name: 'oreo',
+        price: 0.65,
+        className: 'stuffing-3'
+    })
+];
+
+const Toppings = [
+    new Topping({
+        name: 'empty',
+        price: 0,
+        className: 'topping-0'
+    }),
+    new Topping({
+        name: 'strawberry',
+        price: 0.55,
+        className: 'topping-1'
+    }),
+    new Topping({
+        name: 'smarties',
+        price: 0.45,
+        className: 'topping-2'
+    }),
+    new Topping({
+        name: 'gold',
+        price: 0.65,
+        className: 'topping-3'
+    }),
+];
+
+for (let i = 0; i < 3; i++) {
+    Creams[i].save().then(() => console.log('saved cream ' + i));
+    Stuffings[i].save().then(() => console.log('saved stuffing ' + i));
+    Toppings[i].save().then(() => console.log('saved topping ' + i));
+
+    if (i !== 3) {
+        Shapes[i].save().then(() => console.log('saved shape ' + i));
+        Varieties[i].save().then(() => console.log('saved variety ' + i));
+    }
+}
+
+const Chocolates = [
+    new Chocolate({
+        shape: ObjectId(Shapes[0].id),
+        variety: ObjectId(Varieties[2].id),
+        cream: ObjectId(Creams[1].id),
+        stuffing: ObjectId(Stuffings[3].id),
+        topping: ObjectId(Toppings[1].id),
+        selfmade: false,
+        imageA: '/img/schoko_shop_img/Kombi1_A.png',
+        imageB: '/img/schoko_shop_img/Kombi1_B.png',
+        price: Shapes[0].price + Varieties[2].price + Creams[1].price + Stuffings[3].price + Toppings[1].price,
+    }),
+    new Chocolate({
+        shape: ObjectId(Shapes[2].id),
+        variety: ObjectId(Varieties[0].id),
+        cream: ObjectId(Creams[1].id),
+        stuffing: ObjectId(Stuffings[1].id),
+        topping: ObjectId(Toppings[1].id),
+        selfmade: false,
+        imageA: '/img/schoko_shop_img/Kombi2_A.png',
+        imageB: '/img/schoko_shop_img/Kombi2_B.png',
+        price: Shapes[2].price + Varieties[0].price + Creams[1].price + Stuffings[1].price + Toppings[1].price,
+    }),
+    new Chocolate({
+        shape: ObjectId(Shapes[1].id),
+        variety: ObjectId(Varieties[1].id),
+        cream: ObjectId(Creams[3].id),
+        stuffing: ObjectId(Stuffings[2].id),
+        topping: ObjectId(Toppings[2].id),
+        selfmade: false,
+        imageA: '/img/schoko_shop_img/Kombi3_A.png',
+        imageB: '/img/schoko_shop_img/Kombi3_B.png',
+        price: Shapes[1].price + Varieties[1].price + Creams[3].price + Stuffings[2].price + Toppings[2].price,
+    }),
+    new Chocolate({
+        shape: ObjectId(Shapes[0].id),
+        variety: ObjectId(Varieties[0].id),
+        cream: ObjectId(Creams[2].id),
+        stuffing: ObjectId(Stuffings[1].id),
+        topping: ObjectId(Toppings[3].id),
+        selfmade: false,
+        imageA: '/img/schoko_shop_img/Kombi4_A.png',
+        imageB: '/img/schoko_shop_img/Kombi4_B.png',
+        price: Shapes[0].price + Varieties[0].price + Creams[1].price + Stuffings[1].price + Toppings[3].price,
+    }),
+    new Chocolate({
+        shape: ObjectId(Shapes[2].id),
+        variety: ObjectId(Varieties[1].id),
+        cream: ObjectId(Creams[2].id),
+        stuffing: ObjectId(Stuffings[2].id),
+        topping: ObjectId(Toppings[3].id),
+        selfmade: false,
+        imageA: '/img/schoko_shop_img/Kombi5_A.png',
+        imageB: '/img/schoko_shop_img/Kombi5_B.png',
+        price: Shapes[2].price + Varieties[1].price + Creams[2].price + Stuffings[2].price + Toppings[3].price,
+    }),
+    new Chocolate({
+        shape: ObjectId(Shapes[1].id),
+        variety: ObjectId(Varieties[2].id),
+        cream: ObjectId(Creams[3].id),
+        stuffing: ObjectId(Stuffings[3].id),
+        topping: ObjectId(Toppings[1].id),
+        selfmade: false,
+        imageA: '/img/schoko_shop_img/Kombi6_A.png',
+        imageB: '/img/schoko_shop_img/Kombi6_B.png',
+        price: Shapes[1].price + Varieties[2].price + Creams[3].price + Stuffings[3].price + Toppings[1].price,
+    })
+];
+
+Chocolates.forEach((chocolate) => {
+    chocolate.save();
+});

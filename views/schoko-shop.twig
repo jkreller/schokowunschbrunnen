@@ -11,11 +11,11 @@
           <div class="product-ingredients">
             <div class="category-icon {{ chocolate.shape.className }}"></div>
             <div class="category-icon {{ chocolate.variety.className }}"></div>
-            <div class="category-icon {{ chocolate.creme.className }}"></div>
-            <div class="category-icon {{ chocolate.filling.className }}"></div>
-            <div class="category-icon {{ chocolate.topping.className }}"></div>
+            <div class="category-icon {{ chocolate.cream.className|default('cream-0') }}"></div>
+            <div class="category-icon {{ chocolate.stuffing.className|default('stuffing-0') }}"></div>
+            <div class="category-icon {{ chocolate.topping.className|default('topping-0') }}"></div>
           </div>
-          <h3>{{ chocolate.price }} €</h3>
+          <h3>{{ chocolate.price|number_format(2) }} €</h3>
         </a>
       {% endfor %}
   </div>
