@@ -96,5 +96,5 @@ router.get('/payment', async function (req, res, next) {
     res.render('bezahlmittel');
 });
 
-
 module.exports = router;
+
