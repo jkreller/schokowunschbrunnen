@@ -26,4 +26,4 @@ schema.methods.validPassword = function (password, callback) {
     });
 };
 
-module.exports = mongoose.model('user', schema);
+module.exports = mongoose.model('User', schema);
