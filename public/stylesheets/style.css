@@ -182,7 +182,7 @@ button {
     width: 100%;
 }
 
-.brunnen-section:first-of-type {
+.brunnen-section.erklärung {
     height: calc(100% - 140px);
 }
 
@@ -209,23 +209,23 @@ button {
     background-color: rgba(255,240,225,0.8);
 }
 
-.brunnen-section:nth-of-type(1) .lade-balken{
+.brunnen-section.erklärung .lade-balken{
     height: 100%;
 }
 
-.brunnen-section:nth-of-type(2) .lade-balken{
+.brunnen-section:nth-of-type(1):not(.erklärung) .lade-balken{
     height: 75%;
 }
 
-.brunnen-section:nth-of-type(3) .lade-balken{
+.brunnen-section:nth-of-type(2) .lade-balken{
     height: 50%;
 }
 
-.brunnen-section:nth-of-type(4) .lade-balken{
+.brunnen-section:nth-of-type(3) .lade-balken{
     height: 25%;
 }
 
-.brunnen-section:nth-of-type(5) .lade-balken{
+.brunnen-section:nth-of-type(4) .lade-balken{
     height: 0%;
 }
 
@@ -295,6 +295,8 @@ button {
     left: 180px;
     background-color: rgb(59,36,8);
     color: white;
+    border: none;
+    cursor: pointer;
 }
 
 .zurück-button.last {
@@ -595,8 +597,7 @@ button {
     width: 600px;
     text-align: center;
     color: rgb(59,36,8);
-    font-family: 'IceValley';
-    font-size: 40px;
+    font-size: 25px;
     font-weight: normal;
 }
 
@@ -903,6 +904,10 @@ button {
     margin: 0;
 }
 
+.profil-inner > p, .profil-inner > form > p {
+    color: rgb(145,225,225);
+}
+
 .edit {
     text-decoration: none;
     padding: 7px 12px;
@@ -980,6 +985,7 @@ input.personal-data {
     background-color: rgba(255,255,255,0.5);
     border-radius: 10px;
     margin-bottom: 20px;
+    position: relative;
 }
 
 .warenkorb-product-info > h2 {
@@ -1074,6 +1080,29 @@ input.personal-data {
     height: 100%;
 }
 
+.delete {
+    background: rgb(59,36,8);
+    width: 5px;
+    height: 21px;
+    position: absolute;
+    margin-left: 33px;
+    transform: rotate(45deg);
+    border-radius: 20px;
+    top: 25px;
+    right: 35px;
+}
+
+.delete::before {
+    background: rgb(59,36,8);
+    content: "";
+    width: 21px;
+    height: 5px;
+    position: absolute;
+    top: 8px;
+    left: -8px;
+    border-radius: 20px;
+}
+
 .warenkorb-product-ingredients {
     display: flex;
     width: 300px;
@@ -1127,6 +1156,8 @@ input.personal-data {
     font-size: 28px;
     text-decoration: none;
     border-radius: 5px;
+    border:none;
+    cursor: pointer;
 }
 
 /*** Anmelden ***/
@@ -1174,6 +1205,7 @@ input.personal-data {
     border: none;
     font-family: 'CaviarDreamsBold';
     font-size: 14px;
+    cursor: pointer;
 }
 
 .getregistered-button {
