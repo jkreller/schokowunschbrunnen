@@ -87,7 +87,6 @@ router.post('/shopping-cart', loginHandler.ensureAuthentication, async function 
 
             await chocolate.save();
         }
-console.log(req.body);
         await ShoppingCart.findOneAndUpdate({_id: req.user._id}, {
             $set: {userId: req.user._id},
             $push: {chocolateIds: selfmade ? chocolate.id : req.body.chocolateId}
@@ -98,5 +97,14 @@ console.log(req.body);
         next(e);
     }
 });
+
+router.get('/orderconfirmation', async function (req, res, next) {
+    res.render('bestellbestätigung');
+});
+
+router.get('/payment', async function (req, res, next) {
+    res.render('bezahlmittel');
+});
+
 
 module.exports = router;
