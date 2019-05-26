@@ -82,7 +82,7 @@ router.post('/profile/edit', [
         }
     } else {
         res.render('user/profil', {
-            birthdayFormatted: req.user.birthday,
+            birthdayFormatted: req.body.birthday,
             edit: true,
             user: req.body,
             errors: errors.mapped()
