@@ -985,6 +985,7 @@ input.personal-data {
     background-color: rgba(255,255,255,0.5);
     border-radius: 10px;
     margin-bottom: 20px;
+    position: relative;
 }
 
 .warenkorb-product-info > h2 {
@@ -1077,6 +1078,29 @@ input.personal-data {
 
 .warenkorb-product-img > img {
     height: 100%;
+}
+
+.delete {
+    background: rgb(59,36,8);
+    width: 5px;
+    height: 21px;
+    position: absolute;
+    margin-left: 33px;
+    transform: rotate(45deg);
+    border-radius: 20px;
+    top: 25px;
+    right: 35px;
+}
+
+.delete::before {
+    background: rgb(59,36,8);
+    content: "";
+    width: 21px;
+    height: 5px;
+    position: absolute;
+    top: 8px;
+    left: -8px;
+    border-radius: 20px;
 }
 
 .warenkorb-product-ingredients {
