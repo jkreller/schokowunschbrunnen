@@ -111,7 +111,7 @@
                         <div class="category-icon cream-3"></div>
                         <span>Himbeere</span>
                     </label>
-                    <p class="price">Preis: <span>0,00</span>€</p>
+                    <p class="price">Preis: <span id="creamprice">0,00</span>€</p>
                 </div>
                 <div class="category">
                     <p>Füllung :</p>
@@ -135,7 +135,7 @@
                         <div class="category-icon stuffing-3"></div>
                         <span>Oreo</span>
                     </label>
-                    <p class="price">Preis: <span>0,00</span>€</p>
+                    <p class="price">Preis: <span id="stuffingprice">0,00</span>€</p>
                 </div>
                 <a href="#2" class="zurück-button">Zurück</a>
                 <a href="#4" class="weiter-button">Weiter</a>
@@ -174,10 +174,10 @@
                         <div class="category-icon topping-3"></div>
                         <span>Blattgold</span>
                     </label>
-                    <p class="price">Preis: <span>0,00</span>€</p>
+                    <p class="price">Preis: <span id="toppingprice">0,00</span>€</p>
                 </div>
                 <a href="#3" class="zurück-button">Zurück</a>
-                <a href="#5" class="weiter-button">Weiter</a>
+                <a href="#5" class="weiter-button" id="calculate">Weiter</a>
             </div>
         </section>
         <section class="brunnen-section" id="5">
@@ -202,7 +202,7 @@
                     <h3>Topping:</h3>
                     <div class="category-icon topping-0"></div>
                 </div>
-                <!--<h3>Preis: 2,00 €</h3>-->
+                <h3>Preis: <span id="totalprice">1,00</span> €</h3>
                 <input type="hidden" name="selfmade" value="1">
                 <a href="#4" class="zurück-button last">Zurück</a>
                 <button class="weiter-button wünschen">Schokolade wünschen!</button>
