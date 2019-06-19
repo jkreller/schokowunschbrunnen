@@ -17,7 +17,12 @@
 /*
 ** basics **
 */
+main {
+    padding-bottom: 1px;
+}
+
 body {
+    position: relative;
     margin: 0;
     background-image: 
         repeating-linear-gradient(90deg,
@@ -112,6 +117,31 @@ button {
 }
 .loggedIn3 {
     background-image: url('../icons/header/Warenkorb_t.svg')
+}
+
+/*
+** footer **
+*/
+.footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-top-left-radius: 10px;
+    width: 200px;
+    height: 20px;
+    padding: 10px 30px;
+    background: rgba(255,255,255,0.5);
+    text-align: center;
+}
+
+.wunschbrunnen-body > .footer {
+    bottom: 15px;
+}
+
+.footer-link {
+    margin: 10px;
+    text-decoration: none;
+    color: rgb(59,36,8);
 }
 
 /*
@@ -617,8 +647,7 @@ button {
     flex-wrap: wrap;
     justify-content: space-between;
     display: flex;
-    margin: 20px 51px 40px;
-    height: 100%;
+    margin: 20px 51px 0;
 }
 
 .product-view {
@@ -628,6 +657,10 @@ button {
     height: 400px;
     background-color: rgba(255,255,255,0.6);
     text-decoration: none;
+}
+
+.product-view:last-of-type {
+    margin-bottom: 55px;
 }
 
 .product-img {
@@ -744,6 +777,7 @@ button {
 
 .productdetail-details {
     position: relative;
+    margin-bottom: 25px;
     margin-left: 51px;
     border-radius: 10px;
     padding: 22px;
