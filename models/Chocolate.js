@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
+/**
+ * Mongoose database schema for chocolates
+ */
 const schema = new Schema({
     shape: {type: Schema.Types.ObjectId, ref: 'Shape', required: true},
     variety: {type: Schema.Types.ObjectId, ref: 'Variety', required: true},

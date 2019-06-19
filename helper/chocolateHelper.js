@@ -1,4 +1,3 @@
-const User = require('../models/User');
 const Chocolate = require('../models/Chocolate');
 const Cream = require('../models/Cream');
 const Shape = require('../models/Shape');
@@ -7,15 +6,45 @@ const Stuffing = require('../models/Stuffing');
 const Topping = require('../models/Topping');
 const ShoppingCart = require('../models/ShoppingCart');
 
-const shopHelper = {
-    getShopChocolates: function () {
+/**
+ * ChocolateHelper:
+ *
+ * Contains various functions for operating with chocolates. For example provides database queries and processing functions.
+ *
+ * @type {{getShopChocolates: (function(): (Promise|Query|Document|*|void)), getPopulatedChocolate: (function(*=): (Promise|Query|Document|*|void)), getPopulatedShoppingCart: (function(*=): (Promise|Query|Document|*|void)), getPropertyObjects: (function(*): {shape: *, variety: *, cream: *, stuffing: *, topping: *}), createChocolateByPropertyObjects: (function(*): *), addToShoppingCart: (function(*=, *=): *), removeFromShoppingCart: (function(*=, *=): *), removeAllFromShoppingCart: (function(*=): *)}}
+ */
+const chocolateHelper = {
+    /**
+     * GetShopChocolates
+     *
+     * Returning the shop chocolates from data base.
+     *
+     * @returns {Promise<Chocolate[]>}
+     */
+    getShopChocolates: async function () {
         return Chocolate.find({selfmade: false}).populate('shape variety cream stuffing topping');
     },
 
+    /**
+     * GetPopulatedChocolate
+     *
+     * Puts the chocolate parts together in one object to work with.
+     *
+     * @param id
+     * @returns {Promise<Chocolate>}
+     */
     getPopulatedChocolate: async function (id) {
         return Chocolate.findOne({_id: id}).populate('shape variety cream stuffing topping');
     },
 
+    /**
+     * GetPopulatedShoppingCart
+     *
+     * Puts the chocolates together in one Shoppingcart-object to work with.
+     *
+     * @param userId
+     * @returns {Promise<ShoppingCart>}
+     */
     getPopulatedShoppingCart: async function (userId) {
         return ShoppingCart.findOne({user: userId}).populate({
             path: 'chocolates',
@@ -23,6 +52,14 @@ const shopHelper = {
         });
     },
 
+    /**
+     * GetPropertyObjects
+     *
+     * Returns a property-object containing all of the chocolate parts.
+     *
+     * @param propertyNames
+     * @returns {Promise<{shape: Shape, variety: Variety, cream: Cream, stuffing: Stuffing, topping: Topping}>}
+     */
     getPropertyObjects: async function (propertyNames) {
         return {
             shape: await Shape.findOne({'name': propertyNames.shape}),
@@ -33,6 +70,14 @@ const shopHelper = {
         };
     },
 
+    /**
+     * CreateChocolateByPropertyObjects
+     *
+     * Creates a Chocolates from the propertyObjects containing all of its parts.
+     *
+     * @param propertyObjects
+     * @returns {Chocolate}
+     */
     createChocolateByPropertyObjects: function (propertyObjects) {
         return new Chocolate({
             shape: propertyObjects.shape.id,
@@ -43,16 +88,26 @@ const shopHelper = {
         });
     },
 
+    /**
+     * AddToShoppingCart:
+     *
+     * Adds a chocolateObject to the ShoppingCard of an user.
+     *
+     * @param userId
+     * @param chocolateObj
+     * @returns {Promise<ShoppingCart>}
+     */
     addToShoppingCart: async function (userId, chocolateObj) {
         let chocolate;
 
-        // if chocolate has no id then create one
+        // If chocolate has no id then create one
         if (!chocolateObj.chocolateId) {
-            const properties = await shopHelper.getPropertyObjects(chocolateObj);
-            chocolate = shopHelper.createChocolateByPropertyObjects(properties);
+            const properties = await chocolateHelper.getPropertyObjects(chocolateObj);
+            chocolate = chocolateHelper.createChocolateByPropertyObjects(properties);
 
             chocolate.selfmade = true;
 
+            // Calculate chocolate price
             chocolate.price = 0;
             for (const property in properties) {
                 if (properties[property]) {
@@ -70,6 +125,15 @@ const shopHelper = {
         }, {upsert: true, useFindAndModify: false});
     },
 
+    /**
+     * RemoveFromShoppingCart:
+     *
+     * Removes a chocolate from a shoppingCard of an user.
+     *
+     * @param chocolateId
+     * @param userId
+     * @returns {Promise<ShoppingCart>}
+     */
     removeFromShoppingCart: async function (chocolateId, userId) {
         const chocolate = await Chocolate.findById(chocolateId);
 
@@ -82,7 +146,22 @@ const shopHelper = {
                 chocolates: chocolateId
             }
         }, {useFindAndModify: false});
+    },
+
+    /**
+     * RemoveAllFromShoppingCart:
+     *
+     * Removes all of the chocolates from a shoppingCard of a specific user.
+     *
+     * @param userId
+     * @returns {Promise<*>}
+     */
+    removeAllFromShoppingCart: async function (userId) {
+        const shoppingCart = await ShoppingCart.findOne({'user': userId});
+        return shoppingCart.remove();
     }
+
+
 };
 
-module.exports = shopHelper;
+module.exports = chocolateHelper;
