@@ -1,41 +1,53 @@
-/*Form und Sorte wechseln*/
+/*variables*/
+/*all items where the shape or variety is displayed (e.g. side-view, top-view)*/
 var Shapes = document.getElementsByClassName('shapeClass');
 var Varieties = document.getElementsByClassName('varietyClass');
+var i = 0;
+var j = 0;
 
+/*the icons that are displayed in the summary at the end of the "Wundschbrunnen"-page */
 var ZusammenfassungFormSorte = document.getElementById('zusammenfassung-form-sorte').getElementsByClassName('category-icon');
 var ZusammenfassungCremeFüllung = document.getElementById('zusammenfassung-creme-füllung').getElementsByClassName('category-icon');
 var ZusammenfassungTopping = document.getElementById('zusammenfassung-topping').getElementsByClassName('category-icon');
 
-var i = 0;
-var j = 0;
-
+/*the radio buttons of the different categories*/
 var shaperadios = document.querySelectorAll('input[type=radio][name="shape"]');
 var varietyradios = document.querySelectorAll('input[type=radio][name="variety"]');
 var creamradios = document.querySelectorAll('input[type=radio][name="cream"]');
 var stuffingradios = document.querySelectorAll('input[type=radio][name="stuffing"]');
 var toppingradios = document.querySelectorAll('input[type=radio][name="topping"]');
 
+/*the image of the different categories*/
 var imgshapeandvariety = document.getElementById("shapeAndVariety");
 var imgcream = document.getElementById("cream");
 var imgstuffing = document.getElementById("stuffing");
 var imgtopping = document.getElementById("topping");
 
+/*images of top- and sideview*/
 var imgsideview = document.getElementById("side-view");
 var imgtopview = document.getElementById("top-view");
 
+/*the differnt price fields and preset prices*/
 var totalPriceField = document.getElementById("totalprice");
 var creamPriceField = document.getElementById("creamprice");
 var stuffingPriceField = document.getElementById("stuffingprice");
 var toppingPriceField = document.getElementById("toppingprice");
-
-console.log(creamPriceField.innerText);
-
 var totalPrice = 1.00;
 var creamPrice = 0.00;
 var stuffingPrice = 0.00;
 var toppingPrice = 0.00;
 
-// the function changeShape 
+/*functions*/
+/*  
+    The functions changeShape, changeVariety, changeCream, changeStuffing 
+    and changeTopping save the selected component of the respective 
+    category and change the displayed images and the icons in the summary. 
+    For that, classes are added and not applicable ones are removed.
+    
+    The functions changeCream, changeStuffing and changeTopping are also 
+    changing the displayed prices. To display the price, the points are 
+    converted to commas.
+*/
 function changeShape(event) {
     if ( this.id === 'rectangle' ) {
         for(i=0; i<3; i++){
@@ -66,7 +78,6 @@ function changeShape(event) {
 Array.prototype.forEach.call(shaperadios, function(radio) {
     radio.addEventListener('change', changeShape);
 });
-
 function changeVariety(event) {
     if ( this.id === 'dark' ) {
         for(j=0; j<3; j++){
@@ -98,8 +109,6 @@ function changeVariety(event) {
 Array.prototype.forEach.call(varietyradios, function(radio) {
     radio.addEventListener('change', changeVariety);
 });
-
-/*Creme-Bild wechseln*/
 function changeCream(event) {
     if (this.id === 'no-cream') {
     imgcream.classList.remove('cream1', 'cream2', 'cream3');
@@ -131,8 +140,6 @@ function changeCream(event) {
 Array.prototype.forEach.call(creamradios, function (radio) {
 radio.addEventListener('change', changeCream);
 });
-
-/*Füllung-Bild wechseln*/
 function changeStuffing(event) {
     if (this.id === 'no-stuffing') {
         imgstuffing.classList.remove('stuffing1', 'stuffing2', 'stuffing3');
@@ -164,8 +171,6 @@ function changeStuffing(event) {
 Array.prototype.forEach.call(stuffingradios, function (radio) {
 radio.addEventListener('change', changeStuffing);
 });
-
-/*Topping-Bild wechseln*/
 function changeTopping(event) {
     if (this.id === 'no-topping') {
         imgtopping.classList.remove('topping1', 'topping2', 'topping3');
@@ -198,6 +203,12 @@ Array.prototype.forEach.call(toppingradios, function (radio) {
 radio.addEventListener('change', changeTopping);
 });
 
+/*
+    The function calculateTotalPrice calculates the prices of all selected 
+    ingredients for a total price. To display the price, the points are 
+    converted to commas. This function is always executed when 
+    the last "Weiter"-button is pressed. 
+*/
 function calculateTotalPrice(event) {
     totalPrice = 1.00 + creamPrice + stuffingPrice + toppingPrice;
     totalPriceField.innerText = totalPrice.toFixed(2).replace('.',',');
