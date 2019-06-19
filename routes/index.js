@@ -11,14 +11,14 @@ router.get('/', function (req, res, next) {
 });
 
 /**
- * GET choco wishing well.
+ * GET chocolate wishing well.
  */
 router.get('/wishing-well', function (req, res, next) {
     res.render('schoko-wunschbrunnen');
 });
 
 /**
- * GET choco shop.
+ * GET chocolate shop.
  */
 router.get('/shop', async function (req, res, next) {
     try {
@@ -30,7 +30,7 @@ router.get('/shop', async function (req, res, next) {
 });
 
 /**
- * GET choco shop product.
+ * GET chocolate shop product.
  */
 router.get('/shop/:productId', async function (req, res, next) {
     try {
