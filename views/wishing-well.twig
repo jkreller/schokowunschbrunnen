@@ -1,0 +1,216 @@
+{% extends 'layout.twig' %}
+
+{% set bodyClass = 'wunschbrunnen-body' %}
+
+{% block main %}
+    <section class="brunnen-section erklärung">
+        <div class="ladestatus">
+            <div class="schoko-balken">
+                <div class="lade-balken"></div>
+            </div>
+        </div>
+        <div class="infobox">
+            <h1>Herzlich Willkommen beim Schokowunschbrunnen!</h1>
+            <div class="infotext">
+                <p>Hier werden Schokowünsche war!</p>
+                <span>Im Folgenden kannst du dir deine Schokolade ganz nach deinen Wünschen erstellen.</br>
+                    Wähle dafür in den Kategorien Form, Sorte, Creme, Füllung und Topping jeweils deinen Favourit.</br>
+                    Anhand des Schokobalkens am linken Bildschirmrand kannst du ablesen, wie weit du im Erstellprozess schon
+        gekommen bist.</span>
+                <span>Am Ende der Seite angelangt, kannst du dir noch einmal einen Überblick über deine Kreation verschaffen. Diese
+        kannst du dann in den Warenkorb legen und dir nach Hause wünschen. Achte hierbei darauf, dass dies nur im
+        angemeldeten Zustand funktioniert und dass eine Zwischenspeicherung nicht möglich ist.</span>
+                <p>Viel Vergnügen wünscht dir das Schokowunschbrunnen-Team !</p>
+            </div>
+            <a href="#2" class="weiter-button">Los gehts!</a>
+        </div>
+    </section>
+    <form  method="post" action="/shopping-cart">
+        <section class="brunnen-section" id="2">
+            <div class="ladestatus">
+                <div class="schoko-balken">
+                    <div class="lade-balken"></div>
+                </div>
+            </div>
+            <div class="schoko-category">
+                <div class="animation">
+                    <div id="shapeAndVariety" class="shapeClass varietyClass shape1 variety2"></div>
+                </div>
+                <div class="category">
+                    <p>Form :</p>
+                    <input type="radio" name="shape" id="rectangle" value="rectangle" checked="checked">
+                    <label for="rectangle">
+                        <div class="category-icon shape-1"></div>
+                        <span>Rechteck</span>
+                    </label>
+                    <input type="radio" name="shape" id="heart" value="heart">
+                    <label for="heart">
+                        <div class="category-icon shape-2"></div>
+                        <span>Herz</span>
+                    </label>
+                    <input type="radio" name="shape" id="circle" value="circle">
+                    <label for="circle">
+                        <div class="category-icon shape-3"></div>
+                        <span>Kreis</span>
+                    </label>
+                </div>
+                <div class="category">
+                    <p>Sorte :</p>
+                    <input type="radio" name="variety" id="dark" value="dark">
+                    <label for="dark">
+                        <div class="category-icon variety-1"></div>
+                        <span>Zartbitter</span>
+                    </label>
+                    <input type="radio" name="variety" id="milk"  value="milk" checked="checked">
+                    <label for="milk">
+                        <div class="category-icon variety-2"></div>
+                        <span>Vollmilch</span>
+                    </label>
+                    <input type="radio" name="variety" id="white" value="white">
+                    <label for="white">
+                        <div class="category-icon variety-3"></div>
+                        <span>Weiß</span>
+                    </label>
+                    <p class="price">Preis: <span>2,00</span>€</p>
+                </div>
+                <a href="#1" class="zurück-button">Zurück</a>
+                <a href="#3" class="weiter-button">Weiter</a>
+            </div>
+        </section>
+        <section class="brunnen-section" id="3">
+            <div class="ladestatus">
+                <div class="schoko-balken">
+                    <div class="lade-balken"></div>
+                </div>
+            </div>
+            <div class="schoko-category">
+                <div class="animation">
+                    <div id="side-view" class="varietyClass variety2"></div>
+                    <div id="cream" class="cream0"></div>
+                    <div id="stuffing" class="stuffing0"></div>
+                </div>
+                <div class="category">
+                    <p>Creme :</p>
+                    <input type="radio" name="cream" id="no-cream"  value="no-cream" checked="checked">
+                    <label for="no-cream">
+                        <div class="category-icon cream-0"></div>
+                        <span>Keine</span>
+                    </label>
+                    <input type="radio" name="cream" id="pistachio" value="pistachio">
+                    <label for="pistachio">
+                        <div class="category-icon cream-1"></div>
+                        <span>Pistazie</span>
+                    </label>
+                    <input type="radio" name="cream" id="vanilla" value="vanilla">
+                    <label for="vanilla">
+                        <div class="category-icon cream-2"></div>
+                        <span>Vanille</span>
+                    </label>
+                    <input type="radio" name="cream" id="raspberry" value="raspberry">
+                    <label for="raspberry">
+                        <div class="category-icon cream-3"></div>
+                        <span>Himbeere</span>
+                    </label>
+                    <p class="price">Preis: <span id="creamprice">0,00</span>€</p>
+                </div>
+                <div class="category">
+                    <p>Füllung :</p>
+                    <input type="radio" name="stuffing" id="no-stuffing" value="no-stuffing" checked="checked">
+                    <label for="no-stuffing">
+                        <div class="category-icon stuffing-0"></div>
+                        <span>Keine</span>
+                    </label>
+                    <input type="radio" name="stuffing" id="blueberry" value="blueberry">
+                    <label for="blueberry">
+                        <div class="category-icon stuffing-1"></div>
+                        <span>Blaubeere</span>
+                    </label>
+                    <input type="radio" name="stuffing" id="hazelnut" value="hazelnut">
+                    <label for="hazelnut">
+                        <div class="category-icon stuffing-2"></div>
+                        <span>Haselnuss</span>
+                    </label>
+                    <input type="radio" name="stuffing" id="oreo" value="oreo">
+                    <label for="oreo">
+                        <div class="category-icon stuffing-3"></div>
+                        <span>Oreo</span>
+                    </label>
+                    <p class="price">Preis: <span id="stuffingprice">0,00</span>€</p>
+                </div>
+                <a href="#2" class="zurück-button">Zurück</a>
+                <a href="#4" class="weiter-button">Weiter</a>
+            </div>
+        </section>
+        <section class="brunnen-section" id="4">
+            <div class="ladestatus">
+                <div class="schoko-balken">
+                    <div class="lade-balken"></div>
+                </div>
+            </div>
+            <div class="schoko-category">
+                <div class="animation shapeClass shape1">
+                    <div id="top-view" class="shapeClass varietyClass shape1 variety2"></div>
+                    <div id="topping" class="topping0"></div>
+                </div>
+                <div class="category">
+                    <p>Topping :</p>
+                    <input type="radio" name="topping" id="no-topping" value="no-topping" checked="checked">
+                    <label for="no-topping">
+                        <div class="category-icon topping-0"></div>
+                        <span>Keins</span>
+                    </label>
+                    <input type="radio" name="topping" id="strawberry" value="strawberry">
+                    <label for="strawberry">
+                        <div class="category-icon topping-1"></div>
+                        <span>Erdbeere</span>
+                    </label>
+                    <input type="radio" name="topping" id="smarties" value="smarties">
+                    <label for="smarties">
+                        <div class="category-icon topping-2"></div>
+                        <span>Schokolinsen</span>
+                    </label>
+                    <input type="radio" name="topping" id="gold" value="gold">
+                    <label for="gold">
+                        <div class="category-icon topping-3"></div>
+                        <span>Blattgold</span>
+                    </label>
+                    <p class="price">Preis: <span id="toppingprice">0,00</span>€</p>
+                </div>
+                <a href="#3" class="zurück-button">Zurück</a>
+                <a href="#5" class="weiter-button" id="calculate">Weiter</a>
+            </div>
+        </section>
+        <section class="brunnen-section" id="5">
+            <div class="ladestatus">
+                <div class="schoko-balken">
+                    <div class="lade-balken"></div>
+                </div>
+            </div>
+            <div class="zusammenfassung" id="zusammenfassung">
+                <h2>Fertig! Hier nochmal deine Zusammenfassung:</h2>
+                <div class="zusammenfassung-icons" id="zusammenfassung-form-sorte">
+                    <h3>Form und Sorte:</h3>
+                    <div class="category-icon shape-1"></div>
+                    <div class="category-icon variety-2"></div>
+                </div>
+                <div class="zusammenfassung-icons" id="zusammenfassung-creme-füllung">
+                    <h3>Creme und Füllung:</h3>
+                    <div class="category-icon cream-0"></div>
+                    <div class="category-icon stuffing-0"></div>
+                </div>
+                <div class="zusammenfassung-icons" id="zusammenfassung-topping">
+                    <h3>Topping:</h3>
+                    <div class="category-icon topping-0"></div>
+                </div>
+                <h3>Preis: <span id="totalprice">1,00</span> €</h3>
+                <input type="hidden" name="selfmade" value="1">
+                <a href="#4" class="zurück-button last">Zurück</a>
+                <button class="weiter-button wünschen">Schokolade wünschen!</button>
+            </div>
+        </section>
+    </form>
+{% endblock %}
+
+{% block scripts %}
+    <script src="javascript/wishing-well.js"></script>
+{% endblock %}

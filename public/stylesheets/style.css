@@ -1,8 +1,1207 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+@font-face { 
+    font-family: 'IceValley'; 
+    src:url('../fonts/ice_valley.ttf') format('truetype'),
+        url('../fonts/ice_valley.otf') format('opentype');
 }
 
-a {
-  color: #00B7FF;
+@font-face {
+    font-family: 'Pintgram';
+    src: url('../fonts/Pintgram-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'CaviarDreamsBold';
+    src: url('../fonts/CaviarDreams_Bold.ttf') format('truetype');
+}
+
+/*
+** basics **
+*/
+main {
+    padding-bottom: 1px;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    background-image: 
+        repeating-linear-gradient(90deg,
+                                rgb(255,240,225) 0%,rgb(255,240,225) 2%,
+                                rgb(255,247,238) 2%,rgb(255,247,238) 4%, 
+                                rgb(255,240,225) 4%);
+    font-size: 14px;
+    font-family: 'CaviarDreamsBold';
+    color: rgb(59,36,8);
+}
+
+button {
+    font-size: 14px;
+    font-family: 'CaviarDreamsBold';
+}
+
+/*
+** header **
+*/
+.header {
+    width: 100%;
+    height: 140px;
+    background: rgb(145,225,225);
+}
+
+.header__inner {
+    justify-content: space-between;
+    align-items: flex-end;
+    display: flex;
+    margin: 0 51px;
+    height: 100%;
+}
+
+.header__inner > ul {
+    justify-content: space-between;
+    display: flex;
+    margin: 0;
+    margin-bottom: 20px;
+    width: 315px;
+    padding: 0;
+    list-style: none;
+}
+
+.header__inner > ul:last-of-type {
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+}
+
+.header__inner > ul > li {
+    display: inline-block;
+    border-radius: 5px;
+    padding: 10px 0;
+    background-color: white;
+}
+
+.header__inner > ul:last-of-type > li:not(:first-of-type) {
+    margin-right: 5px;
+}
+
+.header__inner > .title {
+    margin-bottom: 20px;
+    width: 410px;
+    height: 90px;
+    background-image: url(../img/LOGO_FINAL_PNG_Zeichenfläche\ 1.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    text-decoration: none;
+}
+
+.header__button {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: rgb(145,225,225);
+}
+
+.header__button:not(:first-of-type) {
+    margin-left: 10px;
+}
+
+.header__button:not(.notLoggedIn) {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.loggedIn1 {
+    background-image: url('../icons/header/Logout_t.svg')
+}
+.loggedIn2 {
+    background-image: url('../icons/header/Profil_t.svg')
+}
+.loggedIn3 {
+    background-image: url('../icons/header/Warenkorb_t.svg')
+}
+
+/*
+** footer **
+*/
+.footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-top-left-radius: 10px;
+    width: 200px;
+    height: 20px;
+    padding: 10px 30px;
+    background: rgba(255,255,255,0.5);
+    text-align: center;
+}
+
+.wunschbrunnen-body > .footer {
+    bottom: 15px;
+}
+
+.footer-link {
+    margin: 10px;
+    text-decoration: none;
+    color: rgb(59,36,8);
+}
+
+/*
+** index **
+*/
+.index-inner {
+    justify-content: space-between;
+    display: flex;
+    margin: 40px 51px 0;
+}
+
+.info {
+    display: inline-block;
+    width: 506px;
+    height: 300px;
+    border-radius: 10px;
+    padding: 22px;
+    background-color: rgba(255,255,255,0.5);
+    text-align: center;
+}
+
+.info-content {
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    height: calc(100% - 76px);
+}
+
+.info-content > img {
+    max-width: 160px;
+    height: 100%;
+}
+
+.info-content > div {
+    width: calc(100% - 160px);
+    font-size: 18px;
+    color: rgb(59,36,8);
+}
+
+.info-content > div > span {
+    display: inline-block;
+    margin: 0;
+    font-size: 28px;
+    font-family: 'IceValley';
+}
+
+.info-content > div > span.extra {
+    font-size: 38px;
+    color: rgb(145,225,225);
+}
+
+.info-button {
+    display: inline-block;
+    margin-top: 22px;
+    width: calc(100% - 20px);
+    border-radius: 10px;
+    padding: 14px 10px;
+    background-color: rgb(145,225,225);
+    font-size: 26px;
+    font-family: 'IceValley';
+    text-decoration: none;
+    color: rgb(59,36,8);
+}
+
+/*
+** page "Schokowunschbrunnen" **
+*/
+.wunschbrunnen-body {
+    overflow: hidden;
+}
+
+.brunnen-section {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.brunnen-section.erklärung {
+    height: calc(100% - 140px);
+}
+
+.ladestatus {
+    position: absolute;
+    height: 100%;
+}
+
+.schoko-balken {
+    position: relative;
+    z-index: 1;
+    top: 0;
+    width: 51px;
+    height: 100%;
+    background: url('../img/schoko-streifen.jpg');
+    background-size: cover;
+}
+
+.lade-balken {
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    width: 51px;
+    background-color: rgba(255,240,225,0.8);
+}
+
+.brunnen-section.erklärung .lade-balken{
+    height: 100%;
+}
+
+.brunnen-section:nth-of-type(1):not(.erklärung) .lade-balken{
+    height: 75%;
+}
+
+.brunnen-section:nth-of-type(2) .lade-balken{
+    height: 50%;
+}
+
+.brunnen-section:nth-of-type(3) .lade-balken{
+    height: 25%;
+}
+
+.brunnen-section:nth-of-type(4) .lade-balken{
+    height: 0%;
+}
+
+.infobox {
+    margin: 0 51px;
+    width: calc(100% - 146px);
+    height: calc(100% - 44px);
+    padding: 22px;
+    text-align: center;
+}
+
+.infobox > h1 {
+    margin: 0;
+    font-size: 25px;
+    font-weight: normal;
+    color: rgb(59,36,8);
+}
+
+.infotext > p {
+    display: block;
+    margin: 0;
+    margin-top: 20px;
+    font-size: 20px;
+    color: rgb(145,225,225);
+}
+
+.infotext > span {
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+    max-width: 850px;
+}
+
+.infotext > span:first-of-type {
+    font-size: 18px;
+}
+
+.weiter-button, .zurück-button {
+    position: absolute;
+    z-index: 20;
+    bottom: 22px;
+    left: 150px;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    width: 120px;
+    padding: 10px;
+    background-color: rgb(145,225,225);
+    font-weight: normal;
+    text-decoration: none;
+    color: rgb(59,36,8);
+}
+
+.zurück-button {
+    left: 0;
+    right: 150px;
+}
+
+.weiter-button:first-of-type {
+    left: 0;
+    right: 0;
+}
+
+.weiter-button.wünschen {
+    left: 180px;
+    border: none;
+    width: 200px;
+    background-color: rgb(59,36,8);
+    cursor: pointer;
+    color: white;
+}
+
+.zurück-button.last {
+    right: 200px;
+}
+
+.schoko-category {
+    margin: 0 auto;
+    width: 1000px;
+    height: calc(100% - 44px);
+    padding: 22px;
+    text-align: center;
+}
+
+.animation {
+    position: relative;
+    margin: 0 auto;
+    width: 600px;
+    height: 310px;
+}
+
+.animation > div {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.animation > div:last-of-type {
+    z-index: 2;
+}
+
+.category {
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin: 0 auto;
+    border-radius: 10px;
+    width: 600px;
+    padding: 5px 0;
+    background-color: rgba(255,255,255,0.5);
+}
+
+.category > p {
+    position: absolute;
+    left: 50px;
+    margin: 0;
+    font-size: 30px;
+    font-family: 'IceValley';
+}
+
+.category > input {
+    display: none;
+}
+
+.category > input:checked + label > span {
+    color: unset;
+}
+
+.category > label {
+    display: inline-block;
+    width: 70px;
+}
+
+.category > label > span {
+    display: block;
+    width: 100%;
+    color: rgba(1,1,1,0);
+}
+
+.category > .price {
+    top: 25px;
+    left: unset;
+    right: 50px;
+    font-size: 18px;
+    font-family: 'CaviarDreamsBold';
+}
+
+.zusammenfassung {
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    margin: 0 auto;
+    width: 1000px;
+    height: 100%;
+    padding: 22px;
+    text-align: center;
+}
+
+.zusammenfassung > h2 {
+    font-size: 25px;
+}
+
+.zusammenfassung-icons {
+    margin-bottom: 10px;
+    border-radius: 10px;
+    width: 300px;
+    padding: 10px 0;
+    background-color: rgba(255,255,255,0.5);
+}
+
+.zusammenfassung-icons > h3 {
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+/*side-view of the animation*/
+#side-view.variety1 {
+    z-index: 0;
+    background-image: url('../img/schoko_brunnen_img/Seitenansichten/Bitter_Seite_1.png');
+}
+#side-view.variety2 {
+    z-index: 0;
+    background-image: url('../img/schoko_brunnen_img/Seitenansichten/Milch_Seite_1.png');
+}
+#side-view.variety3 {
+    z-index: 0;
+    background-image: url('../img/schoko_brunnen_img/Seitenansichten/Weiß_Seite_1.png');
+}
+
+/*top-view of the animation*/
+#top-view.shape1.variety2 {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_1_m_1.png');
+}
+
+/*picture of shape and variety*/
+.shapeClass.shape1.variety1 {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_1_b_1.png');
+}
+.shapeClass.shape1.variety2 {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_1_m_1.png')
+}
+.shapeClass.shape1.variety3 {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_1_w_2.png')
+}
+.shapeClass.shape3.variety1 {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_2_b_1_0001.png')
+}
+.shapeClass.shape3.variety2 {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_2_m_1_0001.png')
+}
+.shapeClass.shape3.variety3 {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_2_w_1_0001.png')
+}
+.shapeClass.shape2.variety1 {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_3_b_3_0002.png')
+}
+.shapeClass.shape2.variety2 {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_3_m_3_0002.png')
+}
+.shapeClass.shape2.variety3 {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_3_w_3_0002.png')
+}
+
+/*picture of cream*/
+#cream.cream0 {
+    background-image: none; 
+}
+#cream.cream1 {
+    background-image: url('../img/schoko_brunnen_img/Creme/Pistazie_Seite_1.png');
+}
+#cream.cream2 {
+    background-image: url('../img/schoko_brunnen_img/Creme/Vanille_Seite_1.png');
+}
+#cream.cream3 {
+    background-image: url('../img/schoko_brunnen_img/Creme/Himbeere_Seite_1.png');
+}
+
+/*picture of stuffing*/
+#stuffing.stuffing0 {
+    background-image: none;
+}
+#stuffing.stuffing1 {
+    background-image: url('../img/schoko_brunnen_img/Füllung/Heidelbeere_Seite_1.png');
+}
+#stuffing.stuffing2 {
+    background-image: url('../img/schoko_brunnen_img/Füllung/Haselnuss_Seite_1.png');
+}
+#stuffing.stuffing3 {
+    background-image: url('../img/schoko_brunnen_img/Füllung/Oreo_Seite_1.png');
+}
+
+/*picture of topping*/
+#topping.topping0 {
+    background-image: none;
+}
+#top-view.shape1 + #topping.topping1 {
+    background-image: url('../img/schoko_brunnen_img/Topping/Erdbeere_Quader_1_0002.png');
+}
+#top-view.shape1 + #topping.topping2 {
+    background-image: url('../img/schoko_brunnen_img/Topping/Schokolinsen_Quader_1_0002.png');
+}
+#top-view.shape1 + #topping.topping3 {
+    background-image: url('../img/schoko_brunnen_img/Topping/Gold_Quader_1_0001.png');
+}
+#top-view.shape2 + #topping.topping1 {
+    background-image: url('../img/schoko_brunnen_img/Topping/Erdbeere_Herz_1_0002.png');
+}
+#top-view.shape2 + #topping.topping2 {
+    background-image: url('../img/schoko_brunnen_img/Topping/Schokolinsen_Herz_1_0002.png');
+}
+#top-view.shape2 + #topping.topping3 {
+    background-image: url('../img/schoko_brunnen_img/Topping/Gold_Herz_1_0001.png');
+}
+#top-view.shape3 + #topping.topping1 {
+    background-image: url('../img/schoko_brunnen_img/Topping/Erdbeere_Kreis_1_0002.png');
+}
+#top-view.shape3 + #topping.topping2 {
+    background-image: url('../img/schoko_brunnen_img/Topping/Schokolinsen_Kreis_1_0002.png');
+}
+#top-view.shape3 + #topping.topping3 {
+    background-image: url('../img/schoko_brunnen_img/Topping/Gold_Kreis_1_0001.png');
+}
+
+/*icons of the different categories*/
+.category-icon {
+    display: inline-block;
+    border-radius: 5px;
+    width: 50px;
+    height: 50px;
+    background-color: rgb(255,240,225);
+}
+
+.category input:checked + label > .category-icon {
+    border: 5px solid rgb(145,225,225);
+}
+
+/*shape-icons*/
+.category-icon.shape-1 {
+    background-image: url('../icons/shape/Rechteck.svg');
+}
+.category-icon.shape-2 {
+    background-image: url('../icons/shape/Herz.svg');
+}
+.category-icon.shape-3 {
+    background-image: url('../icons/shape/Kreis.svg');
+}
+
+/*variety-icons*/
+.category-icon.variety-1 {
+    background-color: rgb(59,36,8);
+}
+.category-icon.variety-2 {
+    background-color: rgb(127,79,44);
+}
+.category-icon.variety-3 {
+    background-color: rgb(255,235,159);
+}
+
+/*cream-icons*/
+.category-icon.cream-0 {
+    background-image: repeating-linear-gradient(135deg, rgba(59,36,8,0.5) 0%,rgba(59,36,8,0.5) 5%, rgb(255,247,238) 5%,rgb(255,247,238) 10%, rgba(59,36,8,0.5) 10%);
+}
+.category-icon.cream-1 {
+    background-image: url('../icons/cream/Pistazie.svg');
+}
+.category-icon.cream-2 {
+    background-image: url('../icons/cream/Vanille.svg');
+}
+.category-icon.cream-3 {
+    background-image: url('../icons/cream/Himbeere.svg');
+}
+
+/*stuffing-icons*/
+.category-icon.stuffing-0 {
+    background-image: repeating-linear-gradient(135deg, rgba(59,36,8,0.5) 0%,rgba(59,36,8,0.5) 5%, rgb(255,247,238) 5%,rgb(255,247,238) 10%, rgba(59,36,8,0.5) 10%);
+}
+.category-icon.stuffing-1 {
+    background-image: url('../icons/stuffing/Blaubeere.svg');
+}
+.category-icon.stuffing-2 {
+    background-image: url('../icons/stuffing/Haselnuss.svg');
+}
+.category-icon.stuffing-3 {
+    background-image: url('../icons/stuffing/Oreo.svg');
+}
+
+/*topping-icons*/
+.category-icon.topping-0 {
+    background-image: repeating-linear-gradient(135deg, rgba(59,36,8,0.5) 0%, rgba(59,36,8,0.5) 5%, rgb(255,247,238) 5%,rgb(255,247,238) 10%, rgba(59,36,8,0.5) 10%);
+}
+.category-icon.topping-1 {
+    background-image: url('../icons/topping/Erdbeere.svg');
+}
+.category-icon.topping-2 {
+    background-image: url('../icons/topping/Schokolinsen.svg');
+}
+.category-icon.topping-3 {
+    background-image: url('../icons/topping/Gold.svg');
+}
+
+/*
+** page "Schokoshop" **
+*/
+.shop-heading {
+    margin: 20px auto 0;
+    width: 600px;
+    font-size: 25px;
+    font-weight: normal;
+    text-align: center;
+    color: rgb(59,36,8);
+}
+
+.shop-inner {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    display: flex;
+    margin: 20px 51px 0;
+}
+
+.product-view {
+    margin-bottom: 30px;
+    border-radius: 10px;
+    width: calc((100% - 60px) / 3);
+    height: 400px;
+    background-color: rgba(255,255,255,0.6);
+    text-decoration: none;
+}
+
+.product-view:last-of-type {
+    margin-bottom: 55px;
+}
+
+.product-img {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    height: 295px;
+}
+
+.product-img > img {
+    width: 100%;
+}
+
+.product-ingredients {
+    justify-content: space-between;
+    display: flex;
+    margin: 12px 22px 10px;
+    width: calc(100% - 44px);
+}
+
+.product-ingredients > div {
+    border-radius: 5px;
+    width: 50px;
+    height: 50px;
+    background-color: rgb(255,240,225);
+}
+
+.product-view > h3 {
+    margin: 0;
+    text-align: center;
+    font-size: 24px;
+    font-family: 'Pintgram';
+    letter-spacing: 2px;
+    color: rgb(59,36,8);
+}
+
+/*
+** page of a product in the "Schokoshop" **
+*/
+.product-inner {
+    justify-content: space-between;
+    display: flex;
+    margin: 22px 51px;
+}
+
+.productdetail-images {
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    overflow: hidden;
+    width: 700px;
+    height: 390px;
+}
+
+.productdetail-images > input {
+    display: none;
+}
+
+.productdetail-images > label {
+    position: absolute;
+    left: 0;
+    border-radius: 5px;
+    padding: 30px 13px;
+    background-color: rgb(145,225,225);
+    cursor: pointer;
+}
+
+.productdetail-images > label:last-of-type {
+    left: unset;
+    right: 0;
+}
+
+.productdetail-images > label::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: -7px;
+    margin: auto;
+    border: 5px solid white;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    width: 0;
+    height: 0;
+    padding: 0;
+    font-size: 0;
+    line-height: 0;
+}
+
+.productdetail-images > label:first-of-type::before {
+    left: -7px;
+    right: 0;
+    border-left-color:   transparent;
+    border-right-color: white;
+}
+
+.productdetail-images > img {
+    display: none;
+    height: 110%;
+}
+
+#A:checked ~ img.A {
+    display: block;
+}
+
+#B:checked ~ img.B {
+    display: block;
+}
+
+.productdetail-details {
+    position: relative;
+    margin-bottom: 25px;
+    margin-left: 51px;
+    border-radius: 10px;
+    padding: 22px;
+    background: rgba(255,255,255,0.5);
+}
+
+.productdetail-details > h2 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.productdetail-details > h3 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.productdetail-details > button {
+    position: absolute;
+    z-index: 20;
+    bottom: 22px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    width: 200px;
+    padding: 10px;
+    background-color: rgb(59,36,8);
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+
+.productdetail-ingredients {
+    justify-content: space-between;
+    display: flex;
+    margin-bottom: 30px;
+    width: calc((50px * 5) + 40px);
+}
+
+/*
+** profil-page, change-data-page, change-password-page **
+*/
+.profil-inner {
+    position: relative;
+    margin: 20px auto;
+    width: 500px;
+    padding: 22px;
+    background-color: rgba(255,255,255,0.5);
+}
+
+.profil-inner > h1 {
+    margin: 0;
+}
+
+.profil-inner > p, .profil-inner > form > p {
+    color: rgb(145,225,225);
+}
+
+.edit {
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    border-radius: 5px;
+    padding: 7px 12px;
+    background-color: rgb(59,36,8);
+    text-decoration: none;
+    color: white;
+}
+
+.change-password {
+    color: rgb(59,36,8);
+}
+
+.input-wrapper {
+    margin: 15px 0;
+}
+
+.profil-data {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+
+.personal-data {
+    display: block;
+    margin-left: 10px;
+}
+
+input.personal-data {
+    border: 1px solid #dadada;
+    border-radius: 5px;
+    box-sizing: border-box;
+    width: 200px;
+    padding: 11px 25px 11px 10px;
+    background-color: white;
+}
+
+.save-data, .abort {
+    display: inline-block;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+    width: 155px;
+    padding: 13px 20px 12px 20px;
+    background: rgb(59,36,8);
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+}
+
+.save-data {
+    background-color: rgb(145,225,225);
+    font-size: 14px;
+    font-family: 'CaviarDreamsBold';
+}
+
+/*
+** page "Warenkorb" **
+*/
+.warenkorb-inner {
+    display: flex;
+    margin: 20px 51px;
+}
+
+.warenkorb-all-products {
+    flex-grow: 2;
+    margin-right: 20px;
+}
+
+.warenkorb-product {
+    position: relative;
+    display: flex;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    height: 200px;
+    background-color: rgba(255,255,255,0.5);
+}
+
+.warenkorb-product-info > h2 {
+    font-size: 28px;
+    font-family: 'IceValley';
+    font-weight: normal;
+}
+
+.warenkorb-product-img {
+    position: relative;
+    margin-right: 20px;
+    width: 350px;
+    height: 100%;
+    text-align: center;
+}
+
+.warenkorb-product-img > div {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.warenkorb-product-img > div:last-of-type {
+    z-index: 2;
+}
+
+.warenkorb-empty {
+    margin: auto;
+    text-align: center;
+}
+
+.shapeAndVariety.shape-1.variety-1 {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_1_b_1.png')
+}
+.shapeAndVariety.shape-1.variety-2 {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_1_m_1.png')
+}
+.shapeAndVariety.shape-1.variety-3 {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_1_w_2.png')
+}
+.shapeAndVariety.shape-2.variety-1 {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_3_b_3_0002.png')
+}
+.shapeAndVariety.shape-2.variety-2 {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_3_m_3_0002.png')
+}
+.shapeAndVariety.shape-2.variety-3 {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_3_w_3_0002.png')
+}
+.shapeAndVariety.shape-3.variety-1 {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_2_b_1_0001.png')
+}
+.shapeAndVariety.shape-3.variety-2 {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_2_m_1_0001.png')
+}
+.shapeAndVariety.shape-3.variety-3 {
+    background-image: url('../img/schoko_brunnen_img/Draufsichten/Schokobrunnen_2_w_1_0001.png')
+}
+.topping.topping0{
+    background-image: none;
+}
+.shapeAndVariety.shape-1 ~ .topping.topping-1 {
+    background-image: url('../img/schoko_brunnen_img/Topping/Erdbeere_Quader_1_0002.png')
+}
+.shapeAndVariety.shape-1 ~ .topping.topping-2 {
+    background-image: url('../img/schoko_brunnen_img/Topping/Schokolinsen_Quader_1_0002.png')
+}
+.shapeAndVariety.shape-1 ~ .topping.topping-3 {
+    background-image: url('../img/schoko_brunnen_img/Topping/Gold_Quader_1_0001.png')
+}
+.shapeAndVariety.shape-2 ~ .topping.topping-1 {
+    background-image: url('../img/schoko_brunnen_img/Topping/Erdbeere_Herz_1_0002.png')
+}
+.shapeAndVariety.shape-2 ~ .topping.topping-2 {
+    background-image: url('../img/schoko_brunnen_img/Topping/Schokolinsen_Herz_1_0002.png')
+}
+.shapeAndVariety.shape-2 ~ .topping.topping-3 {
+    background-image: url('../img/schoko_brunnen_img/Topping/Gold_Herz_1_0001.png')
+}
+.shapeAndVariety.shape-3 ~ .topping.topping-1 {
+    background-image: url('../img/schoko_brunnen_img/Topping/Erdbeere_Kreis_1_0002.png')
+}
+.shapeAndVariety.shape-3 ~ .topping.topping-2 {
+    background-image: url('../img/schoko_brunnen_img/Topping/Schokolinsen_Kreis_1_0002.png')
+}
+.shapeAndVariety.shape-3 ~ .topping.topping-3 {
+    background-image: url('../img/schoko_brunnen_img/Topping/Gold_Kreis_1_0001.png')
+}
+
+.warenkorb-product-img > img {
+    height: 100%;
+}
+
+.delete {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    transform: rotate(45deg);
+    margin-left: 33px;
+    border-radius: 20px;
+    width: 5px;
+    height: 21px;
+    background: rgb(59,36,8);
+}
+
+.delete::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: -8px;
+    border-radius: 20px;
+    width: 21px;
+    height: 5px;
+    background: rgb(59,36,8);
+}
+
+.warenkorb-product-ingredients {
+    justify-content: space-between;
+    display: flex;
+    width: 300px;
+}
+
+.warenkorb-overview {
+    position: relative;
+    flex-grow: 1;
+    border-radius: 10px;
+    height: 300px;
+    padding: 0 20px;
+    background-color: rgba(255,255,255,0.5);
+}
+
+.warenkorb-overview table {
+    width: 100%
+}
+
+.warenkorb-overview tr > td:last-of-type {
+    margin-left: -1px;
+    text-align: right;
+}
+
+.warenkorb-overview tr:last-of-type {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.line hr {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-width: 0;
+    border-top: 1px solid rgb(59,36,8);
+    height: 1px;
+    background-color: transparent;
+    line-height: 20px;
+}
+
+.buy-button {
+    position: absolute;
+    bottom: 20px;
+    display: block;
+    border:none;
+    border-radius: 5px;
+    width: calc(100% - 40px);
+    padding: 10px 0;
+    background-color: rgb(145,225,225);
+    cursor: pointer;
+    font-size: 28px;
+    font-family: 'IceValley';
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+
+/*** Login-page ***/
+
+.useraction-inner {
+    margin: 20px auto;
+    width: 500px;
+    padding: 22px;
+    background-color: rgba(255,255,255,0.5);
+}
+
+.useraction-inner > h1, .useraction-inner > h2 {
+    margin: 0;
+}
+
+.useraction-inner > h2 {
+    margin-top: 30px;
+}
+
+.useraction-label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.useraction-input {
+    display: block;
+    border: 1px solid #dadada;
+    border-radius: 5px;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 11px 25px 11px 10px;
+    background-color: white;
+}
+
+.useraction-button {
+    display: block;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    background-color: rgb(59,36,8);
+    cursor: pointer;
+    font-size: 14px;
+    font-family: 'CaviarDreamsBold';
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+
+.getregistered-button {
+    display: inline-block;
+    margin-top: 10px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    background-color: rgb(145,225,225);
+    text-align: center;
+    text-decoration: none;
+    color: rgb(59,36,8);
+}
+
+/* pages of payment and confirmation*/
+.payment-inner {
+    margin: 20px auto;
+    width: 500px;
+    padding: 22px;
+    background-color: rgba(255,255,255,0.5);
+}
+.payment-inner.bestätigung {
+    text-align: center;
+}
+
+.payment-inner > h2 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.payment-inner.bestätigung > h3 {
+    color: rgb(145,225,225);
+}
+
+.payment-inner > div {
+    margin-bottom: 5px;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgb(255,247,238);
+}
+
+.payment-inner > button {
+    display: inline-block;
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgb(59,36,8);
+    text-decoration: none;
+    color: white;
+}
+
+/**
+** Legal-notice and privacy-policy page
+*/
+.data-safety-inner {
+    padding: 20px;
+}
+
+/*
+** Others **
+*/
+.error-message {
+    color: #ff6d72;
 }

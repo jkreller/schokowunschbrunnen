@@ -1,0 +1,68 @@
+{% extends 'layout.twig' %}
+
+{% block main %}
+    <div class="warenkorb-inner">
+        {% if chocolates %}
+            <div class="warenkorb-all-products">
+                {% for chocolate in chocolates %}
+                    <div class="warenkorb-product">
+                        <div class="warenkorb-product-img">
+                            {% if chocolate.selfmade %}
+                                <div class="shapeAndVariety {{ chocolate.shape.className }} {{ chocolate.variety.className }}"></div>
+                                <div class="topping {{ chocolate.topping.className }}"></div>
+                            {% else %}
+                                <img src="{{ chocolate.imageA }}"/>
+                            {% endif %}
+                        </div>
+                        <div class="warenkorb-product-info">
+                            {% if chocolate.selfmade %}
+                                <h2>Deine eigene Schokokreation</h2>
+                            {% else %}
+                                <h2>Unsere fertige Schokokreation</h2>
+                            {% endif %}
+                            <a href="/shopping-cart/remove/{{ chocolate.id }}" class="delete"></a>
+                            <div class="warenkorb-product-ingredients">
+                                <div class="category-icon {{ chocolate.shape.className }}"></div>
+                                <div class="category-icon {{ chocolate.variety.className }}"></div>
+                                <div class="category-icon {{ chocolate.cream.className|default('cream-0') }}"></div>
+                                <div class="category-icon {{ chocolate.stuffing.className|default('stuffing-0') }}"></div>
+                                <div class="category-icon {{ chocolate.topping.className|default('topping-0') }}"></div>
+                            </div>
+                            <h3>Preis: {{ chocolate.price|number_format(2) }} €</h3>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="warenkorb-overview">
+                <h2>Bestellübersicht:</h2>
+                <table>
+                    <tr>
+                        <td>Artikel:</td>
+                        <td>{{ totalPriceChocolates|number_format(2) }} €</td>
+                    </tr>
+                    <tr>
+                        <td>Verpackung & Versand:</td>
+                        <td>4.90 €</td>
+                    </tr>
+                    <tr class="line">
+                        <td colspan="2">
+                            <hr>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Gesamtbetrag:</td>
+                        <td>{{ (totalPriceChocolates + 4.9)|number_format(2) }} €</td>
+                    </tr>
+                </table>
+                <a href="/payment" class="buy-button">Kaufen</a>
+            </div>
+        {% else %}
+            <div class="warenkorb-empty">
+                <h1>Huch, noch nix los hier?</h1>
+                <p>Dein Warenkorb ist leer. Kreiere deine eigene Schokolade im <a href="/wishing-well">Schokowunschbrunnen</a>
+                    oder
+                    kaufe eine fertige Schokolade im <a href="/shop">Schokoshop</a>.</p>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
