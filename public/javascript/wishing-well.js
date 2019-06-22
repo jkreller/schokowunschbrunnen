@@ -32,7 +32,7 @@ var totalPriceField = document.getElementById("totalprice");
 var creamPriceField = document.getElementById("creamprice");
 var stuffingPriceField = document.getElementById("stuffingprice");
 var toppingPriceField = document.getElementById("toppingprice");
-var totalPrice = 2.00;
+var basicPrice = 2.00;
 var creamPrice = 0.00;
 var stuffingPrice = 0.00;
 var toppingPrice = 0.00;
@@ -210,7 +210,7 @@ radio.addEventListener('change', changeTopping);
     the last "Weiter"-button is pressed.
 */
 function calculateTotalPrice(event) {
-    totalPrice += creamPrice + stuffingPrice + toppingPrice;
+    var totalPrice = basicPrice + creamPrice + stuffingPrice + toppingPrice;
     totalPriceField.innerText = totalPrice.toFixed(2).replace('.',',');
 }
 document.getElementById("calculate").addEventListener('click', calculateTotalPrice);

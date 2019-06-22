@@ -14,7 +14,7 @@ router.get('/', function (req, res, next) {
  * GET chocolate wishing well.
  */
 router.get('/wishing-well', function (req, res, next) {
-    res.render('schoko-wunschbrunnen');
+    res.render('wishing-well');
 });
 
 /**
@@ -23,7 +23,7 @@ router.get('/wishing-well', function (req, res, next) {
 router.get('/shop', async function (req, res, next) {
     try {
         const chocolates = await chocolateHelper.getShopChocolates();
-        res.render('schoko-shop', {chocolates: chocolates});
+        res.render('shop', {chocolates: chocolates});
     } catch (e) {
         next(e);
     }
@@ -35,7 +35,7 @@ router.get('/shop', async function (req, res, next) {
 router.get('/shop/:productId', async function (req, res, next) {
     try {
         const chocolate = await chocolateHelper.getPopulatedChocolate(req.params.productId);
-        res.render('produktseite', {chocolate: chocolate});
+        res.render('product-details', {chocolate: chocolate});
     } catch (e) {
         next(e);
     }
@@ -54,7 +54,7 @@ router.get('/shopping-cart', loginHandler.ensureAuthentication, async function (
             shoppingCart.chocolates.forEach(chocolate => totalPriceChocolates += chocolate.price);
         }
 
-        res.render('warenkorb', {
+        res.render('shopping-cart', {
             chocolates: shoppingCart ? shoppingCart.chocolates : [],
             totalPriceChocolates: totalPriceChocolates.toFixed(2)
         });
@@ -90,17 +90,30 @@ router.get('/shopping-cart/remove/:productId', loginHandler.ensureAuthentication
 /**
  * GET order confirmation.
  */
-router.get('/orderconfirmation', async function (req, res, next) {
+router.get('/order-confirmation', loginHandler.ensureAuthentication, async function (req, res, next) {
     chocolateHelper.removeAllFromShoppingCart(req.user._id);
-    res.render('bestellbestätigung');
+    res.render('order-confirmation');
 });
 
 /**
  * GET payment overview.
  */
 router.get('/payment', async function (req, res, next) {
-    res.render('bezahlmittel');
+    res.render('payment');
+});
+
+/**
+ * GET legal notice.
+ */
+router.get('/legal-notice', async function (req, res, next) {
+    res.render('legal-notice');
+});
+
+/**
+ * GET privacy policy.
+ */
+router.get('/privacy-policy', async function (req, res, next) {
+    res.render('privacy-policy');
 });
 
 module.exports = router;
-

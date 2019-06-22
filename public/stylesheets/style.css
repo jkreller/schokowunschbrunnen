@@ -1182,7 +1182,7 @@ input.personal-data {
     background-color: rgb(255,247,238);
 }
 
-.payment-inner > a {
+.payment-inner > button {
     display: inline-block;
     margin-top: 20px;
     border-radius: 5px;
@@ -1190,6 +1190,13 @@ input.personal-data {
     background-color: rgb(59,36,8);
     text-decoration: none;
     color: white;
+}
+
+/**
+** Legal-notice and privacy-policy page
+*/
+.data-safety-inner {
+    padding: 20px;
 }
 
 /*

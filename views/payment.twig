@@ -1,0 +1,22 @@
+{% extends 'layout.twig' %}
+
+{% block main %}
+    <form action="order-confirmation">
+        <div class="payment-inner">
+            <h1>Wähle ein Bezahlmittel für deine Bestellung aus:</h1>
+            <div>
+                <input id="PayPal" type="radio" name="payment" required>
+                <label for="PayPal">PayPal</label>
+            </div>
+            <div>
+                <input id="Rechnung" type="radio" name="payment" required>
+                <label for="Rechnung">Rechnung</label>
+            </div>
+            <div>
+                <input id="Bankeinzug" type="radio" name="payment" required>
+                <label for="Bankeinzug">Bankeinzug</label>
+            </div>
+            <button>Bestellvorgang abschließen</button>
+        </div>
+    </form>
+{% endblock %}
