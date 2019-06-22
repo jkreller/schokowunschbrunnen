@@ -1,12 +1,9 @@
 /**
- *  LoginHandler:
- *
  *  Middleware defining authentication functions
+ *  @namespace
  */
 class LoginHandler {
     /**
-     * EnsureAuthentication:
-     *
      * If user is not authenticated he will be redirected to login page.
      *
      * @param req

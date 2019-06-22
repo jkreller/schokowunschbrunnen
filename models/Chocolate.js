@@ -4,8 +4,11 @@ const Schema = mongoose.Schema;
 
 /**
  * Mongoose database schema for chocolates
+ *
+ * @namespace Chocolate
  */
-const schema = new Schema({
+const schema = new Schema(
+    {
     shape: {type: Schema.Types.ObjectId, ref: 'Shape', required: true},
     variety: {type: Schema.Types.ObjectId, ref: 'Variety', required: true},
     cream: {type: Schema.Types.ObjectId, ref: 'Cream'},

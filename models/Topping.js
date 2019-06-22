@@ -4,6 +4,8 @@ const Schema = mongoose.Schema;
 
 /**
  * Mongoose database schema for toppings
+ *
+ * @namespace Topping
  */
 const schema = new Schema({
     name: {type: String, required: true},

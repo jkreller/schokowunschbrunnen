@@ -4,6 +4,8 @@ const Schema = mongoose.Schema;
 
 /**
  * Mongoose database schema for shapes
+ *
+ * @namespace Shape
  */
 const schema = new Schema({
     name: {type: String, required: true},

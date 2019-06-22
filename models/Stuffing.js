@@ -4,6 +4,8 @@ const Schema = mongoose.Schema;
 
 /**
  * Mongoose database schema for stuffings
+ *
+ * @namespace Stuffing
  */
 const schema = new Schema({
     name: {type: String, required: true},
