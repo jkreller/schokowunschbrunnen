@@ -11,7 +11,7 @@ const bcrypt = require('bcryptjs');
  * GET register.
  */
 router.get('/register', function (req, res, next) {
-    res.render('user/registrieren', {message: req.flash('error')});
+    res.render('user/register', {message: req.flash('error')});
 });
 
 /**
@@ -28,7 +28,7 @@ router.post('/register', passport.authenticate('local.signup', {
  * GET login.
  */
 router.get('/login', function (req, res, next) {
-    res.render('user/anmelden', {message: req.flash('error')});
+    res.render('user/login', {message: req.flash('error')});
 });
 
 /**
@@ -54,7 +54,7 @@ router.get('/logout', function (req, res, next) {
  */
 router.get('/profile', loginHandler.ensureAuthentication, function (req, res, next) {
     const birthdayFormatted = moment(req.user.birthday).format('DD.MM.YYYY');
-    res.render('user/profil', {birthdayFormatted: birthdayFormatted});
+    res.render('user/profile', {birthdayFormatted: birthdayFormatted});
 });
 
 /**
@@ -62,7 +62,7 @@ router.get('/profile', loginHandler.ensureAuthentication, function (req, res, ne
  */
 router.get('/profile/edit', loginHandler.ensureAuthentication, function (req, res, next) {
     const birthdayFormatted = moment(req.user.birthday).format('YYYY-MM-DD');
-    res.render('user/profil', {birthdayFormatted: birthdayFormatted, edit: true});
+    res.render('user/profile', {birthdayFormatted: birthdayFormatted, edit: true});
 });
 
 /**
@@ -100,7 +100,7 @@ router.post('/profile/edit', [
             next(e);
         }
     } else {
-        res.render('user/profil', {
+        res.render('user/profile', {
             birthdayFormatted: req.body.birthday,
             edit: true,
             user: req.body,
@@ -143,7 +143,7 @@ router.post('/profile/edit-password', loginHandler.ensureAuthentication, async f
                 };
 
                 User.findByIdAndUpdate(req.user._id, newUser).then(function (err) {
-                    res.render('user/profil');
+                    res.render('user/profile');
                 });
             });
         } else {
