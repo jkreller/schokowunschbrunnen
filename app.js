@@ -14,7 +14,7 @@ const userRouter = require('./routes/user');
 
 const app = express();
 
-const mongoDbDatabase = 'mongodb+srv://admin:Schoko98Wunsch76Brunnen!@schokowunschbrunnen-buupz.mongodb.net/schokowunschbrunnen?retryWrites=true';
+const mongoDbDatabase = '<connection-string>';
 
 // connect to database
 mongoose.connect(mongoDbDatabase, {
