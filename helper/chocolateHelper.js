@@ -7,16 +7,13 @@ const Topping = require('../models/Topping');
 const ShoppingCart = require('../models/ShoppingCart');
 
 /**
- * ChocolateHelper:
- *
  * Contains various functions for operating with chocolates. For example provides database queries and processing functions.
  *
+ * @namespace ChocolateHelper
  * @type {{getShopChocolates: (function(): (Promise|Query|Document|*|void)), getPopulatedChocolate: (function(*=): (Promise|Query|Document|*|void)), getPopulatedShoppingCart: (function(*=): (Promise|Query|Document|*|void)), getPropertyObjects: (function(*): {shape: *, variety: *, cream: *, stuffing: *, topping: *}), createChocolateByPropertyObjects: (function(*): *), addToShoppingCart: (function(*=, *=): *), removeFromShoppingCart: (function(*=, *=): *), removeAllFromShoppingCart: (function(*=): *)}}
  */
 const chocolateHelper = {
     /**
-     * GetShopChocolates
-     *
      * Returning the shop chocolates from data base.
      *
      * @returns {Promise<Chocolate[]>}
@@ -26,8 +23,6 @@ const chocolateHelper = {
     },
 
     /**
-     * GetPopulatedChocolate
-     *
      * Puts the chocolate parts together in one object to work with.
      *
      * @param id
@@ -38,8 +33,6 @@ const chocolateHelper = {
     },
 
     /**
-     * GetPopulatedShoppingCart
-     *
      * Puts the chocolates together in one Shoppingcart-object to work with.
      *
      * @param userId
@@ -53,8 +46,6 @@ const chocolateHelper = {
     },
 
     /**
-     * GetPropertyObjects
-     *
      * Returns a property-object containing all of the chocolate parts.
      *
      * @param propertyNames
@@ -71,8 +62,6 @@ const chocolateHelper = {
     },
 
     /**
-     * CreateChocolateByPropertyObjects
-     *
      * Creates a Chocolates from the propertyObjects containing all of its parts.
      *
      * @param propertyObjects
@@ -89,8 +78,6 @@ const chocolateHelper = {
     },
 
     /**
-     * AddToShoppingCart:
-     *
      * Adds a chocolateObject to the ShoppingCard of an user.
      *
      * @param userId
@@ -126,8 +113,6 @@ const chocolateHelper = {
     },
 
     /**
-     * RemoveFromShoppingCart:
-     *
      * Removes a chocolate from a shoppingCard of an user.
      *
      * @param chocolateId
@@ -149,8 +134,6 @@ const chocolateHelper = {
     },
 
     /**
-     * RemoveAllFromShoppingCart:
-     *
      * Removes all of the chocolates from a shoppingCard of a specific user.
      *
      * @param userId

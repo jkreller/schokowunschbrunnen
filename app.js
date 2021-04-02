@@ -8,17 +8,26 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
+const env = require('node-env-file');
+const fs = require('fs');
 
 const indexRouter = require('./routes/index');
 const userRouter = require('./routes/user');
 
 const app = express();
 
-const mongoDbDatabase = '<connection-string>';
+// set environment variables from .env if it exists
+const envFile = __dirname + '/.env';
+if (fs.existsSync(envFile)) {
+    env(envFile);
+}
+
+const mongoDbDatabase = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASS}@${process.env.MONGODB_HOST}/${process.env.MONGODB_DB}?retryWrites=true&w=majority`;
 
 // connect to database
 mongoose.connect(mongoDbDatabase, {
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 }).catch((err) => console.error('Error when connecting to database.'));
 
 mongoose.Promise = Promise;

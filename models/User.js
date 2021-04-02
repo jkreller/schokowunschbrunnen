@@ -5,6 +5,8 @@ const Schema = mongoose.Schema;
 
 /**
  * Mongoose database schema for users
+ *
+ * @namespace User
  */
 const schema = new Schema({
     email: {type: String, required: true},

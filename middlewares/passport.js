@@ -1,67 +1,112 @@
+/**
+ * In this file various passport functions get called
+ *
+ * @namespace Passport
+ * @type {Authenticator}
+ */
+
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
 const User = require('../models/User');
-const uniqid = require('uniqid');
 
 /**
- * Calling passport function: describes which data of the user object is stored in the session.
+ * Calling passport function
  */
-passport.serializeUser(function (user, done) {
-    done(null, user);
-});
+passport.serializeUser(
+    /**
+     * Describes which data of the user object is stored in the session.
+     *
+     * @callback serializeUser
+     * @memberOf Passport
+     * @param user {User} The user object
+     * @param done {Function} Passport callback
+     */
+    function (user, done) {
+        done(null, user);
+    });
 
 /**
- * Calling passport function: defines the key of the user object.
+ * Calling passport function
  */
-passport.deserializeUser(function (user, done) {
-    done(null, user);
-});
+passport.deserializeUser(
+    /**
+     * Defines the key of the user object
+     *
+     * @callback deserializeUser
+     * @memberOf Passport
+     * @param user {User} The user object
+     * @param done {Function} Passport callback
+     */
+    function (user, done) {
+        done(null, user);
+    });
 
 /**
- * Defines passport middleware: strategy to be used for sign in.
+ * Defines passport middleware
  */
 passport.use('local.signin', new LocalStrategy({
-    usernameField: 'email',
-    passwordField: 'password',
-}, function (email, password, done) {
-    // Check if user email exists
-    User.findOne({email: email}, function (err, user) {
-        // Check if there was an error
-        if (err) {
-            return done(err);
-        }
-
-        // Check if user was found
-        if (!user) {
-            return done(null, false, {message: 'Falsche E-Mail-Adresse oder Passwort'});
-        }
-
-        // Check if correct password
-        user.validPassword(password, function (err, res) {
+        usernameField: 'email',
+        passwordField: 'password',
+    },
+    /**
+     * Strategy to be used for sign in.
+     *
+     * @callback localSignin
+     * @memberOf Passport
+     * @param email {String} Email from user input
+     * @param password {String} Password from user input
+     * @param done {Function} Passport callback
+     */
+    function (email, password, done) {
+        // Check if user email exists
+        User.findOne({email: email}, function (err, user) {
             // Check if there was an error
             if (err) {
                 return done(err);
             }
 
-            // Check if password is valid
-            if (!res) {
+            // Check if user was found
+            if (!user) {
                 return done(null, false, {message: 'Falsche E-Mail-Adresse oder Passwort'});
-            } else {
-                return done(null, user);
             }
+
+            // Check if correct password
+            user.validPassword(password, function (err, res) {
+                // Check if there was an error
+                if (err) {
+                    return done(err);
+                }
+
+                // Check if password is valid
+                if (!res) {
+                    return done(null, false, {message: 'Falsche E-Mail-Adresse oder Passwort'});
+                } else {
+                    return done(null, user);
+                }
+            });
         });
-    });
-}));
+    }));
 
 /**
- * Defines passport middleware: strategy to be used for sign up.
+ * Defines passport middleware
  */
 passport.use('local.signup', new LocalStrategy({
         usernameField: 'email',
         passwordField: 'password',
         passReqToCallback: true
-    }, function (req, email, password, done) {
+    },
+    /**
+     * Strategy to be used for sign up.
+     *
+     * @callback localSignup
+     * @memberOf Passport
+     * @param req {Request} Express.js request object
+     * @param email {String} Email from user input
+     * @param password {String} Password from user input
+     * @param done {Function} Passport callback
+     */
+    function (req, email, password, done) {
         const fname = req.body.fname;
         const lname = req.body.lname;
         const title = req.body.title;

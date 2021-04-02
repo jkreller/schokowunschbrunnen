@@ -1,3 +1,10 @@
+/**
+ * In this file the express router functions get/post are called
+ *
+ * @namespace UserRoute
+ * @type {createApplication}
+ */
+
 const express = require('express');
 const router = express.Router();
 const moment = require('moment');
@@ -10,7 +17,17 @@ const bcrypt = require('bcryptjs');
 /**
  * GET register.
  */
-router.get('/register', function (req, res, next) {
+router.get('/register',
+    /**
+     * Register (GET)
+     *
+     * @callback getRegister
+     * @memberOf UserRoute
+     * @param req {Request} Express.js request object
+     * @param res {Response} Express.js response object
+     * @param next {Function} Express.js callback
+     */
+    function (req, res, next) {
     res.render('user/register', {message: req.flash('error')});
 });
 
@@ -27,7 +44,17 @@ router.post('/register', passport.authenticate('local.signup', {
 /**
  * GET login.
  */
-router.get('/login', function (req, res, next) {
+router.get('/login',
+    /**
+     * Login (GET)
+     *
+     * @callback getLogin
+     * @memberOf UserRoute
+     * @param req {Request} Express.js request object
+     * @param res {Response} Express.js response object
+     * @param next {Function} Express.js callback
+     */
+    function (req, res, next) {
     res.render('user/login', {message: req.flash('error')});
 });
 
@@ -44,7 +71,17 @@ router.post('/login', passport.authenticate('local.signin', {
 /**
  * GET logout.
  */
-router.get('/logout', function (req, res, next) {
+router.get('/logout',
+    /**
+     * Logout (GET)
+     *
+     * @callback getLogout
+     * @memberOf UserRoute
+     * @param req {Request} Express.js request object
+     * @param res {Response} Express.js response object
+     * @param next {Function} Express.js callback
+     */
+    function (req, res, next) {
     req.logout();
     res.redirect('/');
 });
@@ -52,7 +89,17 @@ router.get('/logout', function (req, res, next) {
 /**
  * GET profile.
  */
-router.get('/profile', loginHandler.ensureAuthentication, function (req, res, next) {
+router.get('/profile', loginHandler.ensureAuthentication,
+    /**
+     * Profile (GET)
+     *
+     * @callback getProfile
+     * @memberOf UserRoute
+     * @param req {Request} Express.js request object
+     * @param res {Response} Express.js response object
+     * @param next {Function} Express.js callback
+     */
+    function (req, res, next) {
     const birthdayFormatted = moment(req.user.birthday).format('DD.MM.YYYY');
     res.render('user/profile', {birthdayFormatted: birthdayFormatted});
 });
@@ -80,7 +127,17 @@ router.post('/profile/edit', [
         }
         return true;
     }),
-], loginHandler.ensureAuthentication, async function (req, res, next) {
+], loginHandler.ensureAuthentication,
+    /**
+     * Edit Profile (POST)
+     *
+     * @callback postEditProfile
+     * @memberOf UserRoute
+     * @param req {Request} Express.js request object
+     * @param res {Response} Express.js response object
+     * @param next {Function} Express.js callback
+     */
+    async function (req, res, next) {
     const errors = validationResult(req);
     delete req.body.password;
 
@@ -112,14 +169,34 @@ router.post('/profile/edit', [
 /**
  * GET profile edit password.
  */
-router.get('/profile/edit-password', loginHandler.ensureAuthentication, function (req, res, next) {
+router.get('/profile/edit-password', loginHandler.ensureAuthentication,
+    /**
+     * Edit Password (GET)
+     *
+     * @callback getEditPassword
+     * @memberOf UserRoute
+     * @param req {Request} Express.js request object
+     * @param res {Response} Express.js response object
+     * @param next {Function} Express.js callback
+     */
+    function (req, res, next) {
     res.render('user/change-password');
 });
 
 /**
  * POST profile edit password.
  */
-router.post('/profile/edit-password', loginHandler.ensureAuthentication, async function (req, res, next) {
+router.post('/profile/edit-password', loginHandler.ensureAuthentication,
+    /**
+     * Edit Password (POST)
+     *
+     * @callback postEditPassword
+     * @memberOf UserRoute
+     * @param req {Request} Express.js request object
+     * @param res {Response} Express.js response object
+     * @param next {Function} Express.js callback
+     */
+    async function (req, res, next) {
     let oldPasswordMatch;
 
     try {
