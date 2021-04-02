@@ -15,14 +15,15 @@
     "express-validator": "^5.3.1",
     "http-errors": "~1.6.2",
     "moment": "^2.24.0",
-    "mongoose": "^5.5.5",
+    "mongoose": "^5.12.3",
     "morgan": "~1.9.0",
+    "node-env-file": "^0.1.8",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "twig": "~0.10.3",
     "uniqid": "^5.0.3"
   },
   "devDependencies": {
-    "jsdoc": "^3.6.2"
+    "jsdoc": "^3.6.6"
   }
 }
