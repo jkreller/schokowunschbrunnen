@@ -22,6 +22,8 @@ if (fs.existsSync(envFile)) {
     env(envFile);
 }
 
+console.log(`Try to connect to database with host ${process.env.MONGODB_HOST}`);
+
 const mongoDbDatabase = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASS}@${process.env.MONGODB_HOST}/${process.env.MONGODB_DB}?retryWrites=true&w=majority`;
 
 // connect to database
