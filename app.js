@@ -30,7 +30,7 @@ const mongoDbDatabase = `mongodb+srv://${process.env.MONGODB_USER}:${process.env
 mongoose.connect(mongoDbDatabase, {
     useNewUrlParser: true,
     useUnifiedTopology: true
-}).catch((err) => console.error('Error when connecting to database.'));
+}).catch((err) => console.error(`Error when connecting to database: ${err.message}`));
 
 mongoose.Promise = Promise;
 
